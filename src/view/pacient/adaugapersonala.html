@@ -1,0 +1,15 @@
+{% extends "pacient/lista.html" %}
+{% block title %} Adauga heredocolaterale !{% endblock %}
+
+{% block body %}
+<form method="post">
+    Boala:
+    <textarea name="boala"></textarea>
+    Data Diagnostic:
+    <textarea name="data-diagnostic"></textarea>
+    Tratament:
+    <textarea name="tratament"></textarea>
+    <input type="submit">
+</form>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "pacient/lista.html" %}
+
+{% block title %} Adauga heredocolaterale !{% endblock %}
+
+{% block body %}
+<link ref="stylesheet" href="/static/app/css/datepicker.css">
+<script src="/static/app/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataprogramarii').datepicker({
+                format: "dd/mm/yyyy"
+                }).on('changeDate', function (ev) {
+                    $(this).datepicker('hide');
+                    });
+            });
+</script>
+
+<h3> Adauga programare pentru {{ pacient.nume|capfirst }} {{ pacient.prenume|capfirst }}</h3>
+<form method="post" class="form-inline" role="form">
+    <div class="form-group">
+        <label for="data">Data:</label>
+        <input type="text" class="form-control" id="dataprogramarii" name="data">
+    </div>
+    <div class="form-group">
+        <label for="ora">Ora:</label>
+        <textarea name="ora" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="durata">Durata:</label>
+        <textarea name="durata" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default"> Adauga Programare </button>
+</form>
+
+{% endblock %}

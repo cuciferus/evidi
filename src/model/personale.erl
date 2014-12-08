@@ -1,0 +1,3 @@
+-module(personale, [Id, Boala, DataDiagnostic, Tratament, PacientId]).
+-compile(export_all).
+-belongs_to(pacient).
