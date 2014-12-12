@@ -105,7 +105,7 @@
                     <div class="form-group">
                         <label for="telefon"> Numar de telefon de contact</label>
                         <input type="text" class="form-control"  id="telefon" name="telefon">
-                        <input type="hidden" name="pacientid">
+                        <input type="hidden" name="pacientid" id="pacientid">
                     </div>
             </div>
             <div class="modal-footer">
@@ -125,7 +125,7 @@ $("#editeazaPersonaleModal").on("submit", function(e){
     var formData = form.serialize();
     console.log(formData);
     $.ajax({
-        url: "/pacient/editeazaPersonale/"+$("#nume").val(),
+        url: "/pacient/editeazaPersonale/"+$("#pacientid").val(),
         type: "POST",
         data: formData,
         error: function(data) {
@@ -135,6 +135,7 @@ $("#editeazaPersonaleModal").on("submit", function(e){
                 $("#editeazaPersonaleModal").modal('hide');
             }
         })
+    $("#editeazaPersonaleModal").modal('hide')
     });
     
 $('#editeazaPersonaleModal').on('show.bs.modal', function(event){

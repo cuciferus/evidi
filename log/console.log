@@ -532,3 +532,137 @@
 2014-12-12 16:25:49.750 [error] <0.102.0> CRASH REPORT Process <0.102.0> with 0 neighbours exited with reason: {{{badmatch,["gaogh"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]},{gen_server,call,[{global,boss_db_mock},{save_record,{pacient,"gaogh","gaogh","fhybnxbxo","9161356379076","9736413077","skviyfinnsnwrery"}}]}} in gen_server:terminate/6 line 746
 2014-12-12 16:25:49.750 [error] <0.100.0> Supervisor {<0.100.0>,poolboy_sup} had child boss_db_controller started with {boss_db_controller,start_link,undefined} at <0.102.0> exit with reason {{{badmatch,["gaogh"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]},{gen_server,call,[{global,boss_db_mock},{save_record,{pacient,"gaogh","gaogh","fhybnxbxo","9161356379076","9736413077","skviyfinnsnwrery"}}]}} in context child_terminated
 2014-12-12 16:25:49.750 [info] <0.347.0> POST /pacient/editeazaPersonale/gaogh [evidi] 200 0ms
+2014-12-12 16:33:34.101 [notice] <0.351.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:33:34.102 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:33:34.102 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 16:33:34.105 [notice] <0.351.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:33:34.105 [notice] <0.351.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 16:33:34.160 [info] <0.351.0> GET / [evidi] 200 0ms
+2014-12-12 16:33:40.306 [notice] <0.359.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:33:40.307 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:33:40.307 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 16:33:40.309 [notice] <0.359.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:33:40.309 [notice] <0.359.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 16:33:40.315 [info] <0.359.0> GET / [evidi] 200 0ms
+2014-12-12 16:33:42.402 [notice] <0.361.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:33:42.403 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:33:42.406 [notice] <0.361.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:33:42.406 [notice] <0.361.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-1"]
+2014-12-12 16:33:42.407 [info] <0.361.0> GET /pacient/cauta/pacient-1 [evidi] 200 0ms
+2014-12-12 16:34:00.938 [notice] <0.363.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:34:00.938 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:34:00.939 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 16:34:00.941 [notice] <0.363.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:34:00.941 [notice] <0.363.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 16:34:00.998 [info] <0.363.0> GET / [evidi] 200 0ms
+2014-12-12 16:34:03.040 [notice] <0.366.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:34:03.041 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:34:03.044 [notice] <0.366.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:34:03.044 [notice] <0.366.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-1"]
+2014-12-12 16:34:03.045 [info] <0.366.0> GET /pacient/cauta/pacient-1 [evidi] 200 0ms
+2014-12-12 16:35:10.420 [notice] <0.368.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:35:10.421 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:35:10.421 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 16:35:10.423 [notice] <0.368.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:35:10.423 [notice] <0.368.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 16:35:10.481 [info] <0.368.0> GET / [evidi] 200 0ms
+2014-12-12 16:35:12.221 [notice] <0.371.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:35:12.221 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:35:12.224 [notice] <0.371.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:35:12.224 [notice] <0.371.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-1"]
+2014-12-12 16:35:12.225 [info] <0.371.0> GET /pacient/cauta/pacient-1 [evidi] 200 0ms
+2014-12-12 16:35:13.897 [notice] <0.373.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:35:13.897 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:35:13.901 [notice] <0.373.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
+2014-12-12 16:35:13.901 [notice] <0.373.0>@boss_controller_adapter_pmod:action:92 Tokens ["azselc"]
+2014-12-12 16:35:13.901 [error] <0.349.0> gen_server boss_db_mock terminated with reason: no match of right hand value ["azselc"] in boss_db_mock_controller:handle_call/3 line 59
+2014-12-12 16:35:13.901 [error] <0.349.0> CRASH REPORT Process <0.349.0> with 0 neighbours exited with reason: no match of right hand value ["azselc"] in boss_db_mock_controller:handle_call/3 line 59 in gen_server:terminate/6 line 746
+2014-12-12 16:35:13.901 [error] <0.333.0> gen_server <0.333.0> terminated with reason: {{{badmatch,["azselc"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]},{gen_server,call,[{global,boss_db_mock},{save_record,{pacient,"azselc","azselc","wublqbkcbxv","1230260133667","4870477240","npktnnwmptsthfyh"}}]}}
+2014-12-12 16:35:13.901 [error] <0.373.0>@boss_web_controller:call_controller_action:366 Error in controller exit {{{{badmatch,["azselc"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]},{gen_server,call,[{global,boss_db_mock},{save_record,{pacient,"azselc","azselc","wublqbkcbxv","1230260133667","4870477240","npktnnwmptsthfyh"}}]}},{gen_server,call,[<0.333.0>,{save_record,{pacient,"azselc","azselc","wublqbkcbxv","1230260133667","4870477240","npktnnwmptsthfyh"}},30000]}} [{gen_server,call,3,[{file,"gen_server.erl"},{line,190}]},{boss_pool,call,3,[{file,"src/boss_pool.erl"},{line,12}]},{boss_db,save_record,2,[{file,"src/boss_db.erl"},{line,400}]},{evidi_pacient_controller,editeazaPersonale,3,[{file,"/home/cuci/prostii/evidi/src/controller/evidi_pacient_controller.erl"},{line,35}]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]}]
+2014-12-12 16:35:13.901 [error] <0.333.0> CRASH REPORT Process <0.333.0> with 0 neighbours exited with reason: {{{badmatch,["azselc"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]},{gen_server,call,[{global,boss_db_mock},{save_record,{pacient,"azselc","azselc","wublqbkcbxv","1230260133667","4870477240","npktnnwmptsthfyh"}}]}} in gen_server:terminate/6 line 746
+2014-12-12 16:35:13.901 [error] <0.96.0> Supervisor {global,boss_db_mock_sup} had child db_mock_controller started with boss_db_mock_controller:start_link([]) at <0.349.0> exit with reason no match of right hand value ["azselc"] in boss_db_mock_controller:handle_call/3 line 59 in context child_terminated
+2014-12-12 16:35:13.902 [error] <0.100.0> Supervisor {<0.100.0>,poolboy_sup} had child boss_db_controller started with {boss_db_controller,start_link,undefined} at <0.333.0> exit with reason {{{badmatch,["azselc"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]},{gen_server,call,[{global,boss_db_mock},{save_record,{pacient,"azselc","azselc","wublqbkcbxv","1230260133667","4870477240","npktnnwmptsthfyh"}}]}} in context child_terminated
+2014-12-12 16:35:13.902 [info] <0.373.0> POST /pacient/editeazaPersonale/azselc [evidi] 200 0ms
+2014-12-12 16:52:08.903 [notice] <0.377.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:52:08.904 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:52:08.904 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 16:52:08.906 [notice] <0.377.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:52:08.907 [notice] <0.377.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 16:52:08.963 [info] <0.377.0> GET / [evidi] 200 0ms
+2014-12-12 16:52:16.140 [notice] <0.389.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:52:16.141 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:52:16.142 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 16:52:16.146 [notice] <0.389.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:52:16.146 [notice] <0.389.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 16:52:16.152 [info] <0.389.0> GET / [evidi] 200 0ms
+2014-12-12 16:52:18.340 [notice] <0.391.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:52:18.341 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:52:18.344 [notice] <0.391.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:52:18.344 [notice] <0.391.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-1"]
+2014-12-12 16:52:18.345 [info] <0.391.0> GET /pacient/cauta/pacient-1 [evidi] 200 0ms
+2014-12-12 16:52:22.377 [notice] <0.393.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:52:22.378 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:52:22.382 [notice] <0.393.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
+2014-12-12 16:52:22.382 [notice] <0.393.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-1"]
+2014-12-12 16:52:22.384 [info] <0.393.0> POST /pacient/editeazaPersonale/pacient-1 [evidi] 302 0ms
+2014-12-12 16:52:22.403 [notice] <0.395.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:52:22.403 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:52:22.404 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 16:52:22.406 [notice] <0.395.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:52:22.406 [notice] <0.395.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 16:52:22.414 [info] <0.395.0> GET / [evidi] 200 0ms
+2014-12-12 16:53:01.991 [notice] <0.397.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:53:01.991 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:53:01.992 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 16:53:01.995 [notice] <0.397.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:53:01.995 [notice] <0.397.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 16:53:02.002 [info] <0.397.0> GET / [evidi] 200 0ms
+2014-12-12 16:53:03.986 [notice] <0.399.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 16:53:03.986 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 16:53:03.989 [notice] <0.399.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 16:53:03.989 [notice] <0.399.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-1"]
+2014-12-12 16:53:03.990 [info] <0.399.0> GET /pacient/cauta/pacient-1 [evidi] 200 0ms
+2014-12-12 17:04:50.167 [notice] <0.401.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 17:04:50.168 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 17:04:50.171 [notice] <0.401.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 17:04:50.171 [notice] <0.401.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-8"]
+2014-12-12 17:04:50.172 [info] <0.401.0> GET /pacient/cauta/pacient-8 [evidi] 200 0ms
+2014-12-12 17:04:55.139 [notice] <0.403.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 17:04:55.139 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 17:04:55.142 [notice] <0.403.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
+2014-12-12 17:04:55.142 [notice] <0.403.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-8"]
+2014-12-12 17:04:55.144 [info] <0.403.0> POST /pacient/editeazaPersonale/pacient-8 [evidi] 302 0ms
+2014-12-12 17:04:55.199 [notice] <0.405.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 17:04:55.199 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 17:04:55.200 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 17:04:55.203 [notice] <0.405.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 17:04:55.203 [notice] <0.405.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 17:04:55.209 [info] <0.405.0> GET / [evidi] 200 0ms
+2014-12-12 17:04:57.833 [notice] <0.407.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 17:04:57.833 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 17:04:57.834 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 17:04:57.836 [notice] <0.407.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 17:04:57.836 [notice] <0.407.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 17:04:57.842 [info] <0.407.0> GET / [evidi] 200 0ms
+2014-12-12 17:05:34.330 [notice] <0.410.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 17:05:34.330 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 17:05:34.331 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 17:05:34.333 [notice] <0.410.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 17:05:34.333 [notice] <0.410.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 17:05:34.392 [info] <0.410.0> GET / [evidi] 200 0ms
+2014-12-12 17:05:36.540 [notice] <0.413.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 17:05:36.540 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 17:05:36.543 [notice] <0.413.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 17:05:36.543 [notice] <0.413.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-2"]
+2014-12-12 17:05:36.544 [info] <0.413.0> GET /pacient/cauta/pacient-2 [evidi] 200 0ms
+2014-12-12 17:05:38.426 [notice] <0.415.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 17:05:38.427 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 17:05:38.429 [notice] <0.415.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
+2014-12-12 17:05:38.429 [notice] <0.415.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-2"]
+2014-12-12 17:05:38.431 [info] <0.415.0> POST /pacient/editeazaPersonale/pacient-2 [evidi] 302 0ms
+2014-12-12 17:05:38.446 [notice] <0.417.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-12 17:05:38.446 [info] <0.263.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2014-12-12 17:05:38.447 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2014-12-12 17:05:38.449 [notice] <0.417.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-12 17:05:38.449 [notice] <0.417.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-12 17:05:38.455 [info] <0.417.0> GET / [evidi] 200 0ms

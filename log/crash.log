@@ -228,3 +228,59 @@
      Reason:     {{{badmatch,["gaogh"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]},{gen_server,call,[{global,boss_db_mock},{save_record,{pacient,"gaogh","gaogh","fhybnxbxo","9161356379076","9736413077","skviyfinnsnwrery"}}]}}
      Offender:   [{pid,<0.102.0>},{name,boss_db_controller},{mfargs,{boss_db_controller,start_link,undefined}},{restart_type,temporary},{shutdown,5000},{child_type,worker}]
 
+2014-12-12 16:35:13 =ERROR REPORT====
+** Generic server boss_db_mock terminating 
+** Last message in was {save_record,{pacient,"azselc","azselc","wublqbkcbxv","1230260133667","4870477240","npktnnwmptsthfyh"}}
+** When Server state == [{{dict,4,16,16,8,80,48,{[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]},{{[],[],[],[["pacient-3"|{pacient,"pacient-3","hcjorlh","lbqvxtafzbdb","6300105728624","8775007604","xcmdegssnmbfborh"}]],[],[],[],[],[["pacient-4"|{pacient,"pacient-4","dzbbl","hmqeqhuup","5546675122458","6426627493","kcnqliujerupsbdk"}]],[["pacient-1"|{pacient,"pacient-1","azselc","wublqbkcbxv","1230260133667","4870477240","npktnnwmptsthfyh"}]],[],[],[],[],[["pacient-2"|{pacient,"pacient-2","idvsopldlhj","eksjrhfpmyt","0348782043618","9405606887","eegaevsvxatyqlkz"}]],[]}}},5}]
+** Reason for termination == 
+** {{badmatch,["azselc"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]}
+2014-12-12 16:35:13 =CRASH REPORT====
+  crasher:
+    initial call: boss_db_mock_controller:init/1
+    pid: <0.349.0>
+    registered_name: []
+    exception exit: {{{badmatch,["azselc"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]},[{gen_server,terminate,6,[{file,"gen_server.erl"},{line,746}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]}
+    ancestors: [<0.96.0>,boss_web,boss_sup,<0.93.0>]
+    messages: []
+    links: [<0.96.0>]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 3381
+  neighbours:
+2014-12-12 16:35:13 =ERROR REPORT====
+** Generic server <0.333.0> terminating 
+** Last message in was {save_record,{pacient,"azselc","azselc","wublqbkcbxv","1230260133667","4870477240","npktnnwmptsthfyh"}}
+** When Server state == {state,connected,1,undefined,[{name,{local,boss_db_pool}},{worker_module,boss_db_controller},{size,5},{max_overflow,10},{adapter,mock},{cache_enable,false},{cache_prefix,db},{shards,[]},{is_master_node,true},{db_host,"localhost"},{db_port,1978}],boss_db_adapter_mock,undefined,undefined,[],{dict,0,16,16,8,80,48,{[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]},{{[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]}}},false,60,db,0}
+** Reason for termination == 
+** {{{badmatch,["azselc"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]},{gen_server,call,[{global,boss_db_mock},{save_record,{pacient,"azselc","azselc","wublqbkcbxv","1230260133667","4870477240","npktnnwmptsthfyh"}}]}}
+2014-12-12 16:35:13 =CRASH REPORT====
+  crasher:
+    initial call: boss_db_controller:init/1
+    pid: <0.333.0>
+    registered_name: []
+    exception exit: {{{{badmatch,["azselc"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]},{gen_server,call,[{global,boss_db_mock},{save_record,{pacient,"azselc","azselc","wublqbkcbxv","1230260133667","4870477240","npktnnwmptsthfyh"}}]}},[{gen_server,terminate,6,[{file,"gen_server.erl"},{line,746}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]}
+    ancestors: [<0.100.0>,boss_db_pool,boss_db_sup,boss_web,boss_sup,<0.93.0>]
+    messages: []
+    links: [<0.100.0>,<0.99.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 1598
+    stack_size: 27
+    reductions: 2453
+  neighbours:
+2014-12-12 16:35:13 =SUPERVISOR REPORT====
+     Supervisor: {global,boss_db_mock_sup}
+     Context:    child_terminated
+     Reason:     {{badmatch,["azselc"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]}
+     Offender:   [{pid,<0.349.0>},{name,db_mock_controller},{mfargs,{boss_db_mock_controller,start_link,[[]]}},{restart_type,permanent},{shutdown,2000},{child_type,worker}]
+
+2014-12-12 16:35:13 =SUPERVISOR REPORT====
+     Supervisor: {<0.100.0>,poolboy_sup}
+     Context:    child_terminated
+     Reason:     {{{badmatch,["azselc"]},[{boss_db_mock_controller,handle_call,3,[{file,"src/boss_db_mock_controller.erl"},{line,59}]},{gen_server,handle_msg,5,[{file,"gen_server.erl"},{line,580}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,239}]}]},{gen_server,call,[{global,boss_db_mock},{save_record,{pacient,"azselc","azselc","wublqbkcbxv","1230260133667","4870477240","npktnnwmptsthfyh"}}]}}
+     Offender:   [{pid,<0.333.0>},{name,boss_db_controller},{mfargs,{boss_db_controller,start_link,undefined}},{restart_type,temporary},{shutdown,5000},{child_type,worker}]
+
