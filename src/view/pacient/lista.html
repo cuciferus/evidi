@@ -1,7 +1,6 @@
 <html>
     <head>
     <meta charset="UTF-8">
-   <!-- Optional theme -->
         <script src="/static/app/js/jquery-1.11.1.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -78,7 +77,7 @@
 <p><a href="/programares/lista"> Vezi lista cu programari</a></p>
 <p><a href="{% url action="listaProgramari" %}"> Lista programari</a></p>
 
-<div class="modal fade" id="editeazaPersonaleModal" tabindex="-1" role="dialog" aria-labelledby="editeazaPersonaleLabel" aria-hidden="true">
+<div class="modal fade" name="editeazaPersonaleModal" id="editeazaPersonaleModal" tabindex="-1" role="dialog" aria-labelledby="editeazaPersonaleLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -86,7 +85,7 @@
                 <h4 class="modal-title" id="editeazaPersonaleLabel"> Iată aici schimbi detaliile pentru {{ pacient.nume }} {{ pacient.prenume }}</h4>
             </div>
             <div class="modal-body">
-                <form role="form" method="post">
+                <form role="form" method="post" name="dateContact">
                     <div class="form-group">
                         <label for="nume">Nume</label>
                         <input type="text" class="form-control" value="{{ pacient.nume}}" id="nume" name="nume">
@@ -111,7 +110,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"> Renunţă</button>
-                <button value="submit" type="submit" class="btn btn-primary"> Salvează editările</button>
+                <button value="submit" type="submit" class="btn btn-primary" id="salveazaEditarile"> Salvează editările</button>
                 </form>
             </div>
         </div>
@@ -119,6 +118,25 @@
 </div>
 
 <script type="text/javascript">
+$("#editeazaPersonaleModal").on("submit", function(e){
+    e.preventDefault();
+    var submitButton = $(this);
+    var form = $("#editeazaPersonaleModal form");
+    var formData = form.serialize();
+    console.log(formData);
+    $.ajax({
+        url: "/pacient/editeazaPersonale/"+$("#nume").val(),
+        type: "POST",
+        data: formData,
+        error: function(data) {
+            alert(data)
+        },
+        sucess: function(data) {
+                $("#editeazaPersonaleModal").modal('hide');
+            }
+        })
+    });
+    
 $('#editeazaPersonaleModal').on('show.bs.modal', function(event){
         var button = $(event.relatedTarget)
         var pacientid = button.data('pacientid')
@@ -135,20 +153,7 @@ $('#editeazaPersonaleModal').on('show.bs.modal', function(event){
 
         })
 
-$("#editeazaPersonaleModal").on('submit', function(e){
-        e.preventDefault();
-        var modal = $(this)
-        console.log($("editeazaPersonaleModal").serialize())
-        $.ajax({
-            url: "/pacient/editeazaPersonale/"+modal.find('input[name=pacientid]').val(),
-            type:"POST",
-            data: $("editeazaPersonaleModal").serialize(),
-            success: function(data) {
-            $("#editeazaPersonaleModal").modal('hide')
-            }
 
-            })
-        })
 </script>
 
 
