@@ -63,8 +63,8 @@ adaugaProgramare('GET',[Id]) ->
     Pacient = boss_db:find(Id),
     {ok, [{pacient, Pacient}]};
 adaugaProgramare('POST',[Id]) ->
-    Data = Req:post_param("data"),
-    Ora = Req:post_param("ora"),
+    [Data, Ora]  = string:tokens(Req:post_param("data"), " "),
+    %Ora = Req:post_param("ora"),
     Durata = Req:post_param("durata"),
     ProgramareNoua = programare:new(id, Data, Ora, Durata, Id),
     {ok, SavedProrgamare} = ProgramareNoua:save(),
