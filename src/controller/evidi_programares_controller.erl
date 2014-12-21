@@ -22,5 +22,5 @@ live('GET', []) ->
 
 listaZI('GET', [Zi, Luna, An]) ->
     DataProgramarii = string:join([Zi, Luna, An],"/"),
-    Programari = boss_db:find(programare, [{data,'equals', DataProgramarii}]),
+    Programari = boss_db:find(programare, [{data_ora,'equals', DataProgramarii}]),
     {json, [{programari, Programari}]}.

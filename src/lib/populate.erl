@@ -17,4 +17,13 @@ get_random_pacient() ->
     Telefon = lists:concat(get_random_string(10, lists:seq(0,9))),
     Adresa = get_random_string(16, lists:seq($a, $z)),
     Pacient = pacient:new(id, Nume, Prenume, Cnp, Telefon, Adresa),
-    {ok, SavedPacient} = Pacient:save().
+    {ok, _} = Pacient:save().
+
+get_programare_pacient(Id) ->
+    Data= erlang:date(),
+    Ora = erlang:time(),
+    Durata = lists:nth(1,get_random_string(2, lists:seq(5,15))),
+    Programare = programare:new(id, Data, Ora, Durata, Id),
+    {ok, _} = Programare:save().
+
+

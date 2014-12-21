@@ -1,0 +1,138 @@
+<div class="modal fade" name="adaugaProgramare" id="adaugaProgramare" tabindex="-1" role="dialog" aria-labelledby="adaugaProgramareLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"> Close</span></button>
+                <h4 class="modal-title" id="editeazaPersonaleLabel"> Aici faci o programare la dr pentru {{ pacient.nume }} {{ pacient.prenume }}</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" class="form-inline" role="form">
+                    <div class="form-group">
+                        <label for="data">Data şi oră:</label>
+                        <input type="text" class="form-control" id="dataprogramarii" name="data" data-date-format="DD/MM/YYYY hh:mm">
+                    </div>
+                    <div class="form-group">
+                        <label for="durata">Durata(minute):</label>
+                        <input type="number" name="durata" class="form-control"></textarea>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunţă </button>
+                <button value="submit" type="submit" class="btn btn-primary" id="salveazaProgramarea"> Adaugă programarea</button>
+                <input type="hidden" name="pacientid" id="pacientid">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" name="editeazaPersonaleModal" id="editeazaPersonaleModal" tabindex="-1" role="dialog" aria-labelledby="editeazaPersonaleLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="editeazaPersonaleLabel"> Iată aici schimbi detaliile pentru {{ pacient.nume }} {{ pacient.prenume }}</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" method="post" name="dateContact">
+                    <div class="form-group">
+                        <label for="nume">Nume</label>
+                        <input type="text" class="form-control" value="{{ pacient.nume}}" id="nume" name="nume">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenume">Prenume</label>
+                        <input type="text" class="form-control"  id="prenume" name="prenume">
+                    </div>
+                    <div class="form-group">
+                        <label for="cnp">Cod numeric personal</label>
+                        <input type="text" class="form-control"  id="cnp" name="cnp">
+                    </div>
+                    <div class="form-group">
+                        <label for="adresa"> Adresa de contact</label>
+                        <input type="textarea" class="form-control"  id="adresa" name="adresa">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefon"> Numar de telefon de contact</label>
+                        <input type="text" class="form-control"  id="telefon" name="telefon">
+                        <input type="hidden" name="pacientid" id="pacientid">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunţă</button>
+                <button value="submit" type="submit" class="btn btn-primary" id="salveazaEditarile"> Salvează editările</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$("#editeazaPersonaleModal").on("submit", function(e){
+    e.preventDefault();
+    var submitButton = $(this);
+    var form = $("#editeazaPersonaleModal form");
+    var formData = form.serialize();
+    console.log(formData);
+    $.ajax({
+        url: "/pacient/editeazaPersonale/"+$("#pacientid").val(),
+        type: "POST",
+        data: formData,
+        error: function(data) {
+            alert(data)
+        },
+        sucess: function(data) {
+                $("#editeazaPersonaleModal").modal('hide');
+            }
+        })
+    $("#editeazaPersonaleModal").modal('hide')
+    });
+
+
+ $("#adaugaProgramare").on("submit", function(e){
+        e.preventDefault();
+        var submitButton = $(this);
+        var form = $("#adaugaProgramare form");
+        var formData = form.serialize();
+        console.log(formData);
+        $.ajax({
+            url:"/pacient/adaugaProgramare/"+ $("#pacientid").val(),
+            type:"POST",
+            data: formData,
+            error: function(data) {
+                alert(data)
+                },
+            success: function(data) {
+                $("#adaugaProgramare").modal('hide');
+                }
+                })
+        $("#adaugaProgramare").modal('hide')
+        });
+
+   
+$('#editeazaPersonaleModal').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget)
+        var pacientid = button.data('pacientid')
+        var modal = $(this)
+        $.getJSON('/pacient/cauta/'+pacientid, function(jd) {
+           modal.find('input[name=nume]').val(jd.pacient.nume) 
+           modal.find('input[name=prenume]').val(jd.pacient.prenume) 
+           modal.find('input[name=cnp]').val(jd.pacient.cnp) 
+           modal.find('input[name=adresa]').val(jd.pacient.adresa) 
+           modal.find('input[name=telefon]').val(jd.pacient.telefon) 
+           modal.find('input[name=pacientid]').val(jd.pacient.id)
+           $("h4.modal-title").text("Schimbă datele pentru "+ jd.pacient.nume + " " + jd.pacient.prenume)
+            });
+
+        })
+
+$('#adaugaProgramare').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget)
+        var pacientid = button.data('pacientid')
+        var modal = $(this)
+        $.getJSON('/pacient/cauta/'+pacientid, function(rezultat){
+            $("h4.modal-title").text("Adauga programare pentru "+ rezultat.pacient.nume + " " + rezultat.pacient.prenume)
+           modal.find('input[name=pacientid]').val(rezultat.pacient.id)
+            })
+        })
+
+</script>

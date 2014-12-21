@@ -3,12 +3,11 @@
 
 <body>
 {% block body %}
-<link ref="stylesheet" href="/static/app/css/datepicker.css">
-<script src="/static/app/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript">
         $(document).ready(function () {
-            $('#exemplu1').datepicker({
-                format: "dd/mm/yyyy"
+            $('#exemplu1').datetimepicker({
+                pickTime: false,
+                language: "ro"
                 }).on('changeDate', function (ev) {
                     var dataZi = $("#exemplu1").val();
                     $.getJSON("/programares/listaZI/"+dataZi, function(jd){
@@ -75,7 +74,7 @@
         {% endfor %}
     </table>
     {% else %}
-        <h3> Nu ai programari azi</h3>
+        <h3> Nu ai programari in data de </h3>
     {% endif %}
 <p><a href="/programares/adauga"> Adauga programare</a></p>
 {% endblock %}

@@ -2,7 +2,7 @@
 -compile(export_all).
 
 lista('GET', []) ->
-    Pacienti = boss_db:find(pacient, []),
+    Pacienti = boss_db:find(pacient, [], [{limit, 5}]), % aici de lucru
     {ok, [{pacienti, Pacienti}]}.
 
 cauta('GET',[Id]) ->
@@ -59,10 +59,10 @@ adaugapersonala('POST', [Id]) ->
     {redirect, [{action, "lista"}]}.
 
 
-adaugaprogramare('GET',[Id]) ->
+adaugaProgramare('GET',[Id]) ->
     Pacient = boss_db:find(Id),
     {ok, [{pacient, Pacient}]};
-adaugaprogramare('POST',[Id]) ->
+adaugaProgramare('POST',[Id]) ->
     Data = Req:post_param("data"),
     Ora = Req:post_param("ora"),
     Durata = Req:post_param("durata"),
