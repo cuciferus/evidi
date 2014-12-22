@@ -29,8 +29,9 @@
                     sideBySide: true,
                     daysOfWeekDisabled: [0,1,5,6]
                     });
-                $("$cautareCnp").live("keyup", function(e){
+                $("#cautareCnp").keyup(function(e){
                     var search_string = $(this).val();
+                    console.log(search_string);
                     if(search_string !== "") {
                     $.ajax({
                         type: "POST",
