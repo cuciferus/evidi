@@ -9,6 +9,11 @@ cauta('GET',[Id]) ->
     Pacient = boss_db:find(Id),
     {json, [{pacient, Pacient}]}.
 
+cautaCnp('GET', [Cnp]) ->
+  Pacienti = boss_db:find(pacient, [{cnp,'matches', Cnp}]),
+  {json, [{pacienti, Pacienti}]}.
+
+
 adauga('GET',[]) ->
     ok;
 adauga('POST',[]) ->

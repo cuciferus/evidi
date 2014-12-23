@@ -12,7 +12,6 @@
                     var dataZi = $("#exemplu1").val();
                     $.getJSON("/programares/listaZI/"+dataZi, function(jd){
                         var programari = jd.programari; // de verificat daca chiar exista programari in ziua respectiva
-                        console.info(programari.length);
                         for (var i=0; i< programari.length; i++){
                         $.getJSON('/pacient/cauta/'+programari[i].pacient_id, function(jd){
                             $('#programari-list tbody').html('<tr><td> '+ jd.pacient.nume +'</td><td> '+ jd.pacient.prenume+'</td><td>'+ programari[i-1].data+'</td><td>'+ programari[i-1].ora+'</td></tr>');
