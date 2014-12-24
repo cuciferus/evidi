@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <form method="post" class="form-inline" role="form">
                     <div class="form-group">
-                        <label for="data">Data şi oră:</label>
+                        <label for="data">Data ?i or?:</label>
                         <input type="text" class="form-control" id="dataprogramarii" name="data" data-date-format="DD/MM/YYYY hh:mm">
                     </div>
                     <div class="form-group">
@@ -17,8 +17,8 @@
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunţă </button>
-                <button value="submit" type="submit" class="btn btn-primary" id="salveazaProgramarea"> Adaugă programarea</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Renun?? </button>
+                <button value="submit" type="submit" class="btn btn-primary" id="salveazaProgramarea"> Adaug? programarea</button>
                 <input type="hidden" name="pacientid" id="pacientid">
                 </form>
             </div>
@@ -31,7 +31,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="editeazaPersonaleLabel"> Iată aici schimbi detaliile pentru {{ pacient.nume }} {{ pacient.prenume }}</h4>
+                <h4 class="modal-title" id="editeazaPersonaleLabel"> Iat? aici schimbi detaliile pentru {{ pacient.nume }} {{ pacient.prenume }}</h4>
             </div>
             <div class="modal-body">
                 <form role="form" method="post" name="dateContact">
@@ -58,8 +58,8 @@
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunţă</button>
-                <button value="submit" type="submit" class="btn btn-primary" id="salveazaEditarile"> Salvează editările</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Renun??</button>
+                <button value="submit" type="submit" class="btn btn-primary" id="salveazaEditarile"> Salveaz? edit?rile</button>
                 </form>
             </div>
         </div>
@@ -120,7 +120,7 @@ $('#editeazaPersonaleModal').on('show.bs.modal', function(event){
            modal.find('input[name=adresa]').val(jd.pacient.adresa) 
            modal.find('input[name=telefon]').val(jd.pacient.telefon) 
            modal.find('input[name=pacientid]').val(jd.pacient.id)
-           $("h4.modal-title").text("Schimbă datele pentru "+ jd.pacient.nume + " " + jd.pacient.prenume)
+           $("h4.modal-title").text("Schimb? datele pentru "+ jd.pacient.nume + " " + jd.pacient.prenume)
             });
 
         })
@@ -136,3 +136,4 @@ $('#adaugaProgramare').on('show.bs.modal', function(event){
         })
 
 </script>
+

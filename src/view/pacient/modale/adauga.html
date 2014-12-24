@@ -1,0 +1,66 @@
+<div class="modal fade" name="adaugaPacientModal" id="adaugaPacientModal" tabindex="-1" role="dialog" aria-labelledby="adaugaPacientLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"> Close</span></button>
+                <h4 class="modal-title" id="adaugaPacientLabel"> Adauga pacient in evidenta</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" class="form" role="form">
+                    <div class="form-group">
+                        <label for="nume">Nume:</label>
+                        <input type="text" class="form-control" id="numelepacientului" name="nume" >
+                    </div>
+                    <div class="form-group">
+                        <label for="prenume">Prenume:</label>
+                        <input type="text" name="prenume" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="cnp"> Cod numeric Personal</label>
+                        <input type="text" name="cnp" class="form-control" id="cnp">
+                    </div>
+                    <div class="form-group">
+                        <label for="adresa"> Adresa:</label>
+                        <input type="text" name="adresa" id="adresa" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefon"> Telefon:</label>
+                        <input type="text" name="telefon" id="telefon" class="form-control">
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunta </button>
+                <button value="submit" type="submit" class="btn btn-primary" id="adaugaPacient"> Adauga pacient</button>
+                <input type="hidden" name="pacientid" id="pacientid">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+$("#adaugaPacientModal").on("submit", function(e){
+    e.preventDefault();
+    var submitButton = $(this);
+    var form = $("#adaugaPacientModal form");
+    var formData = form.serialize();
+    console.log(formData);
+    $.ajax({
+        url: "/pacient/adauga/",
+        type: "POST",
+        data: formData,
+        error: function(data) {
+            alert(data)
+        },
+        sucess: function(data) {
+                $("#adaugaPacientModal").modal('hide');
+            }
+        })
+    $("#adaugaPacientModal").modal('hide')
+    });
+
+
+
+</script>

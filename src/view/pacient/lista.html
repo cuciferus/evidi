@@ -14,6 +14,7 @@
         <script type="text/javascript" src="/static/app/js/moment-with-locales.js"></script>
         <script type="text/javascript" src="/static/app/js/bootstrap-datetimepicker.min.js"></script>
         {% include "pacient/modale/lista.html" %}
+        {% include "pacient/modale/adauga.html" %}
         {% include "pacient/navbar.html" %}
 
     <title> {% block title %} Lista pacientilor aflati in evidenta {% endblock %} </title>
@@ -71,9 +72,8 @@
     <h2> Nu ai pacienti</h2>
     {% endif %}
 {% endblock %}
-<p><a href="{% url action="adauga" %}" class="btn btn-primary"> Adauga pacient</a>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaPacientModal"> Adauga pacient</button>
 <a href="/programares/lista" class="btn btn-primary"> Vezi lista cu programari</a>
-<a href="{% url action="listaProgramari" %}" class="btn btn-primary"> Lista programari</a></p>
 
 </body></html>
 
