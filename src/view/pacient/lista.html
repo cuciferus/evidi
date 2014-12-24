@@ -25,26 +25,42 @@
 <body>
 <link ref="stylesheet" href="/static/app/css/datepicker.css">
 <script type="text/javascript">
-        $(document).ready(function () {
-                $('#dataprogramarii').datetimepicker({
-                    language: 'ro',
-                    sideBySide: true,
-                    daysOfWeekDisabled: [0,1,5,6]
-                    });
+                $(document).ready(function() {
+                        $('#dataprogramarii').datetimepicker({
+                            language: 'ro',
+                            sideBySide: true,
+                            daysOfWeekDisabled: [0,1,5,6]
+                            });
+
                 $("#cautareCnp").keyup(function(e){
                     var search_string = $(this).val();
                     if(search_string.length >=3) {
                       $.getJSON( "/pacient/cautaCnp/*"+search_string+ "*", function(jd) {
+                        $("#pacienti tbody").empty()
                         var pacienti = jd.pacienti;
                         for (var i=0; i<pacienti.length; i++){
-                        $("#pacienti tbody").html('<tr><td>'+pacienti[i].nume +'</td><td>'+ pacienti[i].prenume +'</td><td>'+ pacienti[i].cnp + '</td><td>'+
+                        $("#pacienti tbody").append('<tr><td>'+pacienti[i].nume +'</td><td>'+ pacienti[i].prenume +'</td><td>'+ pacienti[i].cnp + '</td><td>'+
         '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid='+ pacienti[i].id +'> Adauga programare</a></td><td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonaleModal" data-pacientid='+ pacienti[i].id +'> Editeaza date personale</button></td><td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>');
                         }
                         });
                     } return false;
                     });
-                
-            });
+
+                $("cautareNume").keyup(function(e){
+                    console.log('salut');
+                    var search_string = $(this).val();
+                    if(search_string.length >=3){
+                    $.getJSON("/pacient/cautaNume/*"+search_string+"*", function(jd){
+                        var pacienti =jd.pacienti;
+                        for (var i=0; i<pacienti.length; i++){
+                    $("#pacienti tbody").html('<tr><td>'+pacienti[i].nume +'</td><td>'+ pacienti[i].prenume +'</td><td>'+ pacienti[i].cnp + '</td><td>'+
+        '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid='+ pacienti[i].id +'> Adauga programare</a></td><td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonaleModal" data-pacientid='+ pacienti[i].id +'> Editeaza date personale</button></td><td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>');
+                    }
+                    });
+                    } return false;
+                    });
+                });
+
 </script>
 <style>
 .datepickertime{z-index:1151 !important;}
@@ -53,8 +69,8 @@
 
 {% block body %}
     {% if pacienti %}
-    <thead>
     <table class="table table-hover" id="pacienti">
+    <thead>
         <tr> <th> Nume </th> <th> Prenume </th><th> Cnp </th><th> Adauga programare</th><th> Modifica detalii personale</th> <th> Modifica detalii medicale</th>        </tr>
         <tr> <td>  <input type="text" class="form-control" placeholder="cauta dupa nume" id="cautareNume">     </th>
             <th>           </th><th> <input type="text" class="form-control" placeholder="cauta dupa cnp" id="cautareCnp"></th><th></th><th></th></tr>
