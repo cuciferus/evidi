@@ -5,16 +5,17 @@
 {% block body %}
 <script type="text/javascript">
         $(document).ready(function () {
-            $('#exemplu1').datetimepicker({
+            $('#programariPicker').datetimepicker({
                 pickTime: false,
                 language: "ro"
-                }).on('changeDate', function (ev) {
-                    var dataZi = $("#exemplu1").val();
+                }).on('dp.change', function (ev) {
+                    $('#programari-list tbody').empty();
+                    var dataZi = $('#programariPicker').val();
                     $.getJSON("/programares/listaZI/"+dataZi, function(jd){
                         var programari = jd.programari; // de verificat daca chiar exista programari in ziua respectiva
                         for (var i=0; i< programari.length; i++){
                         $.getJSON('/pacient/cauta/'+programari[i].pacient_id, function(jd){
-                            $('#programari-list tbody').html('<tr><td> '+ jd.pacient.nume +'</td><td> '+ jd.pacient.prenume+'</td><td>'+ programari[i-1].data+'</td><td>'+ programari[i-1].ora+'</td></tr>');
+                            $('#programari-list tbody').append('<tr><td> '+ jd.pacient.nume +'</td><td> '+ jd.pacient.prenume+'</td><td>'+ programari[i-1].data+'</td><td>'+ programari[i-1].ora+'</td></tr>');
                             });
                         }});
 
@@ -48,7 +49,7 @@
 <div class="row">
     <div class="col-xs-6">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="schimba ziua programarii" id="exemplu1">
+            <input type="text" class="form-control" placeholder="schimba ziua programarii" id="programariPicker" data-date-format="DD/MM/YYYY">
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" id="salut"> Bagă</button>
             </span>
@@ -57,12 +58,16 @@
 </div>
     {% if programari %}
     <table class="table table-hover" id="programari-list">
+        <thead>
         <tr>
             <th> Nume </th>
             <th> Prenume </th>
             <th> Data </th>
             <th> Ora </th>
         </tr>
+        </thead>
+        <tbody>
+
         {% for programare in programari %}
         <tr>
             <td>  {{ programare.pacient.nume}} </td>
@@ -71,6 +76,7 @@
             <td> {{ programare.ora }} </td>
         </tr>
         {% endfor %}
+        </tbody>
     </table>
     {% else %}
         <h3> Nu ai programari in data de </h3>

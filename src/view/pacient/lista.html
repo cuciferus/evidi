@@ -52,16 +52,20 @@
 
 {% block body %}
     {% if pacienti %}
+    <thead>
     <table class="table table-hover" id="pacienti">
         <tr> <th> Nume </th> <th> Prenume </th><th> Cnp </th><th> Adauga programare</th><th> Modifica detalii personale</th> <th> Modifica detalii medicale</th>        </tr>
         <tr> <td>  <input type="text" class="form-control" placeholder="cauta dupa nume" id="cautareNume">     </th>
             <th>           </th><th> <input type="text" class="form-control" placeholder="cauta dupa cnp" id="cautareCnp"></th><th></th><th></th></tr>
+    </thead>
+    <tbody>
     {% for pacient in pacienti %}
     <tr><td> {{ pacient.nume}} </td> <td>{{ pacient.prenume }} </td><td>{{ pacient.cnp }} </td>
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid="{{ pacient.id }}"> Adauga programare</a></td> 
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonaleModal" data-pacientid="{{ pacient.id }}"> Editeaza date personale</button></td>
         <td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>
     {% endfor %}
+    </tbody>
     </table>
     {% else %}
     <h2> Nu ai pacienti</h2>

@@ -21,6 +21,6 @@ live('GET', []) ->
     {ok, [{programari, Programari}, {timestamp, TimeStamp}]}.
 
 listaZI('GET', [Zi, Luna, An]) ->
-    DataProgramarii = string:join([Zi, Luna, An],"/"),
-    Programari = boss_db:find(programare, [{data_ora,'equals', DataProgramarii}]),
+    DataProgramarilor= string:join([Zi, Luna, An], "/"),
+    Programari = boss_db:find(programare, [{data,'equals', DataProgramarilor}]),
     {json, [{programari, Programari}]}.
