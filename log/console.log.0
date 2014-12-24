@@ -1,216 +1,235 @@
-2014-12-22 11:55:29.721 [info] <0.7.0> Application lager started on node evidi@localhost
-2014-12-22 11:55:29.732 [info] <0.7.0> Application crypto started on node evidi@localhost
-2014-12-22 11:55:29.763 [notice] <0.63.0>@lager_app:132 Deprecated lager_file_backend config detected, please consider updating it
-2014-12-22 11:55:29.781 [info] <0.7.0> Application mimetypes started on node evidi@localhost
-2014-12-22 11:55:29.857 [info] <0.95.0> Starting Boss in development mode....
-
-2014-12-22 11:55:29.908 [info] <0.95.0>@boss_db:start:72 Start Database Adapter boss_db_adapter_mock options [{adapter,mock},{cache_enable,false},{cache_prefix,db},{shards,[]},{is_master_node,true},{db_host,"localhost"},{db_port,1978}]
-2014-12-22 11:55:30.018 [info] <0.95.0> Starting master services on evidi@localhost
-
-2014-12-22 11:55:30.038 [info] <0.7.0> Application tinymq started on node evidi@localhost
-2014-12-22 11:55:30.077 [info] <0.95.0> SSL:[]
-
-2014-12-22 11:55:30.081 [info] <0.95.0> Starting cowboy... on evidi@localhost
-
-2014-12-22 11:55:30.108 [info] <0.7.0> Application cowlib started on node evidi@localhost
-2014-12-22 11:55:30.115 [info] <0.7.0> Application ranch started on node evidi@localhost
-2014-12-22 11:55:30.139 [info] <0.7.0> Application cowboy started on node evidi@localhost
-2014-12-22 11:55:30.139 [info] <0.95.0> Starting http listener... on 0.0.0.0:8001 
-
-2014-12-22 11:55:30.260 [info] <0.95.0>@boss_load:load_all_modules:57 Loading application evidi
-2014-12-22 11:55:30.293 [notice] <0.95.0>@boss_compiler:compile:47 Compile file "/home/helen/cristi/evidi/src/lib/populate.erl" with options [{out_dir,undefined},{include_dirs,["/home/helen/cristi/evidi/include"]},{compiler_options,[{parse_transform,lager_transform},return_errors]}] 
-2014-12-22 11:55:30.360 [info] <0.95.0>@boss_controller_compiler:compile:59 Compile controller /home/helen/cristi/evidi/src/controller/evidi_pacient_controller.erl
-2014-12-22 11:55:30.360 [notice] <0.95.0>@boss_compiler:compile:47 Compile file "/home/helen/cristi/evidi/src/controller/evidi_pacient_controller.erl" with options [debug_info,{pre_revert_transform,#Fun<boss_controller_compiler.add_routes_to_forms.1>},{out_dir,undefined},{include_dirs,["/home/helen/cristi/evidi/include"]},{compiler_options,[{parse_transform,lager_transform},return_errors]}] 
-2014-12-22 11:55:30.389 [info] <0.95.0>@boss_controller_compiler:compile:59 Compile controller /home/helen/cristi/evidi/src/controller/evidi_programares_controller.erl
-2014-12-22 11:55:30.389 [notice] <0.95.0>@boss_compiler:compile:47 Compile file "/home/helen/cristi/evidi/src/controller/evidi_programares_controller.erl" with options [debug_info,{pre_revert_transform,#Fun<boss_controller_compiler.add_routes_to_forms.1>},{out_dir,undefined},{include_dirs,["/home/helen/cristi/evidi/include"]},{compiler_options,[{parse_transform,lager_transform},return_errors]}] 
-2014-12-22 11:55:30.437 [info] <0.95.0>@boss_load:compile_view_dir_erlydtl:311 Compile Modules "src/view/lib/tag_html"  evidi_view_lib_tags
-2014-12-22 11:55:32.514 [notice] <0.95.0>@boss_compiler:compile:47 Compile file "/home/helen/cristi/evidi/priv/init/evidi_01_news.erl" with options [{include_dirs,["/home/helen/cristi/evidi/include"]}] 
-2014-12-22 11:59:46.028 [notice] <0.281.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 11:59:46.041 [warning] <0.6.0> lager_error_logger_h dropped 33 messages in the last second that exceeded the limit of 50 messages/sec
-2014-12-22 11:59:46.041 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 11:59:46.066 [notice] <0.281.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 11:59:46.066 [notice] <0.281.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 11:59:46.099 [info] <0.281.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 12:00:02.845 [notice] <0.287.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 12:00:02.846 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 12:00:02.857 [notice] <0.287.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 12:00:02.857 [notice] <0.287.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 12:00:02.867 [info] <0.287.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 12:00:23.102 [notice] <0.300.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 12:00:23.103 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 12:00:23.110 [notice] <0.300.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 12:00:23.110 [notice] <0.300.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 12:00:23.119 [info] <0.300.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 12:17:36.414 [notice] <0.303.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 12:17:36.420 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 12:17:36.438 [notice] <0.303.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 12:17:36.438 [notice] <0.303.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 12:17:36.594 [info] <0.303.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 13:22:50.565 [notice] <0.309.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 13:22:50.567 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 13:22:50.578 [notice] <0.309.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 13:22:50.578 [notice] <0.309.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 13:22:50.594 [info] <0.309.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 13:24:07.436 [notice] <0.314.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 13:24:07.451 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 13:24:07.456 [notice] <0.314.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 13:24:07.456 [notice] <0.314.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 13:24:07.575 [info] <0.314.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 13:24:54.828 [notice] <0.319.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 13:24:54.832 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 13:24:54.838 [notice] <0.319.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 13:24:54.838 [notice] <0.319.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 13:24:54.962 [info] <0.319.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 13:25:00.972 [notice] <0.326.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 13:25:00.973 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 13:25:00.981 [notice] <0.326.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 13:25:00.981 [notice] <0.326.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 13:25:00.982 [error] <0.326.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42423>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","11"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=12323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 13:25:00.984 [info] <0.326.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 13:25:02.136 [notice] <0.328.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 13:25:02.137 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 13:25:02.148 [notice] <0.328.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 13:25:02.148 [notice] <0.328.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 13:25:02.149 [error] <0.328.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42425>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","12"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=112323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 13:25:02.151 [info] <0.328.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 13:25:02.335 [notice] <0.330.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 13:25:02.336 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 13:25:02.342 [notice] <0.330.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 13:25:02.343 [notice] <0.330.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 13:25:02.343 [error] <0.330.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42427>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","13"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=1112323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 13:25:02.345 [info] <0.330.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 13:25:04.929 [notice] <0.332.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 13:25:04.930 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 13:25:04.942 [notice] <0.332.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 13:25:04.942 [notice] <0.332.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 13:25:04.943 [error] <0.332.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42429>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","12"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=112323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 13:25:04.947 [info] <0.332.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 13:25:05.103 [notice] <0.334.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 13:25:05.104 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 13:25:05.107 [notice] <0.334.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 13:25:05.107 [notice] <0.334.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 13:25:05.108 [error] <0.334.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42431>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","11"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=12323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 13:25:05.109 [info] <0.334.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 13:25:05.271 [notice] <0.336.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 13:25:05.272 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 13:25:05.279 [notice] <0.336.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 13:25:05.279 [notice] <0.336.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 13:25:05.280 [error] <0.336.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42433>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","10"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=2323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 13:25:05.282 [info] <0.336.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 13:25:05.473 [notice] <0.338.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 13:25:05.475 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 13:25:05.481 [notice] <0.338.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 13:25:05.481 [notice] <0.338.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 13:25:05.482 [error] <0.338.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42435>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","10"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=2323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 13:25:05.484 [info] <0.338.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 13:25:32.733 [notice] <0.340.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 13:25:32.735 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 13:25:32.754 [notice] <0.340.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 13:25:32.754 [notice] <0.340.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 13:25:32.755 [error] <0.340.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42437>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","10"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=2323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 13:25:32.756 [info] <0.340.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 15:39:18.224 [notice] <0.342.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 15:39:18.227 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 15:39:18.251 [notice] <0.342.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 15:39:18.251 [notice] <0.342.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 15:39:18.390 [info] <0.342.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 15:40:00.528 [notice] <0.348.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 15:40:00.529 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 15:40:00.539 [notice] <0.348.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 15:40:00.539 [notice] <0.348.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 15:40:00.664 [info] <0.348.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 15:40:03.467 [notice] <0.351.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 15:40:03.469 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 15:40:03.475 [notice] <0.351.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 15:40:03.475 [notice] <0.351.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 15:40:03.476 [error] <0.351.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42454>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","12"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=122323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 15:40:03.478 [info] <0.351.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 15:40:04.327 [notice] <0.352.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 15:40:04.330 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 15:40:04.335 [notice] <0.352.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 15:40:04.335 [notice] <0.352.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 15:40:04.336 [error] <0.352.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42455>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","13"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=1122323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 15:40:04.338 [info] <0.352.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 15:40:05.466 [notice] <0.355.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 15:40:05.470 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 15:40:05.477 [notice] <0.355.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 15:40:05.477 [notice] <0.355.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 15:40:05.478 [error] <0.355.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42458>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","12"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=122323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 15:40:05.482 [info] <0.355.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 15:40:05.629 [notice] <0.357.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 15:40:05.632 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 15:40:05.637 [notice] <0.357.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 15:40:05.637 [notice] <0.357.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 15:40:05.638 [error] <0.357.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42460>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","11"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=22323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 15:40:05.640 [info] <0.357.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 15:40:34.018 [notice] <0.359.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 15:40:34.019 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 15:40:34.033 [notice] <0.359.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
-2014-12-22 15:40:34.033 [notice] <0.359.0>@boss_controller_adapter_pmod:action:92 Tokens ["cnp"]
-2014-12-22 15:40:34.034 [error] <0.359.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_pacient_controller,cauta,['POST',["cnp"],{evidi_pacient_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.42462>,'POST',"/pacient/cauta/cnp",'HTTP/1.1',{12,{"host",{"host","laptop:8001"},{"accept",{"accept","*/*"},nil,{"accept-language",{"accept-language","en-US,en;q=0.5"},{"accept-encoding",{"accept-encoding","gzip, deflate"},nil,nil},{"content-type",{"content-type","application/x-www-form-urlencoded; charset=UTF-8"},{"content-length",{"content-length","11"},{"connection",{"connection","keep-alive"},{"cache-control",{"cache-control","no-cache"},nil,nil},nil},nil},nil}}},{"user-agent",{"user-agent","Mozilla/5.0 (X11; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0"},{"referer",{"referer","http://laptop:8001/pacient/lista"},{"pragma",{"pragma","no-cache"},nil,nil},nil},{"x-requested-with",{"x-requested-with","XMLHttpRequest"},nil,nil}}}},<<"query=22323">>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2014-12-22 15:40:34.037 [info] <0.359.0> POST /pacient/cauta/cnp [evidi] 200 0ms
-2014-12-22 17:50:22.852 [notice] <0.362.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 17:50:22.853 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 17:50:22.861 [notice] <0.362.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 17:50:22.861 [notice] <0.362.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 17:50:22.997 [info] <0.362.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 17:50:34.396 [notice] <0.368.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 17:50:34.400 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 17:50:34.409 [notice] <0.368.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 17:50:34.409 [notice] <0.368.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 17:50:34.416 [info] <0.368.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 18:40:32.554 [notice] <0.385.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 18:40:32.556 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 18:40:32.566 [notice] <0.385.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 18:40:32.567 [notice] <0.385.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 18:40:32.581 [info] <0.385.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 18:40:35.099 [notice] <0.390.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 18:40:35.100 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 18:40:35.106 [notice] <0.390.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 18:40:35.106 [notice] <0.390.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 18:40:35.116 [info] <0.390.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 18:41:42.131 [notice] <0.393.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 18:41:42.132 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 18:41:42.133 [info] <0.263.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
-2014-12-22 18:41:42.137 [notice] <0.393.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 18:41:42.137 [notice] <0.393.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 18:41:42.152 [info] <0.393.0> GET / [evidi] 200 0ms
-2014-12-22 18:41:43.005 [notice] <0.394.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 18:51:22.709 [notice] <0.397.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 18:51:22.711 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 18:51:22.717 [notice] <0.397.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 18:51:22.718 [notice] <0.397.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 18:51:22.727 [info] <0.397.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 18:51:22.993 [notice] <0.400.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 18:51:22.994 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 18:51:22.998 [notice] <0.400.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 18:51:22.998 [notice] <0.400.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 18:51:23.005 [info] <0.400.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 20:48:34.233 [error] <0.97.0> gen_server boss_db_mock terminated with reason: no function clause matching boss_db_mock_controller:match_cond({pacient,"pacient-9","kxsoygy","jmwsiacdpghss","1716891642562","1700993021","wjkchfnotrisxdol"}, [{nume,tokens,"mrxpinys"}]) line 121
-2014-12-22 20:48:34.233 [error] <0.97.0> CRASH REPORT Process <0.97.0> with 0 neighbours exited with reason: no function clause matching boss_db_mock_controller:match_cond({pacient,"pacient-9","kxsoygy","jmwsiacdpghss","1716891642562","1700993021","wjkchfnotrisxdol"}, [{nume,tokens,"mrxpinys"}]) line 121 in gen_server:terminate/7 line 804
-2014-12-22 20:48:34.233 [error] <0.96.0> Supervisor {global,boss_db_mock_sup} had child db_mock_controller started with boss_db_mock_controller:start_link([]) at <0.97.0> exit with reason no function clause matching boss_db_mock_controller:match_cond({pacient,"pacient-9","kxsoygy","jmwsiacdpghss","1716891642562","1700993021","wjkchfnotrisxdol"}, [{nume,tokens,"mrxpinys"}]) line 121 in context child_terminated
-2014-12-22 20:48:34.234 [error] <0.105.0> gen_server <0.105.0> terminated with reason: {{function_clause,[{boss_db_mock_controller,match_cond,[{pacient,"pacient-9","kxsoygy","jmwsiacdpghss","1716891642562","1700993021","wjkchfnotrisxdol"},[{nume,tokens,"mrxpinys"}]],[{file,"src/boss_db_mock_controller.erl"},{line,121}]},{dict,filter_bucket,4,[{file,"dict.erl"},{line,475}]},{dict,filter_bkt_list,4,[{file,"dict.erl"},{line,469}]},{dict,filter_seg_list,4,[{file,"dict.erl"},{line,463}]},{dict,filter_dict,2,[{file,"dict.erl"},{line,458}]},{boss_db_mock_controller,do_find,7,[{file,...},...]},...]},...} in gen_server:call/2 line 182
-2014-12-22 20:48:34.235 [error] <0.105.0> CRASH REPORT Process <0.105.0> with 0 neighbours exited with reason: {{function_clause,[{boss_db_mock_controller,match_cond,[{pacient,"pacient-9","kxsoygy","jmwsiacdpghss","1716891642562","1700993021","wjkchfnotrisxdol"},[{nume,tokens,"mrxpinys"}]],[{file,"src/boss_db_mock_controller.erl"},{line,121}]},{dict,filter_bucket,4,[{file,"dict.erl"},{line,475}]},{dict,filter_bkt_list,4,[{file,"dict.erl"},{line,469}]},{dict,filter_seg_list,4,[{file,"dict.erl"},{line,463}]},{dict,filter_dict,2,[{file,"dict.erl"},{line,458}]},{boss_db_mock_controller,do_find,7,[{file,...},...]},...]},...} in gen_server:terminate/7 line 804
-2014-12-22 20:48:34.235 [error] <0.100.0> Supervisor {<0.100.0>,poolboy_sup} had child boss_db_controller started with {boss_db_controller,start_link,undefined} at <0.105.0> exit with reason {{function_clause,[{boss_db_mock_controller,match_cond,[{pacient,"pacient-9","kxsoygy","jmwsiacdpghss","1716891642562","1700993021","wjkchfnotrisxdol"},[{nume,tokens,"mrxpinys"}]],[{file,"src/boss_db_mock_controller.erl"},{line,121}]},{dict,filter_bucket,4,[{file,"dict.erl"},{line,475}]},{dict,filter_bkt_list,4,[{file,"dict.erl"},{line,469}]},{dict,filter_seg_list,4,[{file,"dict.erl"},{line,463}]},{dict,filter_dict,2,[{file,"dict.erl"},{line,458}]},{boss_db_mock_controller,do_find,7,[{file,...},...]},...]},...} in context child_terminated
-2014-12-22 20:49:39.195 [notice] <0.417.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 20:49:39.196 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 20:49:39.216 [notice] <0.417.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 20:49:39.216 [notice] <0.417.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 20:49:39.223 [info] <0.417.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 22:02:57.400 [notice] <0.431.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 22:02:57.401 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 22:02:57.406 [info] <0.431.0>@boss_controller_compiler:compile:59 Compile controller /home/helen/cristi/evidi/src/controller/evidi_pacient_controller.erl
-2014-12-22 22:02:57.406 [notice] <0.431.0>@boss_compiler:compile:47 Compile file "/home/helen/cristi/evidi/src/controller/evidi_pacient_controller.erl" with options [debug_info,{pre_revert_transform,#Fun<boss_controller_compiler.add_routes_to_forms.1>},{out_dir,undefined},{include_dirs,["/home/helen/cristi/evidi/include"]},{compiler_options,[{parse_transform,lager_transform},return_errors]}] 
-2014-12-22 22:02:57.439 [notice] <0.431.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 22:02:57.439 [notice] <0.431.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2014-12-22 22:02:57.555 [info] <0.431.0> GET /pacient/lista [evidi] 200 0ms
-2014-12-22 22:03:06.681 [notice] <0.438.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 22:03:06.685 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 22:03:06.691 [notice] <0.438.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 22:03:06.691 [notice] <0.438.0>@boss_controller_adapter_pmod:action:92 Tokens ["*8992*"]
-2014-12-22 22:03:06.798 [info] <0.438.0> GET /pacient/cautaCnp/*8992* [evidi] 200 0ms
-2014-12-22 22:03:10.899 [notice] <0.440.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2014-12-22 22:03:10.915 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
-2014-12-22 22:03:10.923 [notice] <0.440.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2014-12-22 22:03:10.923 [notice] <0.440.0>@boss_controller_adapter_pmod:action:92 Tokens ["*8992*"]
-2014-12-22 22:03:10.926 [info] <0.440.0> GET /pacient/cautaCnp/*8992* [evidi] 200 0ms
+2014-12-23 00:00:48.431 [notice] <0.447.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:00:48.434 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:00:48.441 [notice] <0.447.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:00:48.441 [notice] <0.447.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 00:00:48.581 [info] <0.447.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 00:00:51.861 [notice] <0.452.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:00:51.862 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:00:51.865 [notice] <0.452.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:00:51.866 [notice] <0.452.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:00:51.867 [info] <0.452.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:01:05.085 [notice] <0.454.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:01:05.093 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:01:05.103 [notice] <0.454.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:01:05.103 [notice] <0.454.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:01:05.107 [info] <0.454.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:01:07.581 [notice] <0.456.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:01:07.582 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:01:07.588 [notice] <0.456.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:01:07.588 [notice] <0.456.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 00:01:07.734 [info] <0.456.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 00:01:10.159 [notice] <0.459.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:01:10.159 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:01:10.163 [notice] <0.459.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:01:10.163 [notice] <0.459.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:01:10.166 [info] <0.459.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:01:25.487 [notice] <0.462.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:01:25.487 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:01:25.492 [notice] <0.462.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:01:25.492 [notice] <0.462.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:01:25.495 [info] <0.462.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:01:27.657 [notice] <0.464.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:01:27.658 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:01:27.668 [notice] <0.464.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:01:27.668 [notice] <0.464.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 00:01:27.808 [info] <0.464.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 00:01:33.423 [notice] <0.470.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:01:33.424 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:01:33.430 [notice] <0.470.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:01:33.430 [notice] <0.470.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:01:33.432 [info] <0.470.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:01:39.734 [notice] <0.472.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:01:39.737 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:01:39.751 [notice] <0.472.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:01:39.751 [notice] <0.472.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:01:39.754 [info] <0.472.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:01:40.006 [notice] <0.474.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:01:40.008 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:01:40.020 [notice] <0.474.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:01:40.020 [notice] <0.474.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:01:40.022 [info] <0.474.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:01:54.582 [notice] <0.476.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:01:54.585 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:01:54.595 [notice] <0.476.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:01:54.596 [notice] <0.476.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:01:54.598 [info] <0.476.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:01:55.483 [notice] <0.478.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:01:55.486 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:01:55.491 [notice] <0.478.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:01:55.491 [notice] <0.478.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:01:55.493 [info] <0.478.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:01:57.688 [notice] <0.480.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:01:57.689 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:01:57.694 [notice] <0.480.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:01:57.694 [notice] <0.480.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 00:01:57.836 [info] <0.480.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 00:02:01.246 [notice] <0.483.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:02:01.247 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:02:01.257 [notice] <0.483.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:02:01.257 [notice] <0.483.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:02:01.259 [info] <0.483.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:02:07.473 [notice] <0.487.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:02:07.474 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:02:07.484 [notice] <0.487.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:02:07.484 [notice] <0.487.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:02:07.486 [info] <0.487.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:02:15.913 [notice] <0.489.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:02:15.915 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:02:15.922 [notice] <0.489.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:02:15.922 [notice] <0.489.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:02:15.928 [info] <0.489.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:02:17.590 [notice] <0.491.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:02:17.591 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:02:17.599 [notice] <0.491.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:02:17.599 [notice] <0.491.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 00:02:17.782 [info] <0.491.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 00:02:20.673 [notice] <0.496.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:02:20.675 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:02:20.679 [notice] <0.496.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:02:20.679 [notice] <0.496.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:02:20.684 [info] <0.496.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:02:33.056 [notice] <0.498.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:02:33.058 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:02:33.067 [notice] <0.498.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:02:33.067 [notice] <0.498.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:02:33.069 [info] <0.498.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:02:33.647 [notice] <0.500.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:02:33.648 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:02:33.661 [notice] <0.500.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:02:33.661 [notice] <0.500.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 00:02:33.835 [info] <0.500.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 00:02:37.357 [notice] <0.505.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:02:37.358 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:02:37.363 [notice] <0.505.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:02:37.363 [notice] <0.505.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:02:37.365 [info] <0.505.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:02:59.712 [notice] <0.507.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:02:59.714 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:02:59.724 [notice] <0.507.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:02:59.724 [notice] <0.507.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:02:59.734 [info] <0.507.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:03:00.205 [notice] <0.509.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:03:00.206 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:03:00.213 [notice] <0.509.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:03:00.213 [notice] <0.509.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 00:03:00.383 [info] <0.509.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 00:03:02.774 [notice] <0.514.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:03:02.775 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:03:02.779 [notice] <0.514.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:03:02.779 [notice] <0.514.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:03:02.781 [info] <0.514.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:03:10.012 [notice] <0.516.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:03:10.015 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:03:10.024 [notice] <0.516.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:03:10.024 [notice] <0.516.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:03:10.027 [info] <0.516.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:03:10.818 [notice] <0.518.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:03:10.819 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:03:10.827 [notice] <0.518.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:03:10.827 [notice] <0.518.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 00:03:10.972 [info] <0.518.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 00:03:12.709 [notice] <0.523.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:03:12.709 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:03:12.715 [notice] <0.523.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:03:12.715 [notice] <0.523.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:03:12.716 [info] <0.523.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:03:13.412 [notice] <0.521.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:03:13.413 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:03:13.417 [notice] <0.521.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:03:13.417 [notice] <0.521.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:03:13.419 [info] <0.521.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 00:03:32.936 [notice] <0.526.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 00:03:32.938 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 00:03:32.942 [notice] <0.526.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 00:03:32.942 [notice] <0.526.0>@boss_controller_adapter_pmod:action:92 Tokens ["*89923*"]
+2014-12-23 00:03:32.943 [info] <0.526.0> GET /pacient/cautaCnp/*89923* [evidi] 200 0ms
+2014-12-23 01:09:10.846 [notice] <0.528.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:09:10.850 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:09:10.868 [notice] <0.528.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:09:10.868 [notice] <0.528.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 01:09:11.024 [info] <0.528.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 01:13:44.251 [notice] <0.534.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:13:44.259 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:13:44.267 [notice] <0.534.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:13:44.267 [notice] <0.534.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 01:13:44.395 [info] <0.534.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 01:13:55.342 [notice] <0.540.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:13:55.344 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:13:55.351 [notice] <0.540.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:13:55.351 [notice] <0.540.0>@boss_controller_adapter_pmod:action:92 Tokens ["*899*"]
+2014-12-23 01:13:55.353 [info] <0.540.0> GET /pacient/cautaCnp/*899* [evidi] 200 0ms
+2014-12-23 01:14:20.438 [notice] <0.542.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:14:20.440 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:14:20.450 [notice] <0.542.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:14:20.450 [notice] <0.542.0>@boss_controller_adapter_pmod:action:92 Tokens ["*899*"]
+2014-12-23 01:14:20.454 [info] <0.542.0> GET /pacient/cautaCnp/*899* [evidi] 200 0ms
+2014-12-23 01:14:47.160 [notice] <0.544.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:14:47.161 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:14:47.170 [notice] <0.544.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:14:47.170 [notice] <0.544.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 01:14:47.295 [info] <0.544.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 01:14:53.995 [notice] <0.549.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:14:53.997 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:14:54.006 [notice] <0.549.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:14:54.007 [notice] <0.549.0>@boss_controller_adapter_pmod:action:92 Tokens ["*899*"]
+2014-12-23 01:14:54.009 [info] <0.549.0> GET /pacient/cautaCnp/*899* [evidi] 200 0ms
+2014-12-23 01:15:15.769 [notice] <0.551.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:15:15.771 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:15:15.780 [notice] <0.551.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:15:15.780 [notice] <0.551.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 01:15:15.919 [info] <0.551.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 01:15:20.090 [notice] <0.556.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:15:20.092 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:15:20.098 [notice] <0.556.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:15:20.098 [notice] <0.556.0>@boss_controller_adapter_pmod:action:92 Tokens ["*899*"]
+2014-12-23 01:15:20.100 [info] <0.556.0> GET /pacient/cautaCnp/*899* [evidi] 200 0ms
+2014-12-23 01:15:29.193 [notice] <0.558.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:15:29.193 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:15:29.203 [notice] <0.558.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:15:29.204 [notice] <0.558.0>@boss_controller_adapter_pmod:action:92 Tokens ["*899*"]
+2014-12-23 01:15:29.206 [info] <0.558.0> GET /pacient/cautaCnp/*899* [evidi] 200 0ms
+2014-12-23 01:15:30.136 [notice] <0.560.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:15:30.137 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:15:30.143 [notice] <0.560.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:15:30.143 [notice] <0.560.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 01:15:30.304 [info] <0.560.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 01:15:32.042 [notice] <0.564.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:15:32.043 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:15:32.051 [notice] <0.564.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:15:32.051 [notice] <0.564.0>@boss_controller_adapter_pmod:action:92 Tokens ["*899*"]
+2014-12-23 01:15:32.053 [info] <0.564.0> GET /pacient/cautaCnp/*899* [evidi] 200 0ms
+2014-12-23 01:15:32.920 [notice] <0.563.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:15:32.921 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:15:32.925 [notice] <0.563.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:15:32.925 [notice] <0.563.0>@boss_controller_adapter_pmod:action:92 Tokens ["*899*"]
+2014-12-23 01:15:32.927 [info] <0.563.0> GET /pacient/cautaCnp/*899* [evidi] 200 0ms
+2014-12-23 01:15:39.159 [notice] <0.568.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:15:39.160 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:15:39.165 [notice] <0.568.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:15:39.165 [notice] <0.568.0>@boss_controller_adapter_pmod:action:92 Tokens ["*899*"]
+2014-12-23 01:15:39.169 [info] <0.568.0> GET /pacient/cautaCnp/*899* [evidi] 200 0ms
+2014-12-23 01:15:39.993 [notice] <0.570.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:15:39.994 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:15:40.003 [notice] <0.570.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:15:40.003 [notice] <0.570.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 01:15:40.156 [info] <0.570.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 01:15:42.108 [notice] <0.573.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:15:42.108 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:15:42.113 [notice] <0.573.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:15:42.113 [notice] <0.573.0>@boss_controller_adapter_pmod:action:92 Tokens ["*899*"]
+2014-12-23 01:15:42.114 [info] <0.573.0> GET /pacient/cautaCnp/*899* [evidi] 200 0ms
+2014-12-23 01:17:04.415 [notice] <0.576.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:17:04.415 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:17:04.422 [notice] <0.576.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:17:04.422 [notice] <0.576.0>@boss_controller_adapter_pmod:action:92 Tokens ["*899*"]
+2014-12-23 01:17:04.428 [info] <0.576.0> GET /pacient/cautaCnp/*899* [evidi] 200 0ms
+2014-12-23 01:17:04.966 [notice] <0.578.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:17:04.970 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:17:04.982 [notice] <0.578.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:17:04.982 [notice] <0.578.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2014-12-23 01:17:05.140 [info] <0.578.0> GET /pacient/lista [evidi] 200 0ms
+2014-12-23 01:17:06.791 [notice] <0.583.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2014-12-23 01:17:06.792 [info] <0.263.0> Loading routes from "/home/helen/cristi/evidi/priv/evidi.routes" ....
+2014-12-23 01:17:06.796 [notice] <0.583.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2014-12-23 01:17:06.797 [notice] <0.583.0>@boss_controller_adapter_pmod:action:92 Tokens ["*899*"]
+2014-12-23 01:17:06.798 [info] <0.583.0> GET /pacient/cautaCnp/*899* [evidi] 200 0ms
