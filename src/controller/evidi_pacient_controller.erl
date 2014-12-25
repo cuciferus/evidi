@@ -5,6 +5,10 @@ lista('GET', []) ->
     Pacienti = boss_db:find(pacient, [], [{limit, 5}]), % aici de lucru
     {ok, [{pacienti, Pacienti}]}.
 
+listaToti('GET', []) ->
+    Pacienti = boss_db:find(pacient, [], [{limit, 5}]),
+    {json, [{pacienti, Pacienti}]}.
+
 cauta('GET',[Id]) ->
     Pacient = boss_db:find(Id),
     {json, [{pacient, Pacient}]}.

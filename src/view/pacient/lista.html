@@ -43,7 +43,18 @@
         '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid='+ pacienti[i].id +'> Adauga programare</a></td><td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonaleModal" data-pacientid='+ pacienti[i].id +'> Editeaza date personale</button></td><td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>');
                         }
                         });
-                    } return false;
+                      } else if(search_string.length ==0){
+                      $.getJSON("/pacient/listaToti/", function(jd){
+                          $("#pacienti tbody").empty();
+                          var pacienti = jd.pacienti;
+                        for (var i=0; i<pacienti.length; i++){
+                        $("#pacienti tbody").append('<tr><td>'+pacienti[i].nume +'</td><td>'+ pacienti[i].prenume +'</td><td>'+ pacienti[i].cnp + '</td><td>'+
+        '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid='+ pacienti[i].id +'> Adauga programare</a></td><td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonaleModal" data-pacientid='+ pacienti[i].id +'> Editeaza date personale</button></td><td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>');
+                        }
+                          })
+
+                      }
+                    return false;
                     });
                 $("#searchclear").click(function() {
                     $("#cautaNume").val('');
