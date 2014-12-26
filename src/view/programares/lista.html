@@ -52,7 +52,13 @@
             <input type="text" class="form-control" placeholder="schimba ziua programarii" id="programariPicker" data-date-format="DD/MM/YYYY">
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" id="salut"> Bagă</button>
+                
             </span>
+<div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Afiseaza doar programarile fara consult
+                    </label>
+                </div>
         </div>
     </div>
 </div>
@@ -64,6 +70,7 @@
             <th> Prenume </th>
             <th> Data </th>
             <th> Ora </th>
+            <th> Consult</th>
         </tr>
         </thead>
         <tbody>
@@ -74,6 +81,7 @@
             <td> {{ programare.pacient.prenume }}</td>
             <td> {{ programare.data }} </td>
             <td> {{ programare.ora }} </td>
+            <td> <a href="/consults/adauga/{{ programare.pacient.id }}/{{ programare.id}}" class="btn btn-primary"> Adauga consult</a></td>
         </tr>
         {% endfor %}
         </tbody>

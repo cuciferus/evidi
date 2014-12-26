@@ -3,4 +3,5 @@
 -has({heredocolaterales, many}).
 -has({personales, many}).
 -has({programares, many}).
+-has({consults, many}).
 

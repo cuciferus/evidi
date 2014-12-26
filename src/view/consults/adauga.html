@@ -1,0 +1,12 @@
+{% extends "pacient/lista.html" %}
+{% include "pacient/jumbotron.html" %}
+{% block title %} Adaugă un consult pentru {{ pacient.nume }} {{ pacient.prenume }}{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+        <h2> Adauga consult pentru {{ pacient.nume }} {{ pacient.prenume }}</h2>
+    </div>
+</div>
+{% endblock %}
+

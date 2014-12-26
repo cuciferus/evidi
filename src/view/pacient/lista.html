@@ -21,8 +21,8 @@
     </head>
 
 
-
 <body>
+{% block body %}
 <link ref="stylesheet" href="/static/app/css/datepicker.css">
 <script type="text/javascript">
                 $(document).ready(function() {
@@ -35,7 +35,7 @@
                 $("#cautareCnp").keyup(function(e){
                     var search_string = $(this).val();
                     if(search_string.length >=3) {
-                      $.getJSON( "/pacient/cautaCnp/*"+search_string+ "*", function(jd) {
+                      $.getJSON("/pacient/cautaCnp/*"+search_string+ "*", function(jd) {
                         $("#pacienti tbody").empty()
                         var pacienti = jd.pacienti;
                         for (var i=0; i<pacienti.length; i++){
@@ -95,7 +95,7 @@
 </style>
 
 
-{% block body %}
+    {% include "pacient/jumbotron.html" %}
     {% if pacienti %}
     <table class="table table-hover" id="pacienti">
     <thead>
@@ -112,7 +112,7 @@
     <tr><td> {{ pacient.nume}} </td> <td>{{ pacient.prenume }} </td><td>{{ pacient.cnp }} </td>
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid="{{ pacient.id }}"> Adauga programare</a></td> 
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonaleModal" data-pacientid="{{ pacient.id }}"> Editeaza date personale</button></td>
-        <td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>
+        <td><a href="/consult/adauga/{{ pacient.id}}/{{ programare.id }}"> Adauga consult</a> </td></tr>
     {% endfor %}
     </tbody>
     </table>
