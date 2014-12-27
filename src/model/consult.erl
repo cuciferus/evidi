@@ -1,3 +1,4 @@
 -module(consult, [Id, Data, Diagnostice, Recomandari, PacientId]).
 -compile(export_all).
 -belongs_to(pacient).
+-has({analizes, many}).

@@ -4,4 +4,4 @@
 -has({personales, many}).
 -has({programares, many}).
 -has({consults, many}).
-
+-has({screenings, many}).

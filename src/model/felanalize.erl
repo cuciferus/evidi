@@ -1,0 +1,3 @@
+-module(felanalize, [Id, Nume, UnitateDeMasura, GreutateMoleculara]).
+-compile(export_all).
+-has({many, analizes}). 

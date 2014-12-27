@@ -1,0 +1,1 @@
+-module(screening, [Id, Boala, Perioada]).
