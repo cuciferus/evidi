@@ -18,40 +18,32 @@
             <input type="text" class="form-control" value="{{ programare.data }}" id="programariPicker" data-date-format="DD/MM/YYYY"></h2>
     </div>
 </div>
-<div class="container-fluid">
+<div class="col-md-3">
     <h4> aici trebuie sa apara datele heredocolaterale poate in side bar sau ceva</h4>
     <h4>, antecedente personale si screeningurile</h4>
 </div>
-<div class="container">
+<div class="col-md-7">
+    <form method="post" class="form" role="form">
+                <div class="form-group">
+                    <label for="diagnostice">Diagnostice:</label>
+                    <input type="text" class="form-control" id="diagnostice" name="diagnostice" >
+                </div>
+                <div class="form-group"></div>
+
     <h4> aici diagnostice</h4>
     <h4> aici analize NB trebuie in dinamica </h4>
     <h4> aici recomandari si data ultimei retete gratuite</h4>
     <button type="button" class="btn btn-success"> Imprima scrisoare medicala</button>
 </div>
 
-<div id="sidebar-wrapper" class="col-md-2 pull-left">
-    <div id="sidebar">
+<div  class="col-md-2">
+        <p> aici o utilitate administrativa poate la care inca nu m-am gandit</p>
+    <p> sau poate graficu de analize sa apara si atat...de vazut</p>
         <div class="form-group">
             <label for="exampleInput"> Sa zicm o adresa</label>
             <input type="email" class="form-control">
         </div>
-    </div>
 </div>
-<style>
-#sidebar-wrapper {
-    height: 100%;
-    padding: 50px 0 0px 0;
-    position: fied;
-    right:0;
-}
-#sidebar {
-    border-right: 1px solid gray;
-    position: relative;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10p 15px 0;
-    overflow-x: hidden;
-}
-</style>
+
 {% endblock %}
 
