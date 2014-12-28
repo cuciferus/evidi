@@ -14,13 +14,14 @@
 </script>
 <div class="jumbotron">
     <div class="container">
-        <h2> Adauga consult pentru {{ pacient.nume|capfirst }} {{ pacient.prenume|capfirst }} in data de 
-            <input type="text" class="form-control" value="{{ programare.data }}" id="programariPicker" data-date-format="DD/MM/YYYY"></h2>
+        <h2> Adauga consult pentru {{ pacient.nume|capfirst }} {{ pacient.prenume|capfirst }} cu cnp {{ pacient.cnp }} in data de 
+            <input type="text" class="form-control" value="{{ programare.data }}" id="programariPicker" data-date-format="DD/MM/YYYY"> cu nr de registru nr</h2>
     </div>
 </div>
 <div class="col-md-3">
     <h4> aici trebuie sa apara datele heredocolaterale poate in side bar sau ceva</h4>
     <h4>, antecedente personale si screeningurile</h4>
+    <h4> aici recomandari si data ultimei retete gratuite</h4>
 </div>
 <div class="col-md-7">
     <form method="post" class="form" role="form">
@@ -28,11 +29,21 @@
                     <label for="diagnostice">Diagnostice:</label>
                     <input type="text" class="form-control" id="diagnostice" name="diagnostice" >
                 </div>
-                <div class="form-group"></div>
+                <div class="form-group">
+                    <label for="clinice"> Adauga date clinice(Înalţime, greutate, burtă):</label>
+                    <input type="text" class="form-control" id="clinice" name="clinice">
+                    <button type="button" class="btn btn-warning pull-right"> Adauga aceasta data clinica</button>
+                </div>
+                <div class="form-group">
+                    <label for="analiza"> Adauga aceasta analiza:</label>
+                    <input type="text" class="form-control" id=analiza" name="analiza"> <button type="button" class="btn btn-warning pull-right"> Adauga aceasta analiza</button>
+                    <h4> aici analize NB trebuie in dinamica şi de ce nu şi cele clinice</h4>
+                </div>
+                <div class="form-group">
+                    <label for="recomandari"> Recomandari:</label>
+                    <input type="text" class="form-control" id="recomandari" name="recomandari">
+                </div>
 
-    <h4> aici diagnostice</h4>
-    <h4> aici analize NB trebuie in dinamica </h4>
-    <h4> aici recomandari si data ultimei retete gratuite</h4>
     <button type="button" class="btn btn-success"> Imprima scrisoare medicala</button>
 </div>
 
