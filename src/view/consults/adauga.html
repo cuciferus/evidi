@@ -1,5 +1,6 @@
 {% extends "pacient/lista.html" %}
 {% include "pacient/jumbotron.html" %}
+{% include "consults/modale/adaugaHeredocolaterala.html" %}
 {% block title %} Adaugă un consult pentru {{ pacient.nume }} {{ pacient.prenume }}{% endblock %}
 
 {% block body %}
@@ -20,14 +21,16 @@
 </div>
 <div class="col-md-3">
     <h4> aici trebuie sa apara datele heredocolaterale poate in side bar sau ceva</h4>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#adaugaHeredocolaterala" data-pacientid="{{ pacient.id }}"> Adaugă o heredocolaterală</button>
     <h4>, antecedente personale si screeningurile</h4>
     <h4> aici recomandari si data ultimei retete gratuite</h4>
 </div>
 <div class="col-md-7">
     <form method="post" class="form" role="form">
+                <input type="hidden" name="consultid" id="{{ consult.id }}">
                 <div class="form-group">
                     <label for="diagnostice">Diagnostice:</label>
-                    <input type="text" class="form-control" id="diagnostice" name="diagnostice" >
+                    <textarea class="form-control" rows="3" name="diagnostice" id="diagnostice"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="clinice"> Adauga date clinice(Înalţime, greutate, burtă):</label>
@@ -41,10 +44,11 @@
                 </div>
                 <div class="form-group">
                     <label for="recomandari"> Recomandari:</label>
-                    <input type="text" class="form-control" id="recomandari" name="recomandari">
+                    <textarea class="form-control" rows="5" name="recomandari" id="recomandari"></textarea>
                 </div>
 
     <button type="button" class="btn btn-success"> Imprima scrisoare medicala</button>
+    <button type="button" class="btn btn-success"> Adauga consult fara scrisoare medicala</button>
 </div>
 
 <div  class="col-md-2">
@@ -56,5 +60,69 @@
         </div>
 </div>
 
+
+<div class="modal fade" name="adaugaHeredocolaterala" id="adaugaHeredocolaterala" tabindex="-1" role="dialog" aria-labelledby="adaugaHeredocolaterala" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="editeazaPersonaleLabel"> Iat? aici schimbi detaliile pentru {{ pacient.nume }} {{ pacient.prenume }}</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" method="post" name="dateContact">
+                    <div class="form-group">
+                        <label for="nume">Nume</label>
+                        <input type="text" class="form-control" value="{{ pacient.nume}}" id="nume" name="nume">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenume">Prenume</label>
+                        <input type="text" class="form-control"  id="prenume" name="prenume">
+                    </div>
+                    <div class="form-group">
+                        <label for="cnp">Cod numeric personal</label>
+                        <input type="text" class="form-control"  id="cnp" name="cnp">
+                    </div>
+                    <div class="form-group">
+                        <label for="adresa"> Adresa de contact</label>
+                        <input type="textarea" class="form-control"  id="adresa" name="adresa">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefon"> Numar de telefon de contact</label>
+                        <input type="text" class="form-control"  id="telefon" name="telefon">
+                        <input type="hidden" name="pacientid" id="pacientid">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Renun??</button>
+                <button value="submit" type="submit" class="btn btn-primary" id="salveazaEditarile"> Salveaz? edit?rile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$("#adaugaHeredocolaterala").on("submit", function(e){
+    e.preventDefault();
+    var submitButton = $(this);
+    var form = $("#editeazaPersonaleModal form");
+    var formData = form.serialize();
+    console.log(formData);
+    $.ajax({
+        url: "/pacient/editeazaPersonale/"+$("#pacientid").val(),
+        type: "POST",
+        data: formData,
+        error: function(data) {
+            alert(data)
+        },
+        sucess: function(data) {
+                $("#editeazaPersonaleModal").modal('hide');
+            }
+        })
+    $("#editeazaPersonaleModal").modal('hide')
+    });
+
+
+</script>
 {% endblock %}
 

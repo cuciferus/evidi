@@ -19,6 +19,10 @@ get_random_pacient() ->
     Pacient = pacient:new(id, Nume, Prenume, Cnp, Telefon, Adresa),
     {ok, _} = Pacient:save().
 
+get_random_programare() ->
+    get_random_pacient(),
+    get_programare_pacient("pacient-1").
+
 get_programare_pacient(Id) ->
     Data= erlang:date(),
     Ora = erlang:time(),
@@ -26,4 +30,11 @@ get_programare_pacient(Id) ->
     Programare = programare:new(id, Data, Ora, Durata, Id),
     {ok, _} = Programare:save().
 
+
+
+fel_analize() ->
+    Hemoglobina = felanalize:new(id, 'hemoglobina', 'mg/dL', 11, 16, 'mmol/L', '*2' ),
+    {ok, _} = Hemoglobina:save(),
+    Creatinina = felanalize:new(id, 'creatinina', 'mg/dL', 0.5, 1, 'mmol/L', '/4'),
+    {ok, _} = Creatinina:save().
 

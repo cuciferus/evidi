@@ -38,22 +38,21 @@ editeazaPersonale('GET', [Id]) ->
     Pacient = boss_db:find(Id),
     {ok, [{pacient, Pacient}]};
 editeazaPersonale('POST',[Id]) ->
-    Pacient = boss_db:find(Id),
     Nume = Req:post_param("nume"),
     Prenume = Req:post_param("prenume"),
     CNP = Req:post_param("cnp"),
     Adresa = Req:post_param("adresa"),
     Telefon = Req:post_param("telefon"),
+    io:write(Nume),
     PacientNou = pacient:new(Id, Nume, Prenume, CNP, Adresa, Telefon),
-    {ok, SavedPacient} = PacientNou:save(),
-    {redirect, [{action, "lista"}]}.
+    {ok, SavedPacient} = PacientNou:save().
 
 
 
-adaugaheredocolaterala('GET',[Id]) ->
+adaugaHeredocolaterala('GET',[Id]) ->
     Pacient = boss_db:find(Id),
     {ok, [{pacient, Pacient}]};
-adaugaheredocolaterala('POST', [Id]) ->
+adaugaHeredocolaterala('POST', [Id]) ->
     Ruda = Req:post_param("ruda"),
     Boala = Req:post_param("boala"),
     HeredoNou = heredocolaterale:new(id, Ruda, Boala, Id),

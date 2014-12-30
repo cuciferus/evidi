@@ -17,8 +17,8 @@
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"> Renun?? </button>
-                <button value="submit" type="submit" class="btn btn-primary" id="salveazaProgramarea"> Adaug? programarea</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunţă </button>
+                <button value="submit" type="submit" class="btn btn-primary" id="salveazaProgramarea"> Adaugă programarea</button>
                 <input type="hidden" name="pacientid" id="pacientid">
                 </form>
             </div>
@@ -72,13 +72,13 @@ $("#editeazaPersonaleModal").on("submit", function(e){
     var submitButton = $(this);
     var form = $("#editeazaPersonaleModal form");
     var formData = form.serialize();
-    console.log(formData);
+    console.log($("#pacientid").val());
     $.ajax({
         url: "/pacient/editeazaPersonale/"+$("#pacientid").val(),
         type: "POST",
         data: formData,
         error: function(data) {
-            alert(data)
+            console.log(data)
         },
         sucess: function(data) {
                 $("#editeazaPersonaleModal").modal('hide');
@@ -93,13 +93,12 @@ $("#editeazaPersonaleModal").on("submit", function(e){
         var submitButton = $(this);
         var form = $("#adaugaProgramare form");
         var formData = form.serialize();
-        console.log(formData);
         $.ajax({
             url:"/pacient/adaugaProgramare/"+ $("#pacientid").val(),
             type:"POST",
             data: formData,
             error: function(data) {
-                alert(data)
+                console.log(data)
                 },
             success: function(data) {
                 $("#adaugaProgramare").modal('hide');
@@ -120,7 +119,7 @@ $('#editeazaPersonaleModal').on('show.bs.modal', function(event){
            modal.find('input[name=adresa]').val(jd.pacient.adresa) 
            modal.find('input[name=telefon]').val(jd.pacient.telefon) 
            modal.find('input[name=pacientid]').val(jd.pacient.id)
-           $("h4.modal-title").text("Schimb? datele pentru "+ jd.pacient.nume + " " + jd.pacient.prenume)
+           $("h4.modal-title").text("Schimbă datele pentru "+ jd.pacient.nume + " " + jd.pacient.prenume)
             });
 
         })
