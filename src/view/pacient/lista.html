@@ -13,12 +13,13 @@
         <!-- urmatoarele sunt pentru date/time picker -->
         <script type="text/javascript" src="/static/app/js/moment-with-locales.js"></script>
         <script type="text/javascript" src="/static/app/js/bootstrap-datetimepicker.min.js"></script>
-        {% include "pacient/modale/lista.html" %}
+        {% include "pacient/modale/adaugaProgramare.html" %}
+        {% include "pacient/modale/editeazaPersonale.html" %}
         {% include "pacient/modale/adauga.html" %}
         {% include "pacient/navbar.html" %}
 
     <title> {% block title %} Lista pacientilor aflati in evidenta {% endblock %} </title>
-    </head>
+</head>
 
 
 <body>
@@ -40,7 +41,7 @@
                         var pacienti = jd.pacienti;
                         for (var i=0; i<pacienti.length; i++){
                         $("#pacienti tbody").append('<tr><td>'+pacienti[i].nume +'</td><td>'+ pacienti[i].prenume +'</td><td>'+ pacienti[i].cnp + '</td><td>'+
-        '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid='+ pacienti[i].id +'> Adauga programare</a></td><td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonaleModal" data-pacientid='+ pacienti[i].id +'> Editeaza date personale</button></td><td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>');
+        '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid='+ pacienti[i].id +'> Adauga programare</a></td><td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonale" data-pacientid='+ pacienti[i].id +'> Editeaza date personale</button></td><td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>');
                         }
                         });
                       } else if(search_string.length ==0){
@@ -49,7 +50,7 @@
                           var pacienti = jd.pacienti;
                         for (var i=0; i<pacienti.length; i++){
                         $("#pacienti tbody").append('<tr><td>'+pacienti[i].nume +'</td><td>'+ pacienti[i].prenume +'</td><td>'+ pacienti[i].cnp + '</td><td>'+
-        '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid='+ pacienti[i].id +'> Adauga programare</a></td><td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonaleModal" data-pacientid='+ pacienti[i].id +'> Editeaza date personale</button></td><td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>');
+        '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid='+ pacienti[i].id +'> Adauga programare</a></td><td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonale" data-pacientid='+ pacienti[i].id +'> Editeaza date personale</button></td><td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>');
                         }
                           })
 
@@ -61,14 +62,13 @@
                     });
 
                 $("cautareNume").keyup(function(e){
-                    console.log('salut');
                     var search_string = $(this).val();
                     if(search_string.length >=3){
                     $.getJSON("/pacient/cautaNume/*"+search_string+"*", function(jd){
                         var pacienti =jd.pacienti;
                         for (var i=0; i<pacienti.length; i++){
                     $("#pacienti tbody").html('<tr><td>'+pacienti[i].nume +'</td><td>'+ pacienti[i].prenume +'</td><td>'+ pacienti[i].cnp + '</td><td>'+
-        '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid='+ pacienti[i].id +'> Adauga programare</a></td><td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonaleModal" data-pacientid='+ pacienti[i].id +'> Editeaza date personale</button></td><td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>');
+        '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid='+ pacienti[i].id +'> Adauga programare</a></td><td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonale" data-pacientid='+ pacienti[i].id +'> Editeaza date personale</button></td><td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>');
                     }
                     });
                     } return false;
@@ -111,7 +111,7 @@
     {% for pacient in pacienti %}
     <tr><td> {{ pacient.nume}} </td> <td>{{ pacient.prenume }} </td><td>{{ pacient.cnp }} </td>
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid="{{ pacient.id }}"> Adauga programare</a></td> 
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonaleModal" data-pacientid="{{ pacient.id }}"> Editeaza date personale</button></td>
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonale" data-pacientid="{{ pacient.id }}"> Editeaza date personale</button></td>
         <td><a href="/consult/adauga/{{ pacient.id}}/{{ programare.id }}"> Adauga consult</a> </td></tr>
     {% endfor %}
     </tbody>
