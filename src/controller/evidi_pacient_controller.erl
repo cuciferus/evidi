@@ -3,8 +3,19 @@
 
 lista('GET', []) ->
     Pacienti = boss_db:find(pacient, [], [{limit, 5}]), % aici de lucru
-    {ok, [{pacienti, Pacienti}]}.
+    Timestamp = boss_mq:now("pacient-editat"),
+    {ok, [{pacienti, Pacienti}, {timestamp, Timestamp}]}.
 
+live('GET', []) ->
+    Pacienti = boss_db:find(pacient, []),
+    Timestamp = boss_mq:now("pacient-editat"),
+    {ok, [{ pacienti, Pacienti}, {timestamp, Timestamp}]}.
+
+%asta nu stiu la ce imi trebuie
+%
+pull('GET', [LastTimestamp]) ->
+    {ok, TimeStamp, Pacienti} = boss_mq:pull("pacient-editat", list_to_integer(LastTimestamp)),
+    {json, [{timestamp, TimeStamp }, {pacienti, Pacienti}]}.
 listaToti('GET', []) ->
     Pacienti = boss_db:find(pacient, [], [{limit, 5}]),
     {json, [{pacienti, Pacienti}]}.
@@ -86,3 +97,6 @@ listaProgramari('GET',[]) ->
     Programari = boss_db:find(programare,[]),
     Pacienti = boss_db:find(pacient, []),
     {ok, [{pacienti, Pacienti},{programari, Programari}]}.
+
+
+

@@ -44,8 +44,9 @@ $("#editeazaPersonale").on("submit", function(e){
     var submitButton = $(this);
     var form = $("#editeazaPersonale form");
     var formData = form.serialize();
+    var pacientid = $(this).find('input[name=pacientid]').val();
     $.ajax({
-        url: "/pacient/editeazaPersonale/"+$("#pacientid").val(),
+        url: "/pacient/editeazaPersonale/"+pacientid,
         type: "POST",
         data: formData,
         error: function(data) {
@@ -74,7 +75,21 @@ $('#editeazaPersonale').on('show.bs.modal', function(event){
            $("h4.modal-title").text("Schimbă datele pentru "+ jd.pacient.nume + " " + jd.pacient.prenume)
             });
 
-        })
+        });
+function listen_for_events(timestamp) {
+    $.ajax("/pacient/lista/")+timestamp, { success:
+        function(data, code, xhr) {
+            for (var i=0; i< data.pacienti.length; i++){
+                var msg= data.pacienti[i].nume;
+                console.log('ai editat pa '+ msg);
+            }
+            listen_forEvents(data.timestamp);
+        }
+    }
+}
+$(document).ready( function() {
+        listen_for_events({{ timestamp }});
+        });
 
 </script>
 

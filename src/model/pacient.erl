@@ -5,3 +5,7 @@
 -has({programares, many}).
 -has({consults, many}).
 -has({screenings, many}).
+
+
+after_update() ->
+    boss_mq:push("pacient-editat", THIS).
