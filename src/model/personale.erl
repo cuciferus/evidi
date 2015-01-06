@@ -1,3 +1,3 @@
--module(personale, [Id, Boala, DataDiagnostic, Tratament, PacientId]).
+-module(personale, [Id, DataDiagnostic, Tratament, BoalaId, PacientId]).
 -compile(export_all).
 -belongs_to(pacient).

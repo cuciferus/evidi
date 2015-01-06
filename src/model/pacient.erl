@@ -8,4 +8,4 @@
 
 
 after_update() ->
-    boss_mq:push("pacient-editat", THIS).
+    boss_mq:push("pacient-editat", THIS). %todo edit b0rkes

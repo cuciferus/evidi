@@ -7,87 +7,82 @@
         $(document).ready(function () {
             $('#programariPicker').datetimepicker({
                 pickTime: false,
-                language: "ro"
+                language: "ro",
+                useCurrent: true,
                 }).on('dp.change', function (ev) {
                     $('#programari-list tbody').empty();
                     var dataZi = $('#programariPicker').val();
                     $.getJSON("/programares/listaZI/"+dataZi, function(jd){
-                        var programari = jd.programari; // de verificat daca chiar exista programari in ziua respectiva
-                        for (var i=0; i< programari.length; i++){
-                        $.getJSON('/pacient/cauta/'+programari[i].pacient_id, function(jd){
-                            $('#programari-list tbody').append('<tr><td> '+ jd.pacient.nume +'</td><td> '+ jd.pacient.prenume+'</td><td>'+ programari[i-1].data+'</td><td>'+ programari[i-1].ora+'</td></tr>');
-                            });
-                        }});
+                        var programari = jd.programari;
+                        if (programari.length != 0) {
+                            for (var i=0; i< programari.length; i++){
+                            $.getJSON('/pacient/cauta/'+programari[i].pacient_id, function(jd){
+                                $('#programari-list tbody').append('<tr><td> '+ programari[i-1].ora +'</td><td> '+ jd.pacient.nume+'</td><td>'+ jd.pacient.prenume +'</td><td><a href="/consults/adauga/"'+jd.pacient.id+'/'+programari[i-1].id +' class="btn btn-primary"> Adauga consult</a></td></tr>');
+                            });}
+                        }
+                        else {
+                        $('#programari-list tbody').append('<tr><td> Nu ai programari</td><td> Go Home </td></tr>'); //sa poate mai bine
+                        }
+                        });
 
-                    $(this).datepicker('hide');
+                    $(this).datetimepicker('hide');
                     });
-            });
-</script>
-<script type="text/javascript">
+
     function listen_for_events(timestamp) {
-        $.ajax("/programares/pull/"+timestamp, { success:
+        $.ajax("/programares/pull/"+timestamp, { success: //adaugare in lista doar daca programarea e din ziua respectiva
                 function(data, code, xhr) {
                 for (var i=0; i< data.programari.length; i++) {
                     var programare = data.programari[0];
                     $.getJSON('/pacient/cauta/'+programare.pacient_id, function(jd) {
+                        console.log('poate aici?');
                     $("#programari-list").append(
-                        '<tr><td> '+ jd.pacient.nume+ ' </td> <td> '+ jd.pacient.prenume+'</td> <td>'+ programare.data +'</td> <td>'+  programare.ora+'</td> </tr>'
+                        '<tr><td> '+ programare.ora + ' </td> <td> '+ jd.pacient.nume+'</td> <td>'+ jd.pacient.prenume +'</td> <td><a href="/consults/adauga/"'+jd.pacient.id+'/'+ programare.id+' class="btn btn-primary"> Adauga consult</a></td> </tr>'
                         );
                         });
                 }
-                listen_for_events(data.timestamp);
+            listen_for_events(data.timestamp);
                 } });
-    }
-    $(document).ready(function() {
-            listen_for_events( {{ timestamp }} );
+    };
+
+    listen_for_events( {{ timestamp }} );
             });
 </script>
 
 
-
-<h3> Alege data </h3>
-<div class="row">
-    <div class="col-xs-6">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="schimba ziua programarii" id="programariPicker" data-date-format="DD/MM/YYYY">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" id="salut"> Bagă</button>
-                
-            </span>
-<div class="checkbox">
-                    <label>
-                        <input type="checkbox"> Afiseaza doar programarile fara consult
-                    </label>
-                </div>
-        </div>
+<div class="jumbotron">
+    <div class="container">
+        <h3 align="center"> Programările din data de <input type="text" class="form-control" placeholder="{{ date.date }}" id="programariPicker" data-date-format="DD/MM/YYYY"></h3>
+        <label><input type="checkbox"> Afişează doar programările fără consult</label>
     </div>
 </div>
-    {% if programari %}
+
+
     <table class="table table-hover" id="programari-list">
         <thead>
         <tr>
+            <th> Ora </th>
             <th> Nume </th>
             <th> Prenume </th>
-            <th> Data </th>
-            <th> Ora </th>
             <th> Consult</th>
         </tr>
         </thead>
         <tbody>
 
+    {% if programari %}
         {% for programare in programari %}
         <tr>
+            <td> {{ programare.ora }} </td>
             <td>  {{ programare.pacient.nume}} </td>
             <td> {{ programare.pacient.prenume }}</td>
-            <td> {{ programare.data }} </td>
-            <td> {{ programare.ora }} </td>
             <td> <a href="/consults/adauga/{{ programare.pacient.id }}/{{ programare.id}}" class="btn btn-primary"> Adauga consult</a></td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
     {% else %}
-        <h3> Nu ai programari in data de </h3>
+    <tr>
+        <td> Nu ai programari in data cerută <td>
+            </tr>
     {% endif %}
 <p><a href="/programares/adauga"> Adauga programare</a></p>
 {% endblock %}

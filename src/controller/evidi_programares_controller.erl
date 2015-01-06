@@ -2,7 +2,10 @@
 -compile(export_all).
 
 lista('GET',[]) ->
-    Programari = boss_db:find(programare, []),
+    {An, Luna, Zi} = erlang:date(),
+    DataProgramarilorLista = lists:map(fun(X) -> integer_to_list(X) end, [Zi, Luna, An]),
+    DataProgramarilor = string:join(DataProgramarilorLista, "/"),
+    Programari = boss_db:find(programare, [{data,'equals', DataProgramarilor}]),
     TimeStamp = boss_mq:now("programari-noi"),
     {ok, [{programari, Programari}, {timestamp, TimeStamp}]}.
 

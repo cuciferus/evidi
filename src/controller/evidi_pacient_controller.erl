@@ -1,4 +1,4 @@
--module(evidi_pacient_controller, [Req]).
+-module(evidi_pacient_controller, [Req]). % compiles with errors...nu stiu care si unde
 -compile(export_all).
 
 lista('GET', []) ->
@@ -6,13 +6,6 @@ lista('GET', []) ->
     Timestamp = boss_mq:now("pacient-editat"),
     {ok, [{pacienti, Pacienti}, {timestamp, Timestamp}]}.
 
-live('GET', []) ->
-    Pacienti = boss_db:find(pacient, []),
-    Timestamp = boss_mq:now("pacient-editat"),
-    {ok, [{ pacienti, Pacienti}, {timestamp, Timestamp}]}.
-
-%asta nu stiu la ce imi trebuie
-%
 pull('GET', [LastTimestamp]) ->
     {ok, TimeStamp, Pacienti} = boss_mq:pull("pacient-editat", list_to_integer(LastTimestamp)),
     {json, [{timestamp, TimeStamp }, {pacienti, Pacienti}]}.
@@ -48,13 +41,13 @@ adauga('POST',[]) ->
 editeazaPersonale('GET', [Id]) ->
     Pacient = boss_db:find(Id),
     {ok, [{pacient, Pacient}]};
-editeazaPersonale('POST',[Id]) ->
+editeazaPersonale('POST',[Id]) -> %asta merge dar da eroare :
+    % [error] POST /pacient/editeazaPersonale/pacient-1 [evidi] 404 0ms]
     Nume = Req:post_param("nume"),
     Prenume = Req:post_param("prenume"),
     CNP = Req:post_param("cnp"),
     Adresa = Req:post_param("adresa"),
     Telefon = Req:post_param("telefon"),
-    io:write(Nume),
     PacientNou = pacient:new(Id, Nume, Prenume, CNP, Adresa, Telefon),
     {ok, SavedPacient} = PacientNou:save().
 

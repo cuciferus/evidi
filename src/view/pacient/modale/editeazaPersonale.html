@@ -76,20 +76,5 @@ $('#editeazaPersonale').on('show.bs.modal', function(event){
             });
 
         });
-function listen_for_events(timestamp) {
-    $.ajax("/pacient/lista/")+timestamp, { success:
-        function(data, code, xhr) {
-            for (var i=0; i< data.pacienti.length; i++){
-                var msg= data.pacienti[i].nume;
-                console.log('ai editat pa '+ msg);
-            }
-            listen_forEvents(data.timestamp);
-        }
-    }
-}
-$(document).ready( function() {
-        listen_for_events({{ timestamp }});
-        });
-
 </script>
 

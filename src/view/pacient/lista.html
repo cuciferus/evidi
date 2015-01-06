@@ -26,12 +26,29 @@
 {% block body %}
 <link ref="stylesheet" href="/static/app/css/datepicker.css">
 <script type="text/javascript">
+                function listen_for_events(timestamp) {
+                    $.ajax("/pacient/lista/")+timestamp, { success:
+                        function(data, code, xhr) {
+                            for (var i=0; i< data.pacienti.length; i++){
+                                var msg= data.pacienti[i].nume;
+                                console.log('ai editat pa '+ msg);
+                            }
+                            listen_for_events(data.timestamp);
+                        }
+                    }
+                }
+                $(document).ready( function() {
+                        listen_for_events({{ timestamp }});
+                        });
+
+
                 $(document).ready(function() {
                         $('#dataprogramarii').datetimepicker({
                             language: 'ro',
                             sideBySide: true,
                             daysOfWeekDisabled: [0,1,5,6]
                             });
+                        listen_for_events({{ timestamp }});
 
                 $("#cautareCnp").keyup(function(e){
                     var search_string = $(this).val();
