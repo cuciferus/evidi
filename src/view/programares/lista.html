@@ -3,64 +3,35 @@
 
 <body>
 {% block body %}
-<script type="text/javascript">
-        $(document).ready(function () {
-            $('#programariPicker').datetimepicker({
-                pickTime: false,
-                language: "ro",
-                useCurrent: true,
-                }).on('dp.change', function (ev) {
-                    $('#programari-list tbody').empty();
-                    var dataZi = $('#programariPicker').val();
-                    $.getJSON("/programares/listaZI/"+dataZi, function(jd){
-                        var programari = jd.programari;
-                        if (programari.length != 0) {
-                            for (var i=0; i< programari.length; i++){
-                            $.getJSON('/pacient/cauta/'+programari[i].pacient_id, function(jd){
-                                $('#programari-list tbody').append('<tr><td> '+ programari[i-1].ora +'</td><td> '+ jd.pacient.nume+'</td><td>'+ jd.pacient.prenume +'</td><td><a href="/consults/adauga/"'+jd.pacient.id+'/'+programari[i-1].id +' class="btn btn-primary"> Adauga consult</a></td></tr>');
-                            });}
-                        }
-                        else {
-                        $('#programari-list tbody').append('<tr><td> Nu ai programari</td><td> Go Home </td></tr>'); //sa poate mai bine
-                        }
-                        });
+<script type="text/javascript" src="/static/app/js/programare/lista.js"></script>
 
-                    $(this).datetimepicker('hide');
-                    });
-
-    function listen_for_events(timestamp) {
-        $.ajax("/programares/pull/"+timestamp, { success: //adaugare in lista doar daca programarea e din ziua respectiva
-                function(data, code, xhr) {
-                for (var i=0; i< data.programari.length; i++) {
-                    var programare = data.programari[0];
-                    $.getJSON('/pacient/cauta/'+programare.pacient_id, function(jd) {
-                        console.log('poate aici?');
-                    $("#programari-list").append(
-                        '<tr><td> '+ programare.ora + ' </td> <td> '+ jd.pacient.nume+'</td> <td>'+ jd.pacient.prenume +'</td> <td><a href="/consults/adauga/"'+jd.pacient.id+'/'+ programare.id+' class="btn btn-primary"> Adauga consult</a></td> </tr>'
-                        );
-                        });
-                }
-            listen_for_events(data.timestamp);
-                } });
-    };
-
-    listen_for_events( {{ timestamp }} );
-            });
-</script>
 
 
 <div class="jumbotron">
-    <div class="container">
-        <h3 align="center"> Programările din data de <input type="text" class="form-control" placeholder="{{ date.date }}" id="programariPicker" data-date-format="DD/MM/YYYY"></h3>
-        <label><input type="checkbox"> Afişează doar programările fără consult</label>
-    </div>
+    <h3> Programările din data de</h3>
 </div>
+<div class="col-md-3">
+    <input type="hidden" name="timestamp" id="timestamp" value="{{ timestamp}}">
+</div>
+<div class="col-md-6">
+            <div class="input-group" role="group" aria-label="salut"> <!-- nu ştiu de ce apar vertical...azi nu mere nimic -->
+                <span class="input-group-addon"><button type="button" class="btn btn-primary" id="ieri"> Ieri</button></span>
+                <input type="text" class="form-control" value="{{ value|date}}" id="programariPicker" data-date-format="DD/MM/YYYY"></input>
+                <span class="input-group-addon"><button type="button" class="btn btn-primary" id="maine"> Mâine</button></span>
+            </div><br />
+        <label><input type="checkbox"> Afişează doar programările fără consult</label>
+        <label><input type="checkbox"> Afişează modul calendar</label>
+    </div>
+    <div class="col-md-3">
+        <p><a href="/programares/adauga"> Adauga programare</a></p>
+    </div><br/>
 
 
     <table class="table table-hover" id="programari-list">
         <thead>
         <tr>
-            <th> Ora </th>
+            <th> Ora Inceput</th>
+            <th> Ora Final</th>
             <th> Nume </th>
             <th> Prenume </th>
             <th> Consult</th>
@@ -72,6 +43,7 @@
         {% for programare in programari %}
         <tr>
             <td> {{ programare.ora }} </td>
+            <td> {{ programare.durata }} salut</td>
             <td>  {{ programare.pacient.nume}} </td>
             <td> {{ programare.pacient.prenume }}</td>
             <td> <a href="/consults/adauga/{{ programare.pacient.id }}/{{ programare.id}}" class="btn btn-primary"> Adauga consult</a></td>
@@ -84,7 +56,6 @@
         <td> Nu ai programari in data cerută <td>
             </tr>
     {% endif %}
-<p><a href="/programares/adauga"> Adauga programare</a></p>
 {% endblock %}
 </body>
 </html>

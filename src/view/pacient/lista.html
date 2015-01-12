@@ -56,9 +56,13 @@
                       $.getJSON("/pacient/cautaCnp/*"+search_string+ "*", function(jd) {
                         $("#pacienti tbody").empty()
                         var pacienti = jd.pacienti;
+                        if (pacienti.length==0) {
+                        $("#pacienti tbody").append('<tr><td> Acest pacient nu egsita poti sa-l adaugi folosind butonul de langa<td> <button type="button" class="btn btn-primary"> Adauga pacient</button></td></tr>');
+                        } else {
                         for (var i=0; i<pacienti.length; i++){
                         $("#pacienti tbody").append('<tr><td>'+pacienti[i].nume +'</td><td>'+ pacienti[i].prenume +'</td><td>'+ pacienti[i].cnp + '</td><td>'+
         '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid='+ pacienti[i].id +'> Adauga programare</a></td><td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonale" data-pacientid='+ pacienti[i].id +'> Editeaza date personale</button></td><td><a href="{% url action="adaugapersonala" id=pacient.id %}"> Adauga şi boli</a> </td></tr>');
+                        }
                         }
                         });
                       } else if(search_string.length ==0){
@@ -122,7 +126,11 @@
               <input type="text" class="form-control" placeholder="cauta dupa nume" id="cautareNume">
               <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
               </div> </th>
-            <th>           </th><th> <input type="text" class="form-control" placeholder="cauta dupa cnp" id="cautareCnp"></th><th></th><th></th></tr>
+              <th>           </th><th>
+                  <div class="btn-group">
+                  <input type="text" class="form-control" placeholder="cauta dupa cnp" id="cautareCnp"><span id="searchcnpid" class="glyphicon glyphicon-remove-cricle"></span>
+              </div>
+          </th><th></th><th></th></tr>
     </thead>
     <tbody>
     {% for pacient in pacienti %}
@@ -136,9 +144,9 @@
     {% else %}
     <h2> Nu ai pacienti</h2>
     {% endif %}
-{% endblock %}
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaPacientModal"> Adauga pacient</button>
 <a href="/programares/lista" class="btn btn-primary"> Vezi lista cu programari</a>
 
+{% endblock %}
 </body></html>
 
