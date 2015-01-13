@@ -1,7 +1,7 @@
 -module(evidi_programares_controller, [Req]).
 -compile(export_all).
 
-lista('GET',[]) ->
+lista('GET',[]) -> % imi trebuie update doar pentru o zi!
     {An, Luna, Zi} = erlang:date(),
     DataProgramarilorLista = lists:map(fun(X) -> integer_to_list(X) end, [Zi, Luna, An]),
     DataProgramarilor = string:join(DataProgramarilorLista, "/"),
@@ -26,4 +26,5 @@ live('GET', []) ->
 listaZI('GET', [Zi, Luna, An]) ->
     DataProgramarilor= string:join([Zi, Luna, An], "/"),
     Programari = boss_db:find(programare, [{data,'equals', DataProgramarilor}]),
-    {json, [{programari, Programari}]}.
+    Pacienti = [ boss_db:find(PacientId) || {programare, _,_,_,_,PacientId} <-Programari],
+    {json, [{programari, Programari}, {pacienti, Pacienti}]}.
