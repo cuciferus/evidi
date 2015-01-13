@@ -18,6 +18,15 @@ function iaAzi() {
     return d1.getDate() +'/'+(d1.getMonth()+1) + '/' +d1.getFullYear();
 };
 
+function calculeazaOraFinala(timp, durata) {
+    [ora, minut] = timp.split(":");
+    d1 = new Date();
+    d1.setHours(ora);
+    d1.setMinutes(Number(minut)+Number(durata));
+    return ''+d1.getHours() + ":"+d1.getMinutes();
+};
+
+
 
 
 
@@ -36,7 +45,7 @@ function iaAzi() {
                         var pacienti = jd.pacienti;
                         if (programari.length !=0) {
                             for (var i=0; i<programari.length; i++){
-                                $('#programari-list tbody').append('<tr><td> '+ programari[i].ora +'</td><td> '+ '</td><td>'+ pacienti[i].nume+'</td><td>'+ pacienti[i].prenume +'</td><td><a href="/consults/adauga/"'+pacienti[i].id+'/'+programari[i].id +' class="btn btn-primary"> Adauga consult</a></td></tr>');
+                                $('#programari-list tbody').append('<tr><td> '+ programari[i].ora +'</td><td> '+ calculeazaOraFinala(programari[i].ora, programari[i].durata) + '</td><td>'+ pacienti[i].nume+'</td><td>'+ pacienti[i].prenume +'</td><td><a href="/consults/adauga/"'+pacienti[i].id+'/'+programari[i].id +' class="btn btn-primary"> Adauga consult</a></td></tr>');
                             }} else {
                                 console.log('nu ai programari');
                             }
