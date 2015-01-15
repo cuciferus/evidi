@@ -70,12 +70,22 @@ function iaProgramarileDinZiua(zi){
             $('#ieri').on('click', function(e){
                     [zi, luna, an] = $('#programariPicker').val().split("/");
                     d1 = new Date();
-                    d1.setYear(an);//merge
-                    d1.setMonth(luna);//merge
-                    d1.setDate(zi-1);//merge
-                    $('#programariPicker').val(formateazaZiua(d1.getDate()+'/'+d1.getMonth()+'/'+d1.getFullYear()));//merge
+                    d1.setYear(an);
+                    d1.setMonth(luna);
+                    d1.setDate(zi-1);
+                    $('#programariPicker').val(formateazaZiua(d1.getDate()+'/'+d1.getMonth()+'/'+d1.getFullYear()));
                     iaProgramarileDinZiua($('#programariPicker').val());
                     });
+
+            $('#maine').on('click', function(e){ //asta nu merge
+                [zi, luna, an] = $('#programariPicker').val().split("/");
+                d1 = new Date();
+                d1.setYear(an);
+                d1.setMonth(luna);
+                d1.setDate(zi+1);
+                $('#programariPicker').val(formateazaZiua(d1.getDate() +'/'+d1.getMonth()+'/'+d1.getFullYear()));
+                iaProgramarileDinZiua($('#programariPicker').val());
+            });
 
     
             listen_for_events( $("#timestamp").val());
