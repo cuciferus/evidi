@@ -1,4 +1,4 @@
--module(evidi_pacient_controller, [Req]). % compiles with errors...nu stiu care si unde
+-module(evidi_pacient_controller, [Req]). %trebuie sa rezolv cu formatul de data cumva, eu vreau european postgres nu
 -compile(export_all).
 
 lista('GET', []) ->
@@ -80,9 +80,8 @@ adaugaProgramare('GET',[Id]) ->
     {ok, [{pacient, Pacient}]};
 adaugaProgramare('POST',[Id]) ->
     [Data, Ora]  = string:tokens(Req:post_param("data"), " "),
-    %Ora = Req:post_param("ora"),
-    Durata = Req:post_param("durata"),
-    ProgramareNoua = programare:new(id, Data, Ora, Durata, Id),
+    {Durata,_} = string:to_integer(Req:post_param("durata")),
+    ProgramareNoua = programare:new(id, utile:transforma_data(Data), utile:transforma_timp(Ora), Durata, Id),
     {ok, SavedProrgamare} = ProgramareNoua:save(),
     {redirect, [{action, "listaProgramari"}]}.
 
