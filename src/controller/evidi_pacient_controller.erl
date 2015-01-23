@@ -78,7 +78,7 @@ adaugapersonala('POST', [Id]) ->
 adaugaProgramare('GET',[Id]) ->
     Pacient = boss_db:find(Id),
     {ok, [{pacient, Pacient}]};
-adaugaProgramare('POST',[Id]) ->
+adaugaProgramare('POST',[Id]) -> %crapa daca nu are durata...prvent in view
     [Data, Ora]  = string:tokens(Req:post_param("data"), " "),
     {Durata,_} = string:to_integer(Req:post_param("durata")),
     ProgramareNoua = programare:new(id, utile:transforma_data(Data), utile:transforma_timp(Ora), Durata, Id),

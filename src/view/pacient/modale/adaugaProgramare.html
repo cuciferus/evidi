@@ -1,3 +1,4 @@
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.js"></script>
 <div class="modal fade" name="adaugaProgramare" id="adaugaProgramare" tabindex="-1" role="dialog" aria-labelledby="adaugaProgramareLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -6,14 +7,14 @@
                 <h4 class="modal-title" id="editeazaPersonaleLabel"> Aici faci o programare la dr pentru {{ pacient.nume }} {{ pacient.prenume }}</h4>
             </div>
             <div class="modal-body">
-                <form method="post" class="form-inline" role="form">
+                <form method="post" class="form-inline" role="form" id="adaugaProgramareForm">
                     <div class="form-group">
                         <label for="data">Data şi ora:</label>
                         <input type="text" class="form-control" id="dataprogramarii" name="data" data-date-format="DD/MM/YYYY hh:mm">
                     </div>
                     <div class="form-group">
                         <label for="durata">Durata(minute):</label>
-                        <input type="number" name="durata" class="form-control">
+                        <input type="number" name="durata" id="durata" class="form-control required">
                     </div>
             </div>
             <div class="modal-footer">
@@ -44,6 +45,7 @@
                 }
                 })
         $("#adaugaProgramare").modal('hide')
+        $(this).removeData('bs.modal');
         });
 
 $('#adaugaProgramare').on('show.bs.modal', function(event){
@@ -54,6 +56,19 @@ $('#adaugaProgramare').on('show.bs.modal', function(event){
             $("h4.modal-title").text("Adauga programare pentru "+ rezultat.pacient.nume + " " + rezultat.pacient.prenume)
            modal.find('input[name=pacientid]').val(rezultat.pacient.id)
             })
-        })
+        });
+$('#adaugaProgramareForm').validate({
+    debug: true,
+    rules: {
+        durata:{
+            required: true}
+            ,
+        dataprogramarii:{
+            required: true}
+            },
+    messages: {
+        durata: "Trebuie sa specifici durata"}
+        });
+
 
 </script>

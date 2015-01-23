@@ -19,6 +19,7 @@ function iaAzi() {
 };
 
 function calculeazaOraFinala(timp, durata) {
+    console.log(timp);//acum aici am timpu altfel cre ca trebe rescris putin
     [ora, minut] = timp.split(":");
     d1 = new Date();
     d1.setHours(ora);

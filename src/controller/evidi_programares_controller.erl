@@ -1,8 +1,9 @@
--module(evidi_programares_controller, [Req]).
+-module(evidi_programares_controller, [Req]). %sa nu uit in sql sa folosesc doar '
 -compile(export_all).
 
 lista('GET',[]) -> % imi trebuie update doar pentru o zi!
-    Programari = boss_db:find(programare, [{data,'equals', erlang:date()}]),
+    {An, Luna, Zi} = erlang:date(), % si totusi nu imi apar programarile....whyyyyy?
+    Programari = boss_db:find(programare, [{data, 'equals', integer_to_list(An)++ "-"++integer_to_list(Luna)++"-"++integer_to_list(Zi)}]),
     TimeStamp = boss_mq:now("programari-noi"),
     {ok, [{programari, Programari}, {timestamp, TimeStamp}]}.
 
@@ -21,7 +22,6 @@ live('GET', []) ->
     {ok, [{programari, Programari}, {timestamp, TimeStamp}]}.
 
 listaZI('GET', [Zi, Luna, An]) ->
-    DataProgramarilor= string:join([Zi, Luna, An], "/"),
-    Programari = boss_db:find(programare, [{data,'equals', DataProgramarilor}]),
+    Programari = boss_db:find(programare, [{data, 'equals', string:join([An, Luna, Zi], "-")}]),
     Pacienti = [ boss_db:find(PacientId) || {programare, _,_,_,_,PacientId} <-Programari],
     {json, [{programari, Programari}, {pacienti, Pacienti}]}.

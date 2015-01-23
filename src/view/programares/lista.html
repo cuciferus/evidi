@@ -14,13 +14,21 @@
     <input type="hidden" name="timestamp" id="timestamp" value="{{ timestamp}}">
 </div>
 <div class="col-md-6">
-            <div class="input-group" role="group" aria-label="salut"> <!-- nu ştiu de ce apar vertical...azi nu mere nimic -->
-                <span class="input-group-addon"><button type="button" class="btn btn-primary" id="ieri"> Ieri</button></span>
-                <input type="text" class="form-control" value="{{ value|date}}" id="programariPicker" data-date-format="D/M/YYYY"></input>
-                <span class="input-group-addon"><button type="button" class="btn btn-primary" id="maine"> Mâine</button></span>
+            <div class="row">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="ieri"> Ieri</button>
+                    </span>
+                    <input type="text" class="form-control" value="{{ value|date}}" id="programariPicker" data-date-format="DD/MM/YYYY">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="maine"> Maine</button>
+                    </span>
+                </div>
+            </div>
+                
+                <label><input type="checkbox"> Afişează doar programările fără consult</label>
+                <label><input type="checkbox"> Afişează modul calendar</label>
             </div><br />
-        <label><input type="checkbox"> Afişează doar programările fără consult</label>
-        <label><input type="checkbox"> Afişează modul calendar</label>
     </div>
     <div class="col-md-3">
         <p><a href="/programares/adauga"> Adauga programare</a></p>
@@ -43,7 +51,7 @@
         {% for programare in programari %}
         <tr>
             <td> {{ programare.ora }} </td>
-            <td> {{ programare.durata }} salut</td>
+            <td> {{ programare.durata }} </td>
             <td>  {{ programare.pacient.nume}} </td>
             <td> {{ programare.pacient.prenume }}</td>
             <td> <a href="/consults/adauga/{{ programare.pacient.id }}/{{ programare.id}}" class="btn btn-primary"> Adauga consult</a></td>
