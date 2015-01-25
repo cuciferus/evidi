@@ -15,6 +15,7 @@ function listen_for_events(timestamp) {
        
 function iaAzi() {
     d1 = new Date();
+    iaProgramarileDinZiua(formateazaZiua(d1.getDate() +'/'+(d1.getMonth()+1) + '/' +d1.getFullYear()));
     return formateazaZiua(d1.getDate() +'/'+(d1.getMonth()+1) + '/' +d1.getFullYear());
 };
 
@@ -37,12 +38,13 @@ function iaProgramarileDinZiua(zi){
     $.getJSON("/programares/listaZI/"+zi, function(jd){
         var programari = jd.programari;
         var pacienti = jd.pacienti;
+        $('#programari-list tbody').empty();
         if (programari.length !=0){
             for (var i=0; i<programari.length; i++) {
-                $('#programari-list tbody').append('<tr><td> '+ programari[i].ora +'</td><td> '+ calculeazaOraFinala(programari[i].ora, programari[i].durata) + '</td><td>'+ pacienti[i].nume+'</td><td>'+ pacienti[i].prenume +'</td><td><a href="/consults/adauga/"'+pacienti[i].id+'/'+programari[i].id +' class="btn btn-primary"> Adauga consult</a></td></tr>');
+                $('#programari-list tbody').append('<tr><td> '+ programari[i].ora +'</td><td> '+ programari[i].durata + '</td><td>'+ pacienti[i].nume+'</td><td>'+ pacienti[i].prenume +'</td><td><a href="/consults/adauga/"'+pacienti[i].id+'/'+programari[i].id +' class="btn btn-primary"> Adauga consult</a></td></tr>');
             }}
             else {
-                console.log('nu ai programari'); //de facut mai calumea
+                $('#programari-list tbody').append('<tr><td>Azi</td><td>nu</td><td>ai</td><td>programări</td><tr>');
             }
     });
 }
@@ -54,7 +56,7 @@ function iaProgramarileDinZiua(zi){
 
 
         $(document).ready(function () {
-            $('#programariPicker').val(iaAzi());
+            $('#programariPicker').val(moment().format('DD/MM/YYYY'));
             $('#programariPicker').datetimepicker({
                 pickTime: false,
                 language: "ro",
@@ -69,23 +71,17 @@ function iaProgramarileDinZiua(zi){
 
 
             $('#ieri').on('click', function(e){
-                    [zi, luna, an] = $('#programariPicker').val().split("/");
-                    d1 = new Date();
-                    d1.setYear(an);
-                    d1.setMonth(luna);
-                    d1.setDate(zi-1);
-                    $('#programariPicker').val(formateazaZiua(d1.getDate()+'/'+d1.getMonth()+'/'+d1.getFullYear()));
-                    iaProgramarileDinZiua($('#programariPicker').val());
-                    });
+                var Zi = moment($('#programariPicker').val(), "DD/MM/YYYY");
+                Zi.subtract(1, 'days');
+                $('#programariPicker').val((Zi.format('DD/MM/YYYY')));
+                iaProgramarileDinZiua(Zi.format('DD/MM/YYYY'));
+                });
 
-            $('#maine').on('click', function(e){ //asta nu merge
-                [zi, luna, an] = $('#programariPicker').val().split("/");
-                d1 = new Date();
-                d1.setYear(an);
-                d1.setMonth(luna);
-                d1.setDate(zi+1);
-                $('#programariPicker').val(formateazaZiua(d1.getDate() +'/'+d1.getMonth()+'/'+d1.getFullYear()));
-                iaProgramarileDinZiua($('#programariPicker').val());
+            $('#maine').on('click', function(e){ 
+                var Zi = moment($('#programariPicker').val(), "DD/MM/YYYY");
+                Zi.add(1, 'days');
+                $('#programariPicker').val((Zi.format('DD/MM/YYYY')));
+                iaProgramarileDinZiua(Zi.format('DD/MM/YYYY'));
             });
 
     
