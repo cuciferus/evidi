@@ -1,4 +1,4 @@
--module(consult, [Id, Data, Diagnostice, Recomandari, PacientId]).
+-module(consult, [Id, Data, Diagnostice, Recomandari, PacientId]). %de implementat diagnosticu ca icd10 ca tot il am
 -compile(export_all).
 -belongs_to(pacient).
 -has({analizes, many}).

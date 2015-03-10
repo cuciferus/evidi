@@ -1,0 +1,5 @@
+-module(cim10subcapitol, [Id, Cod, Nume, Cim10capitolId]).
+-compile(export_all).
+-belongs_to(cim10capitol).
+-has({cim10entries, many}).
+-table("cim_subcapitole").

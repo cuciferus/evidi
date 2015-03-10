@@ -1,0 +1,4 @@
+-module(cim10capitol, [Id, Cod, Capitol]).
+-compile(export_all).
+-has({cim10subcapitols, many}).
+-table("cimcapitole").

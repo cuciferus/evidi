@@ -14,44 +14,34 @@ function listen_for_events(timestamp) {
     };
        
 function iaAzi() {
-    d1 = new Date();
-    iaProgramarileDinZiua(formateazaZiua(d1.getDate() +'/'+(d1.getMonth()+1) + '/' +d1.getFullYear()));
-    return formateazaZiua(d1.getDate() +'/'+(d1.getMonth()+1) + '/' +d1.getFullYear());
+    var Azi = moment();
+    iaProgramarileDinZiua(Azi.format('DD/MM/YYYY'));
+    return Azi.format('DD/MM/YYYY');
 };
-
-function calculeazaOraFinala(timp, durata) {
-    console.log(timp);//acum aici am timpu altfel cre ca trebe rescris putin
-    [ora, minut] = timp.split(":");
-    d1 = new Date();
-    d1.setHours(ora);
-    d1.setMinutes(Number(minut)+Number(durata));
-    return ''+d1.getHours() + ":"+d1.getMinutes();
-};
-function formateazaZiua(zi) { 
-    [zi, luna, an] = zi.split("/");
-    zi = zi<10? '0'+zi:''+zi;
-    luna = luna<10? '0'+luna:''+luna;
-    return [zi,luna,an].join("/");
+function convertesteOra(Ora) { 
+    var oraFinala = '';
+    Ora.forEach(function (cod) {
+        oraFinala += String.fromCharCode(cod);
+    });
+    return oraFinala.substring(18,24); //munca degeaba substring trebuie inainte de prelucrare
 };
 
 function iaProgramarileDinZiua(zi){
     $.getJSON("/programares/listaZI/"+zi, function(jd){
         var programari = jd.programari;
         var pacienti = jd.pacienti;
+        var ore = jd.ore;
         $('#programari-list tbody').empty();
         if (programari.length !=0){
             for (var i=0; i<programari.length; i++) {
-                $('#programari-list tbody').append('<tr><td> '+ programari[i].ora +'</td><td> '+ programari[i].durata + '</td><td>'+ pacienti[i].nume+'</td><td>'+ pacienti[i].prenume +'</td><td><a href="/consults/adauga/"'+pacienti[i].id+'/'+programari[i].id +' class="btn btn-primary"> Adauga consult</a></td></tr>');
+                var oraConsult = convertesteOra(programari[i].ora);
+                $('#programari-list tbody').append('<tr><td> '+ oraConsult +'</td><td> '+ programari[i].durata + '</td><td>'+ pacienti[i].nume+'</td><td>'+ pacienti[i].prenume +'</td><td><a href="/consults/adauga/'+pacienti[i].id+'/'+programari[i].id +'"/ class="btn btn-primary"> Adauga consult</a></td><td>ce plm</td></tr>');
             }}
             else {
                 $('#programari-list tbody').append('<tr><td>Azi</td><td>nu</td><td>ai</td><td>programări</td><tr>');
             }
     });
 }
-
-
-
-
 
 
 

@@ -68,7 +68,8 @@
         <input type="hidden" name="consultid" id="{{ consult.id }}">
         <div class="form-group">
             <label for="diagnostice">Diagnostice:</label>
-            <textarea class="form-control" rows="3" name="diagnostice" id="diagnostice"></textarea>
+            <input type="text" class="form-control" id="diagnostice" name="diagnostice">
+            <button type="button" class="btn btn-warning pull-right"> Adauga si acest diagnostic</button>
         </div>
         <div class="form-group">
             <label for="clinice"> Adauga date clinice(Înalţime, greutate, burtă):</label>
@@ -133,7 +134,7 @@
                 <h4 class="modal-title" id="editeazaPersonaleLabel"> Aici adaugi APP pentru {{ pacient.nume }}</h4>
             </div>
             <div class="modal-body">
-                <form method="post" class="form-inline" role="form">
+                <form method="post" class="form-horizontal" role="form">
                     
                     <div class="form-group">
                         <label for="boala">Boala:</label>

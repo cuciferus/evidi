@@ -1,0 +1,153 @@
+{% extends "pacient/lista.html" %}
+{% block title %} Caută un cod {% endblock %}
+<body>
+{% block body %}
+<script type="text/javascript">
+function veziSelect(evt) {
+            var val = $("input[name=icdselect]:checked").val();
+            window.tipCod = val;
+            };
+
+function cautaCim(diagnostic) {
+    $.getJSON('/cim/cauta/*'+diagnostic+'*', function(jd) {
+        var coduri = jd.diagnostice;
+        if (coduri.length ==0) {
+            $('#coduri-list tbody').append('<tr><td> Nu exista boala pe care o cauti</td><td></td></tr>');
+        } else {
+            for (var i=0; i<coduri.length; i++) {
+            $('#coduri-list tbody').append('<tr><td>'+ coduri[i].nume+'</td><td>'+coduri[i].cod+'</td></tr>');
+            }
+            }
+            });
+            };
+
+
+function cautaIcd(diagnostic) {
+    $.getJSON('/icd/cauta/*'+diagnostic+'*', function(jd) {
+        var coduri = jd.diagnostice;
+        if (coduri.length ==0) {
+            $('#coduri-list tbody').append('<tr><td> Nu exista boala pe care o cauti</td><td></td></tr>');
+        } else {
+            for (var i =0; i< coduri.length; i++) {
+                $('#coduri-list tbody').append('<tr><td>'+ coduri[i].diagnostic+'</td><td>'+ coduri[i].cod+'</td></tr>');
+                }
+            }
+        });
+    };
+
+function populeazaCapitole() {
+    $.getJSON('/cim/capitole/', function(jd) {
+        var capitole = jd.capitole;
+        for (var i=0; i < capitole.length; i++) {
+            capitol = '<option value="'+capitole[i].cod+'">'+capitole[i].capitol+'</option>';
+            $('#cim10capitole').append(capitol);
+            }
+        });};
+
+function populeazaSubcapitole(Capitol) {
+    $.getJSON('/cim/subcapitole/'+Capitol+'/', function(jd) {
+        var subcapitole = jd.subcapitole;
+        $('#cim10subcapitole option').remove();
+        for (var i=0; i< subcapitole.length; i++){
+            $('#cim10subcapitole').append('<option value="'+subcapitole[i].cod+'">'+subcapitole[i].nume+'</option>');
+            }
+        });
+        };
+
+function populeazaEntry(Subcapitol) {
+    $('#coduri-list tbody').empty();
+    $.getJSON('/cim/entry/'+Subcapitol+'/', function(jd) {
+        var coduri = jd.coduri;
+        for (var i=0; i<coduri.length; i++) {
+            $('#coduri-list tbody').append('<tr><td>'+coduri[i].nume+'</td><td>'+coduri[i].cod+'</td></tr>');
+            }
+        });
+        };
+
+$(document).ready(function(){
+        $('input[name=icdselect]:radio').change(veziSelect);
+        $('#cim10capitole').change(function() {
+            populeazaSubcapitole($('#cim10capitole').val());
+            });
+        $('#cim10subcapitole').change(function() {
+            populeazaEntry($('#cim10subcapitole').val());
+            });
+        veziSelect();
+        populeazaCapitole();
+        $('#cautareDiagnostic').keyup(function(e){ 
+            var diagnostic = $(this).val();
+            if (diagnostic.length >=3){
+                $('#coduri-list tbody').empty();
+                if (window.tipCod == 'icd10') {
+                    cautaIcd(diagnostic);
+                    } else {
+                    cautaCim(diagnostic);}
+                };
+            });
+        });
+
+</script>
+    {% include "pacient/jumbotron.html" %}
+    Alege tipul de diagnostic<br />
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary active">
+            <input type="radio" name="icdselect" id="icd10" autocomplete="off" checked value="icd10"> ICD10</label>
+        <label class="btn btn-primary">
+            <input type="radio" name="icdselect" id="cim10" autocomplete="off" value="cim10"> CIM10</label>
+    </div>
+    <div class="form-inline" role="form">
+    <div class="form-group">
+        <label for="cim10capitole"> Alege un capitol: </label>
+        <select class="form-control" id="cim10capitole">
+            <option> primu capitol</option>
+            <option> al doilea capitol</option>
+            <option> gata </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="cim10subcapitole"> alege un subcapitol:</label>
+        <select class="form-control" id="cim10subcapitole">
+            <option> primul subcapitol</option>
+            <option> al doilea capitol</option>
+            <option> al trelea </option>
+        </select>
+    </div>
+    </div>
+
+    <table class="table table-hover" id="coduri-list">
+        <thead>
+        <tr>
+            <th> Diagnostic </th>
+            <th> Cod</th>
+        </tr>
+        <tr>
+            <th>
+              <input type="text" class="form-control" placeholder="cauta diagnostic" id="cautareDiagnostic">
+          </th>
+              <th>
+                  <input type="text" class="form-control" placeholder="cautaCod" id="cautaCod">
+          </th>
+      </tr>
+
+        </thead>
+
+
+        <tbody>
+            {% if coduri %}
+            {% for cod in coduri %}
+            <tr>
+                <td> {{ cod.diagnostic}} </td>
+                <td> {{ cod.cod }} </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <tr>
+        <td> Nu există coduri</td>
+    </tr>
+    {% endif %}
+
+{% endblock %}
+
+

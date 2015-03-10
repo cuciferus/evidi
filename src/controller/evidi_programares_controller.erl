@@ -10,8 +10,8 @@ lista('GET',[]) -> % imi trebuie update doar pentru o zi!
 listaZI('GET', [Zi, Luna, An]) ->
     Programari = boss_db:find(programare, [{data, 'equals', string:join([An, Luna, Zi], "-")}]),
     Pacienti = [ boss_db:find(PacientId) || {programare, _,_,_,_,PacientId} <-Programari],
-    OraProgramarii = [Ora || { programare, _,_, {Ora}, _, _} <- Programari],
-    {json, [{programari, Programari}, {pacienti, Pacienti}, {ore, OraProgramarii}]}.
+    OraProgramarii = [ binary_to_list(Ora) || { programare, _,_, {Ora}, _, _} <- Programari], %asta nu cred ca imi trebuie avand in vedere ca il prelucrez in js
+    {json, [{"programari", Programari}, {"pacienti", Pacienti}, {"ore",OraProgramarii }]}.
 
 send_test_message('GET',[]) ->
     TestMessage ="liber in sfarsit",
