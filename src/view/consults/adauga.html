@@ -12,9 +12,22 @@
                 pickTime: false,
                 language: "ro"
                 });
-            var rude =["mama", "tata", "frate", "sora","bunic din partea mamei","bunica din partea mamei", "bunic din partea tatalui", "bunica din partea tatalui"];
             $('#ruda').typeahead({
-                source: rude});
+                source: function(request, process) {
+                    $.ajax({
+                        url:"/ruda/cauta/"+request,
+                        dataType: "json",
+                        success: function(data) {
+                            console.log(data);
+                            return process(data.rude);}//sau cum so fi numinda
+                            })},
+                        displayText: function(item) {
+                            return item.nume; //sau ceva
+                            },
+                            items:3,
+                            delay: 2,
+                            autoselect: true});
+
             $('#search-icd').typeahead({
                             source: function(request, process) {
                                 $.ajax({

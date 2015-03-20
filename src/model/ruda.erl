@@ -1,0 +1,4 @@
+-module(ruda, [Id, Nume, Grad]).
+-compile(export_all).
+-has({heredocolaterales, many}).
+-table("rude").
