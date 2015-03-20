@@ -1,7 +1,8 @@
 {% extends "pacient/lista.html" %}
-{% include "pacient/jumbotron.html" %}
 {% block title %} Adaugă un consult pentru {{ pacient.nume }} {{ pacient.prenume }}{% endblock %}
 {% block body %}
+{% include "consults/modale/adaugaPersonale.html" %}
+{% include "consults/modale/adaugaHeredocolaterale.html" %}
 <link ref="stylesheet" href="/static/app/css/datepicker.css">
 <script type="text/javascript" src="/static/app/js/moment-with-locales.js"></script>
 <script type="text/javascript" src="/static/app/js/bootstrap3-typeahead.js"></script>
@@ -11,20 +12,25 @@
                 pickTime: false,
                 language: "ro"
                 });
+            var rude =["mama", "tata", "frate", "sora","bunic din partea mamei","bunica din partea mamei", "bunic din partea tatalui", "bunica din partea tatalui"];
+            $('#ruda').typeahead({
+                source: rude});
             $('#search-icd').typeahead({
                             source: function(request, process) {
                                 $.ajax({
                                     url: "/icd/cauta/"+request,
                                     dataType: "json",
                                     success: function(data){
-                                        //console.log(data.diagnostice);
-                                        return process(data.diagnostice);} //in mod ciudat data nu ajunge la displayText....whyyyyyy?
+                                        return process(data.diagnostice);} 
                                     })},
                             displayText: function (item) {
                                 console.log(item);
-                                return item.diagnostic; //this b0rkes jquery rau
+                                return item.diagnostic; 
                                 },
-                            items: 3
+                            items: 3,
+                            delay: 2,
+                            autoSelect: true,
+                            minLength: 3
                                 });
             
             $("#adaugaHeredocolaterale").on("submit", function(e){
@@ -68,7 +74,7 @@
 <div class="jumbotron">
     <div class="container">
         <h2> Adauga consult pentru {{ pacient.nume|capfirst }} {{ pacient.prenume|capfirst }} cu cnp {{ pacient.cnp }} in data de 
-            <input type="text" class="form-control" value="{{ programare.data }}" id="programariPicker" data-date-format="DD/MM/YYYY"> cu nr de registru nr</h2>
+            <input type="text" class="form-control" value="{{ programare.data| date:"j/m/Y"  }}" id="programariPicker" data-date-format="DD/MM/YYYY"> cu nr de registru nr</h2>
     </div>
 </div>
 
@@ -116,70 +122,5 @@
             <input type="email" class="form-control">
         </div>
 </div>
-<div class="modal fade" name="adaugaHeredocolaterale" id="adaugaHeredocolaterale" tabindex="-1" role="dialog" aria-labelledby="adaugaProgramareLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"> Close</span></button>
-                <h4 class="modal-title" id="editeazaPersonaleLabel"> Aici adaugi heredocolaterala pentru {{ pacient.nume }}</h4>
-            </div>
-            <div class="modal-body">
-                <form method="post" class="form-inline" role="form">
-                    
-                    <div class="form-group">
-                        <label for="ruda">Ruda</label>
-                        <input type="text" class="form-control" name="ruda">
-                    </div>
-                    <div class="form-group">
-                        <label for="boala">Boala:</label>
-                        <input id="search-icd" class="form-control" type="text" placeholder="cata boli in icd" autocomplete="off"/>
-                        <input type="text" name="boala" class="form-control">
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunţă </button>
-                <button value="submit" type="submit" class="btn btn-primary" id="salveazaProgramarea"> Adauga heredocolaterala</button>
-                <input type="hidden" name="pacientid" id="pacientid">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" name="adaugaPersonale" id="adaugaPersonale" tabindex="-1" role="dialog" aria-labelledby="adaugaProgramareLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"> Close</span></button>
-                <h4 class="modal-title" id="editeazaPersonaleLabel"> Aici adaugi APP pentru {{ pacient.nume }}</h4>
-            </div>
-            <div class="modal-body">
-                <form method="post" class="form-horizontal" role="form">
-                    
-                    <div class="form-group">
-                        <label for="boala">Boala:</label>
-                        <input type="text" name="boala" id="boala" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="data-diagnostic"> Data depsitarii</label>
-                        <input type="text" name="data-diagnostic" class="form-control" id="data-diagnostic">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tratament"> Ce buline ia </label>
-                        <input type="text" name="tratament" class="form-control">
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunţă </button>
-                <button value="submit" type="submit" class="btn btn-primary" id="salveazaProgramarea"> Adauga heredocolaterala</button>
-                <input type="hidden" name="pacientid" id="pacientid">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 {% endblock %}
 
