@@ -8,3 +8,4 @@ lista('GET',[]) ->
 cauta('GET', [Diagnostic]) ->
     Diagnostice = boss_db:find(icd10, [{diagnostic, 'matches', Diagnostic}]),
     {json, [{diagnostice, Diagnostice}]}.
+

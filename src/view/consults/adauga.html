@@ -3,12 +3,30 @@
 {% block title %} Adaugă un consult pentru {{ pacient.nume }} {{ pacient.prenume }}{% endblock %}
 {% block body %}
 <link ref="stylesheet" href="/static/app/css/datepicker.css">
+<script type="text/javascript" src="/static/app/js/moment-with-locales.js"></script>
+<script type="text/javascript" src="/static/app/js/bootstrap3-typeahead.js"></script>
 <script type="text/javascript">
         $(document).ready(function () {
             $('#programariPicker').datetimepicker({
                 pickTime: false,
                 language: "ro"
                 });
+            $('#search-icd').typeahead({
+                            source: function(request, process) {
+                                $.ajax({
+                                    url: "/icd/cauta/"+request,
+                                    dataType: "json",
+                                    success: function(data){
+                                        //console.log(data.diagnostice);
+                                        return process(data.diagnostice);} //in mod ciudat data nu ajunge la displayText....whyyyyyy?
+                                    })},
+                            displayText: function (item) {
+                                console.log(item);
+                                return item.diagnostic; //this b0rkes jquery rau
+                                },
+                            items: 3
+                                });
+            
             $("#adaugaHeredocolaterale").on("submit", function(e){
                 e.preventDefault();
                 var submitButton = $(this);
@@ -107,12 +125,14 @@
             </div>
             <div class="modal-body">
                 <form method="post" class="form-inline" role="form">
+                    
                     <div class="form-group">
                         <label for="ruda">Ruda</label>
                         <input type="text" class="form-control" name="ruda">
                     </div>
                     <div class="form-group">
                         <label for="boala">Boala:</label>
+                        <input id="search-icd" class="form-control" type="text" placeholder="cata boli in icd" autocomplete="off"/>
                         <input type="text" name="boala" class="form-control">
                     </div>
             </div>
@@ -138,7 +158,7 @@
                     
                     <div class="form-group">
                         <label for="boala">Boala:</label>
-                        <input type="text" name="boala" class="form-control">
+                        <input type="text" name="boala" id="boala" class="form-control">
                     </div>
 
                     <div class="form-group">
