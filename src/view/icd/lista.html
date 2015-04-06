@@ -4,6 +4,10 @@
 {% block body %}
 <script type="text/javascript" src="/static/app/js/icd/lista.js"></script>
     {% include "pacient/jumbotron.html" %}
+    <div class="container">
+        <button type="button" class="btn btn-primary" > Genereaza Cnp</button><br />
+    </div>
+    <div class="container-fluid">
     Alege tipul de diagnostic<br />
     <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary active">
@@ -58,6 +62,7 @@
         <td> Nu există coduri</td>
     </tr>
     {% endif %}
+</div>
 
 {% endblock %}
 
