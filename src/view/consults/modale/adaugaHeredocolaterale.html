@@ -14,13 +14,13 @@
                     </div>
                     <div class="form-group">
                         <label for="boala">Boala:</label>
-                        <input id="search-icd" class="form-control" type="text" placeholder="cata boli in icd" autocomplete="off"/>
+                        <input name="boala" id="search-icd" class="form-control" type="text" placeholder="cata boli in icd" autocomplete="off"/>
                     </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"> Renunţă </button>
                 <button value="submit" type="submit" class="btn btn-primary" id="salveazaProgramarea"> Adauga heredocolaterala</button>
-                <input type="hidden" name="pacientid" id="pacientid">
+                <input type="hidden" name="pacientid" id="{{ pacient.id}}">
                 </form>
             </div>
         </div>

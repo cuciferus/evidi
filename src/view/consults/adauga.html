@@ -18,11 +18,10 @@
                         url:"/ruda/cauta/"+request,
                         dataType: "json",
                         success: function(data) {
-                            console.log(data);
-                            return process(data.rude);}//sau cum so fi numinda
+                            return process(data.rude);}
                             })},
                         displayText: function(item) {
-                            return item.nume; //sau ceva
+                            return item.nume; 
                             },
                             items:3,
                             delay: 2,
@@ -37,7 +36,6 @@
                                         return process(data.diagnostice);} 
                                     })},
                             displayText: function (item) {
-                                console.log(item);
                                 return item.diagnostic; 
                                 },
                             items: 3,

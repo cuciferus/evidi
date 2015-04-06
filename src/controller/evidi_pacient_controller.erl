@@ -58,8 +58,10 @@ adaugaHeredocolaterala('GET',[Id]) ->
     {ok, [{pacient, Pacient}]};
 adaugaHeredocolaterala('POST', [Id]) ->
     Ruda = Req:post_param("ruda"),
+    RudaId = boss_db:find_first(ruda, [{nume,'equals',Ruda}]),
     Boala = Req:post_param("boala"),
-    HeredoNou = heredocolaterale:new(id, Ruda, Boala, Id),
+    BoalaId = boss_db:find_first(icd10,[{diagnostic, 'equals',Boala}]), %am mai multe icd pam pam
+    HeredoNou = heredocolaterale:new(id, RudaId:id(), BoalaId:id(), Id),
     {ok, HeredoSalvat} = HeredoNou:save(),
     {redirect,[{action, "lista"}]}.
 
