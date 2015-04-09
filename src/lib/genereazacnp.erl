@@ -59,8 +59,9 @@ genereaza_zi(An, Luna) -> % zi depinde de luna si de an bisect au ba
 genereaza_ultimele_cifre_an_curent() ->
     {{An,_,_},_} = calendar:local_time(),
     UltimeleCifreAn = An rem 100,
-    ListaAni = lists:seq(0, UltimeleCifreAn),
-    AnRandom = lists:nth(random:uniform(length(ListaAni)), ListaAni),
+    %ListaAni = lists:seq(0, UltimeleCifreAn),
+    %AnRandom = lists:nth(random:uniform(length(ListaAni)), ListaAni),
+    AnRandom = random:uniform(UltimeleCifreAn),
     AnRandomString = integer_to_list(AnRandom),
     case (length(AnRandomString) <2 ) of
         true ->
