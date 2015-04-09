@@ -2,6 +2,10 @@
 {% block title %} Caută un cod {% endblock %}
 <body>
 {% block body %}
+<div class="col-md-3">
+    <input type="hidden" name="timestamp" id="timestamp" value="{{ timestamp}}">
+</div>
+
 <script type="text/javascript" src="/static/app/js/icd/lista.js"></script>
     {% include "pacient/jumbotron.html" %}
     <div class="container">
