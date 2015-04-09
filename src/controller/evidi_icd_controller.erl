@@ -9,3 +9,7 @@ cauta('GET', [Diagnostic]) ->
     Diagnostice = boss_db:find(icd10, [{diagnostic, 'matches', Diagnostic}]),
     {json, [{diagnostice, Diagnostice}]}.
 
+genereazaCnp('GET',[]) -> %din pacate genereaza un singur cnp pa sesiune....
+    Cnp = genereazacnp:genereaza_data_valida(),
+    {json, [{cnp, Cnp}]}.
+

@@ -59,6 +59,15 @@ function populeazaEntry(Subcapitol) {
         });
         };
 
+function genereazaCnp() {
+    $.ajax("/icd/genereazaCnp/",{ success:
+           function(data, code, xhr){
+               $("#cnpRezult").val(data.cnp);
+    }});
+};
+
+
+
 $(document).ready(function(){
         $('input[name=icdselect]:radio').change(veziSelect);
         $('#cim10capitole').change(function() {
@@ -69,6 +78,8 @@ $(document).ready(function(){
             });
         veziSelect();
         populeazaCapitole();
+        $('#genereazacnp').on('click', function() {
+            genereazaCnp();});
         $('#cautareDiagnostic').keyup(function(e){ 
             var diagnostic = $(this).val();
             if (diagnostic.length >=3){

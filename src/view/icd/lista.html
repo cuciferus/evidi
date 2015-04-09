@@ -9,7 +9,8 @@
 <script type="text/javascript" src="/static/app/js/icd/lista.js"></script>
     {% include "pacient/jumbotron.html" %}
     <div class="container">
-        <button type="button" class="btn btn-primary" > Genereaza Cnp</button><br />
+        <button type="button" class="btn btn-primary" id="genereazacnp"> Genereaza Cnp</button>
+        <input type="text" class="form-control" placeholder="aici se va genera un cnp" id="cnpRezult" disabled>
     </div>
     <div class="container-fluid">
     Alege tipul de diagnostic<br />
@@ -28,7 +29,7 @@
     <div class="form-group">
         <label for="cim10subcapitole"> alege un subcapitol:</label>
         <select class="form-control" id="cim10subcapitole">
-            <option> primul subcapitol</option>
+            <option> selecteaza un subcapitol</option>
         </select>
     </div>
     </div>
