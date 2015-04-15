@@ -35,7 +35,7 @@ regleaza_zi_mici(Zi) ->
     end.
 
 
-genereaza_zi(An, Luna) -> % zi depinde de luna si de an bisect au ba
+genereaza_zi(An, Luna) -> 
     case lists:member(Luna, ["01","03","05","07","08","10","12"]) of 
         true ->
             Zi = random:uniform(31),
@@ -46,7 +46,7 @@ genereaza_zi(An, Luna) -> % zi depinde de luna si de an bisect au ba
         false  when (Luna =="02") ->
             %an trebuie sa fie integer
             {AnNumeric,_}  = string:to_integer(An),
-            case calendar:is_leap_year(AnNumeric) of
+            case calendar:is_leap_year(AnNumeric) of %% solutia din js poate merge implementata si acilea
                 true ->
                     Zi = random:uniform(29),
                     regleaza_zi_mici(Zi);
@@ -59,8 +59,6 @@ genereaza_zi(An, Luna) -> % zi depinde de luna si de an bisect au ba
 genereaza_ultimele_cifre_an_curent() ->
     {{An,_,_},_} = calendar:local_time(),
     UltimeleCifreAn = An rem 100,
-    %ListaAni = lists:seq(0, UltimeleCifreAn),
-    %AnRandom = lists:nth(random:uniform(length(ListaAni)), ListaAni),
     AnRandom = random:uniform(UltimeleCifreAn),
     AnRandomString = integer_to_list(AnRandom),
     case (length(AnRandomString) <2 ) of
@@ -84,7 +82,7 @@ genereaza_nnn() ->
 
 
 
-genereaza_data_valida() ->
+genereaza_data_valida() -> %programu asta genereaza doar romani
     Lista = ["19","18","20"],
     CifreAn = lists:nth(random:uniform(3), Lista),
     case CifreAn  of

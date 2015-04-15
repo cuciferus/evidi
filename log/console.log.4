@@ -1,69 +1,83 @@
-2015-03-31 01:18:51.124 [notice] <0.737.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:18:51.223 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:18:51.250 [error] <0.737.0> GET /icd10/cauta [evidi] 404 0ms
-2015-03-31 01:18:58.363 [notice] <0.739.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:18:58.364 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:18:58.565 [notice] <0.739.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:18:58.565 [notice] <0.739.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2015-03-31 01:18:58.592 [error] <0.739.0>@boss_web_controller:call_controller_action:366 Error in controller error function_clause [{evidi_icd_controller,cauta,['GET',[],{evidi_icd_controller,{simple_bridge_request_wrapper,mochiweb_request_bridge,{mochicow_request,#Port<0.45128>,'GET',"/icd/cauta",'HTTP/1.1',{6,{"host",{"host","specialistu.no-ip.org:10111"},{"connection",{"connection","keep-alive"},{"accept",{"accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"},nil,{"accept-encoding",{"accept-encoding","gzip, deflate, sdch"},nil,{"accept-language",{"accept-language","en-US,en;q=0.8,ro;q=0.6,fr;q=0.4"},nil,nil}}},nil},{"user-agent",{"user-agent","Mozilla/5.0 (Linux; Android 4.4.2; LG-D605 Build/KOT49I.D60520a) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.109 Mobile Safari/537.36"},nil,nil}}},<<>>},false,[],[],none}}],[]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]},{boss_web_controller_handle_request,build_dynamic_response,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,122}]}]
-2015-03-31 01:18:58.593 [info] <0.739.0> GET /icd/cauta [evidi] 200 0ms
-2015-03-31 01:19:13.440 [notice] <0.741.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:19:13.450 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:19:13.454 [notice] <0.741.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:19:13.454 [notice] <0.741.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2015-03-31 01:19:13.774 [info] <0.741.0> GET /icd/lista [evidi] 200 0ms
-2015-03-31 01:19:14.870 [notice] <0.743.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:19:14.870 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:19:14.890 [notice] <0.743.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:19:14.890 [notice] <0.743.0>@boss_controller_adapter_pmod:action:92 Tokens []
-2015-03-31 01:19:14.895 [info] <0.743.0> GET /cim/capitole/ [evidi] 200 0ms
-2015-03-31 01:41:50.196 [notice] <0.745.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:41:50.196 [notice] <0.747.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:41:50.214 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:41:50.226 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:41:50.247 [notice] <0.745.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:41:50.247 [notice] <0.745.0>@boss_controller_adapter_pmod:action:92 Tokens ["*enc*"]
-2015-03-31 01:41:50.248 [notice] <0.747.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:41:50.248 [notice] <0.747.0>@boss_controller_adapter_pmod:action:92 Tokens ["*ence*"]
-2015-03-31 01:41:50.394 [info] <0.747.0> GET /icd/cauta/*ence* [evidi] 200 0ms
-2015-03-31 01:41:50.480 [info] <0.745.0> GET /icd/cauta/*enc* [evidi] 200 0ms
-2015-03-31 01:42:47.790 [notice] <0.750.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:42:47.791 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:42:47.795 [notice] <0.750.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:42:47.795 [notice] <0.750.0>@boss_controller_adapter_pmod:action:92 Tokens ["5"]
-2015-03-31 01:42:47.821 [info] <0.750.0> GET /cim/subcapitole/5/ [evidi] 200 0ms
-2015-03-31 01:42:55.276 [notice] <0.753.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:42:55.277 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:42:55.281 [notice] <0.753.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:42:55.281 [notice] <0.753.0>@boss_controller_adapter_pmod:action:92 Tokens ["89"]
-2015-03-31 01:42:55.309 [info] <0.753.0> GET /cim/entry/89/ [evidi] 200 0ms
-2015-03-31 01:43:11.246 [notice] <0.756.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:43:11.246 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:43:11.250 [notice] <0.756.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:43:11.250 [notice] <0.756.0>@boss_controller_adapter_pmod:action:92 Tokens ["*encef*"]
-2015-03-31 01:43:11.268 [info] <0.756.0> GET /cim/cauta/*encef* [evidi] 200 0ms
-2015-03-31 01:43:11.426 [notice] <0.758.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:43:11.426 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:43:11.430 [notice] <0.758.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:43:11.430 [notice] <0.758.0>@boss_controller_adapter_pmod:action:92 Tokens ["*encefa*"]
-2015-03-31 01:43:11.449 [info] <0.758.0> GET /cim/cauta/*encefa* [evidi] 200 0ms
-2015-03-31 01:43:11.646 [notice] <0.757.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:43:11.646 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:43:11.651 [notice] <0.757.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:43:11.651 [notice] <0.757.0>@boss_controller_adapter_pmod:action:92 Tokens ["*encefal*"]
-2015-03-31 01:43:11.671 [info] <0.757.0> GET /cim/cauta/*encefal* [evidi] 200 0ms
-2015-03-31 01:43:12.356 [notice] <0.759.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:43:12.356 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:43:12.379 [notice] <0.759.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:43:12.379 [notice] <0.759.0>@boss_controller_adapter_pmod:action:92 Tokens ["*encefali*"]
-2015-03-31 01:43:12.433 [info] <0.759.0> GET /cim/cauta/*encefali* [evidi] 200 0ms
-2015-03-31 01:43:12.696 [notice] <0.760.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:43:12.696 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:43:12.701 [notice] <0.760.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:43:12.701 [notice] <0.760.0>@boss_controller_adapter_pmod:action:92 Tokens ["*encefalit*"]
-2015-03-31 01:43:12.729 [info] <0.760.0> GET /cim/cauta/*encefalit* [evidi] 200 0ms
-2015-03-31 01:43:13.086 [notice] <0.761.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
-2015-03-31 01:43:13.086 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
-2015-03-31 01:43:13.122 [notice] <0.761.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
-2015-03-31 01:43:13.122 [notice] <0.761.0>@boss_controller_adapter_pmod:action:92 Tokens ["*encefalita*"]
-2015-03-31 01:43:13.163 [info] <0.761.0> GET /cim/cauta/*encefalita* [evidi] 200 0ms
+2015-04-10 20:17:58.801 [notice] <0.807.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:17:58.898 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:17:58.942 [info] <0.265.0>@boss_router_controller:route:171 Boss Route evidi "pacient" "lista" []
+2015-04-10 20:17:58.998 [notice] <0.807.0>@boss_compiler:compile:47 Compile file "/home/cuci/prostii/evidi/src/lib/genereazacnp.erl" with options [{out_dir,undefined},{include_dirs,["/home/cuci/prostii/evidi/include"]},{compiler_options,[{parse_transform,lager_transform},return_errors]}] 
+2015-04-10 20:17:59.225 [notice] <0.807.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:17:59.225 [notice] <0.807.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2015-04-10 20:17:59.558 [info] <0.807.0> GET / [evidi] 200 0ms
+2015-04-10 20:18:00.652 [notice] <0.812.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:00.653 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:00.679 [notice] <0.812.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:00.679 [notice] <0.812.0>@boss_controller_adapter_pmod:action:92 Tokens ["1428686279477644"]
+2015-04-10 20:18:00.860 [notice] <0.813.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:03.789 [notice] <0.814.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:03.824 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:03.837 [notice] <0.814.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:03.837 [notice] <0.814.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-1"]
+2015-04-10 20:18:03.886 [info] <0.814.0> GET /pacient/cauta/pacient-1 [evidi] 200 0ms
+2015-04-10 20:18:14.638 [notice] <0.817.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:14.638 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:14.669 [notice] <0.817.0>@boss_controller_adapter_pmod:action:91 Request Method 'POST'
+2015-04-10 20:18:14.669 [notice] <0.817.0>@boss_controller_adapter_pmod:action:92 Tokens ["pacient-1"]
+2015-04-10 20:18:15.514 [error] <0.817.0>@boss_web_controller:call_controller_action:366 Error in controller error undef [{utile,transforma_data,["22/04/2015"],[]},{evidi_pacient_controller,adaugaProgramare,3,[{file,"/home/cuci/prostii/evidi/src/controller/evidi_pacient_controller.erl"},{line,86}]},{boss_web_controller,call_controller_action,3,[{file,"src/boss/boss_web_controller.erl"},{line,363}]},{boss_web_controller,apply_action,4,[{file,"src/boss/boss_web_controller.erl"},{line,355}]},{boss_web_controller,execute_action_inner,9,[{file,"src/boss/boss_web_controller.erl"},{line,334}]},{boss_web_controller_handle_request,process_dynamic_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,242}]},{boss_web_controller_handle_request,process_request,4,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,228}]},{boss_web_controller_handle_request,set_timer,7,[{file,"src/boss/boss_web_controller_handle_request.erl"},{line,148}]}]
+2015-04-10 20:18:15.515 [info] <0.817.0> POST /pacient/adaugaProgramare/pacient-1 [evidi] 200 0ms
+2015-04-10 20:18:23.449 [notice] <0.819.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:23.471 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:23.489 [notice] <0.819.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:23.489 [notice] <0.819.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2015-04-10 20:18:23.514 [info] <0.819.0> GET /icd/lista [evidi] 200 0ms
+2015-04-10 20:18:23.983 [notice] <0.821.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:23.983 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:23.988 [notice] <0.821.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:23.988 [notice] <0.821.0>@boss_controller_adapter_pmod:action:92 Tokens []
+2015-04-10 20:18:23.992 [info] <0.821.0> GET /cim/capitole/ [evidi] 200 0ms
+2015-04-10 20:18:37.445 [notice] <0.826.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:37.446 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:37.450 [notice] <0.826.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:37.450 [notice] <0.826.0>@boss_controller_adapter_pmod:action:92 Tokens ["4"]
+2015-04-10 20:18:38.205 [info] <0.826.0> GET /cim/subcapitole/4/ [evidi] 200 0ms
+2015-04-10 20:18:40.831 [notice] <0.828.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:40.831 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:40.836 [notice] <0.828.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:40.836 [notice] <0.828.0>@boss_controller_adapter_pmod:action:92 Tokens ["241"]
+2015-04-10 20:18:40.875 [info] <0.828.0> GET /cim/entry/241/ [evidi] 200 0ms
+2015-04-10 20:18:47.630 [notice] <0.830.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:47.637 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:47.658 [notice] <0.830.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:47.658 [notice] <0.830.0>@boss_controller_adapter_pmod:action:92 Tokens ["*ins*"]
+2015-04-10 20:18:47.682 [notice] <0.832.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:47.782 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:47.848 [notice] <0.834.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:47.915 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:47.960 [notice] <0.832.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:47.960 [notice] <0.832.0>@boss_controller_adapter_pmod:action:92 Tokens ["*insu*"]
+2015-04-10 20:18:48.054 [notice] <0.834.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:48.054 [notice] <0.834.0>@boss_controller_adapter_pmod:action:92 Tokens ["*insuf*"]
+2015-04-10 20:18:48.151 [info] <0.830.0> GET /icd/cauta/*ins* [evidi] 200 0ms
+2015-04-10 20:18:48.326 [info] <0.834.0> GET /icd/cauta/*insuf* [evidi] 200 0ms
+2015-04-10 20:18:48.339 [info] <0.832.0> GET /icd/cauta/*insu* [evidi] 200 0ms
+2015-04-10 20:18:48.619 [notice] <0.836.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:48.620 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:48.624 [notice] <0.836.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:48.624 [notice] <0.836.0>@boss_controller_adapter_pmod:action:92 Tokens ["*insufi*"]
+2015-04-10 20:18:48.639 [info] <0.836.0> GET /icd/cauta/*insufi* [evidi] 200 0ms
+2015-04-10 20:18:48.693 [notice] <0.838.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:48.693 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:48.697 [notice] <0.838.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:48.697 [notice] <0.838.0>@boss_controller_adapter_pmod:action:92 Tokens ["*insufif*"]
+2015-04-10 20:18:48.762 [info] <0.838.0> GET /icd/cauta/*insufif* [evidi] 200 0ms
+2015-04-10 20:18:49.193 [notice] <0.840.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:49.193 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:49.197 [notice] <0.840.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:49.197 [notice] <0.840.0>@boss_controller_adapter_pmod:action:92 Tokens ["*insufif*"]
+2015-04-10 20:18:49.210 [info] <0.840.0> GET /icd/cauta/*insufif* [evidi] 200 0ms
+2015-04-10 20:18:49.326 [notice] <0.842.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:18:49.327 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:18:49.330 [notice] <0.842.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:18:49.331 [notice] <0.842.0>@boss_controller_adapter_pmod:action:92 Tokens ["*insufi*"]
+2015-04-10 20:18:49.334 [info] <0.842.0> GET /icd/cauta/*insufi* [evidi] 200 0ms
+2015-04-10 20:19:02.172 [notice] <0.844.0>@boss_web_controller_handle_request:handle_request:23 ApplicationForPath evidi
+2015-04-10 20:19:02.173 [info] <0.265.0> Loading routes from "/home/cuci/prostii/evidi/priv/evidi.routes" ....
+2015-04-10 20:19:02.177 [notice] <0.844.0>@boss_controller_adapter_pmod:action:91 Request Method 'GET'
+2015-04-10 20:19:02.177 [notice] <0.844.0>@boss_controller_adapter_pmod:action:92 Tokens ["*insufic*"]
+2015-04-10 20:19:02.220 [info] <0.844.0> GET /cim/cauta/*insufic* [evidi] 200 0ms
