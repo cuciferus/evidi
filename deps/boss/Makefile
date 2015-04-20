@@ -2,6 +2,8 @@
 PREFIX:=../
 DEST:=$(PREFIX)$(PROJECT)
 ERL=erl
+GIT = git
+REBAR_VER = 2.5.1
 REBAR=./rebar
 SESSION_CONFIG_DIR=priv/test_session_config
 
@@ -44,11 +46,19 @@ app:
 	@echo ""
 	@echo "Your new app is created. You should head over there now:"
 	@echo ""
-	@echo "    cd ../$(PROJECT)"
+	@echo "    cd $(DEST)"
 	@echo ""
 	@echo "***********************************************************************"
 	@echo ""
-	
+
+rebar_src:
+	@rm -rf $(PWD)/rebar_src
+	@$(GIT) clone git://github.com/rebar/rebar.git rebar_src
+	@$(GIT) -C rebar_src checkout tags/$(REBAR_VER)
+	@cd $(PWD)/rebar_src/; ./bootstrap
+	@cp $(PWD)/rebar_src/rebar $(PWD)
+	@cp $(PWD)/rebar_src/rebar $(PWD)/skel
+	@rm -rf $(PWD)/rebar_src
 
 get-deps:
 	@$(REBAR) get-deps
@@ -76,6 +86,7 @@ rebarize:
 	@chmod +x $(APPDIR)/init.sh
 	@cp skel/init-dev.sh $(APPDIR)
 	@chmod +x $(APPDIR)/init-dev.sh
+	@cp skel/boss.config.* $(APPDIR)
 	@cp skel/rebar $(APPDIR)
 	@chmod +x $(APPDIR)/rebar
 	@cp skel/rebar.config $(APPDIR)

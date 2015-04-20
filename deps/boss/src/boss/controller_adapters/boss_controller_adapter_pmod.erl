@@ -88,15 +88,14 @@ action({_, ExportStrings} = Info, RequestContext) ->
     Tokens		= proplists:get_value(tokens, RequestContext),
     AuthInfo		= proplists:get_value('_before', RequestContext, RequestContext),
     ActionAtom          = list_to_atom(Action),
-    lager:notice("Request Method ~p~n", [RequestMethod]),
-    lager:notice("Tokens ~p", [Tokens]),
+    lager:notice("Request Method: ~p, Tokens: ~p", [RequestMethod, Tokens]),
     case proplists:get_value(Action, ExportStrings) of
         3 ->
             ControllerInstance:ActionAtom(RequestMethod, Tokens);
         4 ->
             ControllerInstance:ActionAtom(RequestMethod, Tokens, AuthInfo);
         _ ->
-	    {CMod, _} = ControllerInstance,
+	    CMod = element(1, ControllerInstance),
 	    lager:notice("[ChicagoBoss] The function ~p:~s/2 is not exported, "++
 			 "if in doubt add -export([~s/2])) to the module",
 			 [CMod, Action, Action]),
