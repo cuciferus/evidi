@@ -1,6 +1,6 @@
 -module(city, [Id, Cod, Nume, JudetId, CityTypeId]).
 -compile(export_all).
 -belongs_to(judet).
--belongs_to(city_type).
+-belongs_to(citytype).
 -table("city").
 -has({stradas, many}).

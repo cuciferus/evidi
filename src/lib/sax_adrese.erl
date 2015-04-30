@@ -118,7 +118,7 @@ cauta_city_type(CodTypeJudet) -> %am uitat sa salvez city type????
 
 parse_adresa() ->
     init_adrese(),
-    xmerl_sax_parser:file(?XML,[
+    xmerl_sax_parser:file(?XML,[ %aici de aruncat eroare daca nu e fisieru
             {event_fun,
              fun
              ({startElement, _,"Country",_Ceva, [{_,_,"code", Codu}, {_,_,"name", Numele}]}, _Location, _State) ->
