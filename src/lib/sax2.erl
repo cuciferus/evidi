@@ -17,6 +17,7 @@ init() ->
     mnesia:create_table(cim10entry, [{type, bag},
             {attributes, record_info(fields, cim10entry)}]).
 
+
 insert_cim_capitol(Cod, Capitol) ->%inutil, doar de distractie
     Fun = fun() ->
             mnesia:write(
@@ -44,14 +45,6 @@ insert_cim_entry(Cod, Nume, Subcapitol) ->
     mnesia:transaction(Fun).
 
 
-cauta_cim_subcapitol_altfel(Capitol) -> cauta_cim_subcapitol_altfel(Capitol,[]). 
-cauta_cim_subcapitol_altfel([], Acc) -> Acc;
-cauta_cim_subcapitol_altfel([H|T], Acc) ->
-    {Cod, Id} = H,
-    Capitole = do(qlc:q([{X#cim10subcapitol.nume, X#cim10subcapitol.cod} || X<- mnesia:table(cim10subcapitol), X#cim10subcapitol.cim10capitol_id ==Cod])),
-    salveaza_subcapitole(Id, Capitole),
-    cauta_cim_subcapitol_altfel(T, [Capitole, Acc]). 
-
 cauta_entry(Subcapitol) -> 
     %asta e un boss_db obiect...unu doar   
     Entriuri = do(qlc:q([{X#cim10entry.nume, X#cim10entry.cod} || X<-mnesia:table(cim10entry), X#cim10entry.cim10subcapitol_id == Subcapitol:cod()])),
@@ -65,6 +58,21 @@ salveaza_entriuri(NrSubcapitol, [Entry|Restu]) ->
     salveaza_entriuri(NrSubcapitol, Restu).
 
 
+
+
+citeste_capitolele() -> 
+    Capitole = [{binary_to_list(Cod), Id} || {cim10capitol, Id, Cod,_} <- boss_db:find(cim10capitol, [])],
+    cauta_cim_subcapitol_altfel(Capitole).
+
+cauta_cim_subcapitol_altfel(Capitol) -> cauta_cim_subcapitol_altfel(Capitol,[]). 
+cauta_cim_subcapitol_altfel([], Acc) -> Acc;
+cauta_cim_subcapitol_altfel([H|T], Acc) ->
+    {Cod, Id} = H,
+    Capitole = do(qlc:q([{X#cim10subcapitol.nume, X#cim10subcapitol.cod} || X<- mnesia:table(cim10subcapitol), X#cim10subcapitol.cim10capitol_id ==Cod])),
+    salveaza_subcapitole(Id, Capitole),
+    cauta_cim_subcapitol_altfel(T, [Capitole, Acc]). 
+
+
 salveaza_subcapitole(_NrCapitol, []) ->ok;
 salveaza_subcapitole(NrCapitol, [Subcapitol|Restu]) -> 
     {Nume, Cod} = Subcapitol,
@@ -74,16 +82,13 @@ salveaza_subcapitole(NrCapitol, [Subcapitol|Restu]) ->
     salveaza_subcapitole(NrCapitol, Restu).
 
 
-citeste_capitolele() -> 
-    Capitole = [{binary_to_list(Cod), Id} || {cim10capitol, Id, Cod,_} <- boss_db:find(cim10capitol, [])],
-    cauta_cim_subcapitol_altfel(Capitole).
 
-
-parse_icds_mnesia() -> %todo poate si medicamentele?
+parse_icds_mnesia() -> %xml de la  pnuri nu are codurile cim pam pam, nomenclatorulClinice le are
     xmerl_sax_parser:file(?XML, [
             {event_fun,
              fun
                     ({startElement, _, "Cim10", _Ceva, [{_,_,"code", Codu}, {_,_,"name", Numele}, {_,_, "entityLevel", "0"}]}, _Location, _State) ->
+                     %%<Cim10  code="5_111_F40.01" name="Agorafobie cu tulburare de panica,-1,0,0,0,0,0" entityLevel="2" parentCode="5_111"/>
                         CimiCapitol = cim10capitol:new(id, Codu, Numele),
                         {ok, _} = CimiCapitol:save();
                     ({startElement, _, "Cim10", _Ceva, [{_,_,"code", Cod_aiurea}, {_,_, "name", Numele}, {_,_, "entityLevel", "1"}, _ParentCode]}, _Location, _State) -> %parentcode e de cacat
@@ -97,7 +102,6 @@ parse_icds_mnesia() -> %todo poate si medicamentele?
                         State
                 end}
             ]).
-
 do(Q) ->
     F = fun() -> qlc:e(Q) end,
     {atomic, Val} = mnesia:transaction(F),

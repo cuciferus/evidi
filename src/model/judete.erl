@@ -1,0 +1,4 @@
+-module(judete, [Id, Nume, Cod, TariId]).
+-compile(export_all).
+-belongs_to(tari).
+-table("judete").

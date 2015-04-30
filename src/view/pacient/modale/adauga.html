@@ -1,4 +1,5 @@
 <div class="modal fade" name="adaugaPacientModal" id="adaugaPacientModal" tabindex="-1" role="dialog" aria-labelledby="adaugaPacientLabel" aria-hidden="true">
+<script type="text/javascript" src="/static/app/js/adresa.js"></script>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,27 +7,28 @@
                 <h4 class="modal-title" id="adaugaPacientLabel"> Adauga pacient in evidenta</h4>
             </div>
             <div class="modal-body">
-                <form method="post" class="form" role="form">
+                <form method="post" class="form-inline" role="form">
                     <div class="form-group">
                         <label for="nume">Nume:</label>
                         <input type="text" class="form-control" id="numelepacientului" name="nume" >
-                    </div>
-                    <div class="form-group">
                         <label for="prenume">Prenume:</label>
-                        <input type="text" name="prenume" class="form-control"></textarea>
+                        <input type="text" name="prenume" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="cnp"> Cod numeric Personal</label>
+                        <label for="cnp"> CNP </label>
                         <input type="text" name="cnp" class="form-control" id="cnp">
-                    </div>
-                    <div class="form-group">
-                        <label for="adresa"> Adresa:</label>
-                        <input type="text" name="adresa" id="adresa" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label for="telefon"> Telefon:</label>
                         <input type="text" name="telefon" id="telefon" class="form-control">
                     </div>
+                    <div class="form-group">
+                        <label > Adresa:</label>
+                        <label> Tara: </label>
+                        <select id="tara">
+                        </select>
+
+
+                    </div>
+                    
 
             </div>
             <div class="modal-footer">

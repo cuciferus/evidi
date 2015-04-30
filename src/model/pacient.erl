@@ -1,10 +1,11 @@
--module(pacient, [Id, Nume, Prenume, Cnp, Adresa, Telefon]).
+-module(pacient, [Id, Nume, Prenume, Cnp,  Telefon]).
 -compile(export_all).
 -has({heredocolaterales, many}).
 -has({personales, many}).
 -has({programares, many}).
 -has({consults, many}).
 -has({screenings, many}).
+-has({adresas, many}).
 
 
 after_update() ->

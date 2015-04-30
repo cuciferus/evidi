@@ -1,0 +1,6 @@
+-module(adresa, [Id, TariId, JudeteId, CityId, StradaId]).
+-compile(export_all).
+-belongs_to(Tari).
+-belongs_to(Judete).
+-belongs_to(City).
+-belongs_to(Street).

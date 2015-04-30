@@ -1,0 +1,3 @@
+-module(tari,[Id, Nume, Cod]).
+-compile(export_all).
+-table("tari").
