@@ -1,0 +1,20 @@
+2015-05-04 15:25:37 =SUPERVISOR REPORT====
+     Supervisor: {<0.115.0>,poolboy_sup}
+     Context:    shutdown_error
+     Reason:     shutdown
+     Offender:   [{nb_children,16},{name,boss_session_controller},{mfargs,{boss_session_controller,start_link,[[{name,{local,boss_session_pool}},{worker_module,boss_session_controller},{size,20},{max_overflow,40},{adapter,boss_session_adapter_mock},{session_exp_time,525600},{session_key,"_boss_session"}]]}},{restart_type,temporary},{shutdown,5000},{child_type,worker}]
+
+2015-05-04 15:28:09 =SUPERVISOR REPORT====
+     Supervisor: {<0.115.0>,poolboy_sup}
+     Context:    shutdown_error
+     Reason:     shutdown
+     Offender:   [{nb_children,12},{name,boss_session_controller},{mfargs,{boss_session_controller,start_link,[[{name,{local,boss_session_pool}},{worker_module,boss_session_controller},{size,20},{max_overflow,40},{adapter,boss_session_adapter_mock},{session_exp_time,525600},{session_key,"_boss_session"}]]}},{restart_type,temporary},{shutdown,5000},{child_type,worker}]
+
+2015-05-04 15:42:45 =SUPERVISOR REPORT====
+     Supervisor: {<0.115.0>,poolboy_sup}
+     Context:    shutdown_error
+     Reason:     shutdown
+     Offender:   [{nb_children,15},{name,boss_session_controller},{mfargs,{boss_session_controller,start_link,[[{name,{local,boss_session_pool}},{worker_module,boss_session_controller},{size,20},{max_overflow,40},{adapter,boss_session_adapter_mock},{session_exp_time,525600},{session_key,"_boss_session"}]]}},{restart_type,temporary},{shutdown,5000},{child_type,worker}]
+
+2015-05-04 15:43:34 =ERROR REPORT====
+GET /adresa/getCountries [evidi] 404 0ms
