@@ -1,3 +1,3 @@
--module(tari,[Id, Nume, Cod]).
+-module(tari,[Id, Cod, Nume]).
 -compile(export_all).
 -table("tari").

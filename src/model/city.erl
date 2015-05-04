@@ -1,4 +1,4 @@
--module(city, [Id, Cod, Nume, JudetId, CityTypeId]).
+-module(city, [Id, Cod, Nume, JudetId, CitytypeId]).
 -compile(export_all).
 -belongs_to(judet).
 -belongs_to(citytype).

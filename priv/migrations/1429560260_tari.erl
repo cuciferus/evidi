@@ -33,6 +33,7 @@ CREATE TABLE stradatype(
 CREATE TABLE strada(
     id serial unique,
     nume text,
+    cod text,
     city_id integer,
     stradatype_id text);".
 
