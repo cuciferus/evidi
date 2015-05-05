@@ -19,3 +19,9 @@
 2015-05-04 15:42:50.462 [error] <0.95.0>@boss_load:compile_and_accumulate_errors:258 Compile Error, "src/model/adresa.erl" -> [{"/home/cuci/prostii/evidi/src/model/adresa.erl",[{4,erl_parse,"bad attribute"},{5,erl_parse,"bad attribute"},{6,erl_parse,"bad attribute"},{7,erl_parse,"bad attribute"}]}]
 2015-05-04 15:42:50.703 [error] <0.95.0>@boss_load:make_all_modules:88 Load Module Error model_modules : [[{"/home/cuci/prostii/evidi/src/model/adresa.erl",[{4,erl_parse,"bad attribute"},{5,erl_parse,"bad attribute"},{6,erl_parse,"bad attribute"},{7,erl_parse,"bad attribute"}]}]]
 2015-05-04 15:43:34.218 [error] <0.321.0> GET /adresa/getCountries [evidi] 404 0ms
+2015-05-04 15:47:35.238 [error] <0.328.0>@boss_load:compile_and_accumulate_errors:258 Compile Error, "src/lib/sax_adrese.erl" -> [{"/home/cuci/prostii/evidi/src/lib/sax_adrese.erl",[{{string,{7,14},"cim.hrl"},erl_parse,["syntax error before: ","macro_include_lib"]}]}]
+2015-05-04 15:47:35.333 [error] <0.328.0>@boss_load:compile_and_accumulate_errors:258 Compile Error, "src/lib/sax2.erl" -> [{"/home/cuci/prostii/evidi/src/lib/sax2.erl",[{{string,{5,14},"cim.hrl"},erl_parse,["syntax error before: ","macro_include_lib"]}]}]
+2015-05-04 15:47:54.020 [error] <0.337.0> GET /adresa/getCountries [evidi] 404 0ms
+2015-05-04 16:08:51.553 [error] <0.349.0> GET /adresa/getCountries [evidi] 404 0ms
+2015-05-04 16:09:04.844 [error] <0.361.0> GET /adresa/getCountries [evidi] 404 0ms
+2015-05-04 16:11:08.121 [error] <0.372.0> GET /adresa/populeazaTari/ [evidi] 404 0ms

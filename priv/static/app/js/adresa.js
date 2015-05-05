@@ -8,7 +8,15 @@ function populeazaTari() {
         });
     };
 
+function selecteazaDefault() {
+    $('#tara').val('ROMANIA').prop('selected',true);
+    console.log('salut');
+};
+
 $(document).ready(function(){
-    populeazaTari();
+        $('#adaugaPacientModal').on('shown.bs.modal', function(e) {
+        //populeazaTari();
+        //selecteazaDefault();
+    });
 });
 
