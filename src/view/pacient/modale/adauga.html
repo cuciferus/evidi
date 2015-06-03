@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"> Close</span></button>
-                <h4 class="modal-title" id="adaugaPacientLabel"> Adauga pacient in evidenta</h4>
+                <h4 class="modal-title" id="adaugaPacientLabel"> Adaugă pacient in evidentă</h4>
             </div>
             <div class="modal-body">
                 <form method="post" class="form-inline" role="form">
@@ -20,18 +20,28 @@
                         <label for="telefon"> Telefon:</label>
                         <input type="text" name="telefon" id="telefon" class="form-control">
                     </div>
-                    <div class="form-group">
-                        <label > Adresa:</label><br />
-                        <label for="tara"> Tara: </label>
-                        <select id="tara" class="form-control">
+                    <div class="form-group" id="adresa">
+                        <label > Adresă:</label><br />
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="strain"> Bifează dacă nu e român</label>
+                        </div>
+                        <br />
+                        <label for="tara"> Țară: </label>
+                        <select id="tara" class="form-control" disabled="disabled">
                             <option> România</option>
-                        </select>
-                        <label for="judet"> Județ</label>
-                        <select id="judet" class="form-control">
+                        </select><br />
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="provincie"> Bifează dacă e din provincie</label>
+                        </div>
+                        <br />
+                        <label for="judete"> Județ</label>
+                        <select id="judete" class="form-control" disabled="disabled">
                             <option> București</option>
                         </select>
                         <label for="oras"> Oraș</label>
-                        <select id="oras" class="form-control">
+                        <select id="oras" class="form-control" disabled="disabled">
                             <option> Sector 4</option>
                         </select><br/>
                         <label for="strada"> Strada</label>
@@ -44,8 +54,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunta </button>
-                <button value="submit" type="submit" class="btn btn-primary" id="adaugaPacient"> Adauga pacient</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunță </button>
+                <button value="submit" type="submit" class="btn btn-primary" id="adaugaPacient"> Adaugă pacient</button>
                 <input type="hidden" name="pacientid" id="pacientid">
                 </form>
             </div>
@@ -53,8 +63,77 @@
     </div>
 </div>
 
-
+<script type="text/javascript" src="static/app/js/bootstrap3-typeahead.js"></script>
 <script type="text/javascript">
+function populeazaTari() {
+    $.getJSON('/adresa/lista_tari', function(jd) {
+            var tari = jd.tari;
+            for (var i=0;i<tari.length; i++) {
+            var tara = '<option value="'+ tari[i].cod+'">'+tari[i].nume+'</option>';
+            $('#tara').append(tara);
+            }
+            });
+};
+
+function populeazaOrase(Judet){
+    $.getJSON('/adresa/populeaza_orase/'+Judet+'/', function(jd) {
+            $("#oras").prop("disabled", false);
+            var orase = jd.orase;
+            $("#oras option").remove();
+            for (var i=0; i<orase.length;i++) {
+            $("#oras").append('<option value="'+orase[i].cod+'">'+orase[i].nume+'</option>');
+            }
+            });
+};
+
+function populeazaJudete(Tara){
+    $.getJSON('/adresa/populeaza_judete/'+Tara+'/', function(jd){
+            var judete = jd.judete;
+            $("#judete option").remove();
+            for (var i=0; i< judete.length; i++){
+            $("#judete").append('<option value="'+judete[i].id+'">'+ judete[i].nume+'</option>');
+            }
+            });
+};
+
+  
+$("#strada").typeahead({ //data e goala
+source: function(request, process) {
+$.ajax({
+        url:"/adresa/cauta_strada/"+$("#oras").val()+"/"+request,
+        dataType: "json",
+        success: function(data) {
+        console.log(data);
+        return process(data.strazi);}
+        })},
+displayText: function(item){
+return item.nume;
+},
+items:3});
+
+
+$("#tara").change(function() {
+        populeazaJudete($('#tara').val());
+        });
+
+$("#strain").change(function() {
+        if ($("#strain").prop('checked')==true) {
+            $("#tara").prop("disabled", false);
+            };
+        });
+
+$("#provincie").change(function() {
+        if ($("#provincie").prop('checked') == true) {
+        $("#judete").prop("disabled", false);
+        populeazaJudete("salut");
+        };
+        });
+
+$("#judete").change(function() {
+            populeazaOrase($('#judete').val());
+                    });
+
+
 $("#adaugaPacientModal").on("submit", function(e){
     e.preventDefault();
     var submitButton = $(this);

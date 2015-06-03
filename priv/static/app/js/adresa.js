@@ -15,6 +15,8 @@ function selecteazaDefault() {
 
 $(document).ready(function(){
         $('#adaugaPacientModal').on('shown.bs.modal', function(e) {
+            $("#adresa").on('click',"#tara", populeazaTari());
+
         //populeazaTari();
         //selecteazaDefault();
     });
