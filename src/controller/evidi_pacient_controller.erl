@@ -29,12 +29,12 @@ cautaNume('GET', [Nume]) ->
 adauga('GET',[]) ->
     ok;
 adauga('POST',[]) ->
-    Nume = Req:post_param("nume"),
-    Prenume = Req:post_param("prenume"),
+    Nume = unicode:characters_to_binary(Req:post_param("nume")),
+    Prenume = unicode:characters_to_binary(Req:post_param("prenume")),
     CNP = Req:post_param("cnp"),
-    Adresa = Req:post_param("adresa"),
+    %Adresa = Req:post_param("adresa"), %pam pam adresa e belongs_to pacient
     Telefon = Req:post_param("telefon"),
-    PacientNou = pacient:new(id, Nume, Prenume, CNP, Adresa, Telefon),
+    PacientNou = pacient:new(id, Nume, Prenume, CNP, Telefon),
     {ok, SavedPacient} = PacientNou:save(),
     {redirect, [{action, "lista"}]}.
 
@@ -84,8 +84,8 @@ adaugaProgramare('POST',[Id]) -> %crapa daca nu are durata...prvent in view
     [Data, Ora]  = string:tokens(Req:post_param("data"), " "),
     {Durata,_} = string:to_integer(Req:post_param("durata")),
     ProgramareNoua = programare:new(id, utile:transforma_data(Data), utile:transforma_timp(Ora), Durata, Id),
-    {ok, SavedProrgamare} = ProgramareNoua:save(),
-    {redirect, [{action, "listaProgramari"}]}.
+    {ok, SavedProrgamare} = ProgramareNoua:save().
+    %{redirect, [{action, "listaProgramari"}]}.
 
 listaProgramari('GET',[]) ->
     Programari = boss_db:find(programare,[]),
