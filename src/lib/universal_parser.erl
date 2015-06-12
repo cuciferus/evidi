@@ -13,6 +13,7 @@ verifica_fisieru_xml() ->
     end.
 
 truncheaza_tabele() ->
+    boss_db:execute("truncate table icd10s"),
     boss_db:execute("truncate table cimcapitole"),
     boss_db:execute("truncate table cim_subcapitole"),
     boss_db:execute("truncate table cim_entry").
@@ -47,14 +48,26 @@ parse() ->
             %Subcapitol = lists:keyfind(Nivel1, 2, Cim10Subcapitole),
             %{ok, _} = cim10entry:new(id, Nivel2, Numele, Subcapitol:id()),
             {{Cim10SubCapitole, [{Nivel2, Numele, Nivel1}|Cim10Entry]}, Adrese};
-         ({startElement,_, "ICD10", _Ceva, [{_,_,"code", Cod}, {_,_, "name", Nume}, _validFrom]}, _Location, State) ->
-           %<ICD10  code="636" name="Deformatii dobandite ale degetelor mainilor si picioarelor" validFrom="2014-06-01"/>
-                 IcdNou = icd10:new(id, Cod, Nume),
-                 {ok, _} = IcdNou:save(),
-                 {State};
-            
- 
+         ({startElement, _, "ICD10", _Ceva, Atribute}, _Location, State) ->
+                 case length(Atribute) of
+                     3 ->
+                         [{_,_,"code",Cod}, {_,_,"name", Nume}, _ValidFrom] = Atribute,
+                         IcdNou = icd10:new(id, Cod, Nume),
+                         {ok, _} = IcdNou:save(),
+                         {State};
+                     4 ->
+                         [{_,_,"code", Cod}, {_,_,"name", Nume}, _ValidFrom,_categoriaBoala_sau_validTo] = Atribute,
+                         IcdNou = icd10:new(id, Cod, Nume),
+                         {ok, _} = IcdNou:save(),
+                         {State};
+                     5 -> 
+                         [{_,_,"code", Cod}, {_,_,"name", Nume}, _categorieBoala, _validFrom, _valiTo] = Atribute,
+                         IcdNou = icd10:new(id, Cod, Nume),
+                         {ok, _} = IcdNou:save(),
+                         {State}
+                 end;
 
+         
          %({startElement, _, "Country",_Ceva, [{_,_,"code",Cod}, {_,_,"name", Nume}]}, _Location, {Coduri, {Tari, Judete,Orase, TipOras, TipStrada}}) ->
                  %Tara = tari:new(id, Cod, unicode:characters_to_binary(Nume)),
                  %{ok, TaraSalvata} = Tara:save(),
