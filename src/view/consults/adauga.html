@@ -26,24 +26,29 @@
                             items:3,
                             delay: 2,
                             autoselect: true});
-
-            $('#search-icd').typeahead({
-                            source: function(request, process) {
-                                $.ajax({
-                                    url: "/icd/cauta/"+request,
-                                    dataType: "json",
-                                    success: function(data){
-                                        return process(data.diagnostice);} 
-                                    })},
-                            displayText: function (item) {
-                                return item.diagnostic; 
-                                },
-                            items: 3,
-                            delay: 2,
-                            autoSelect: true,
-                            minLength: 3
-                                });
+            var cautator = new Function("camp",
+                   " $(camp).typeahead({\
+                        source: function(request, process) {\
+                                $.ajax({\
+                                    url: '/icd/cauta/'+request,\
+                                    dataType: 'json',\
+                                    success: function(data){\
+                                        return process(data.diagnostice);} \
+                                    })},\
+                            displayText: function (item) {\
+                                return item.diagnostic; \
+                                },\
+                            items: 3,\
+                            delay: 2,\
+                            autoSelect: true,\
+                            minLength: 3\
+                                });");
+            cautator("#search-icd");
+            cautator("#boala");
             
+
+
+                        
             $("#adaugaHeredocolaterale").on("submit", function(e){
                 e.preventDefault();
                 var submitButton = $(this);
