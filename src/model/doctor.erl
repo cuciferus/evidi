@@ -1,0 +1,4 @@
+-module(doctor, [Id, Nume, Prenume, CodParafa, ClinicaId, SpecialitateId]).%meh de vazut ce mai trebuie
+-compile(export_all).
+-belongs_to(clinica).
+-belongs_to(specialitate).
