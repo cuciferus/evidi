@@ -16,12 +16,19 @@ truncheaza_tabele() ->
     boss_db:execute("truncate table icd10s"),
     boss_db:execute("truncate table cimcapitole"),
     boss_db:execute("truncate table cim_subcapitole"),
-    boss_db:execute("truncate table cim_entry").
+    boss_db:execute("truncate table cim_entry"),
+    boss_db:execute("truncate table atc1").
+
+truncheaza_ceva_tabele() ->
+    boss_db:execute(io_lib:format("truncate table ~s", [icd10s])).
+
+
 
 
 parse() ->
     verifica_fisieru_xml(),
     truncheaza_tabele(),
+
     xmerl_sax_parser:file(?XML, [ 
         {event_fun,
          fun
@@ -48,24 +55,61 @@ parse() ->
             %Subcapitol = lists:keyfind(Nivel1, 2, Cim10Subcapitole),
             %{ok, _} = cim10entry:new(id, Nivel2, Numele, Subcapitol:id()),
             {{Cim10SubCapitole, [{Nivel2, Numele, Nivel1}|Cim10Entry]}, Adrese};
-         ({startElement, _, "ICD10", _Ceva, Atribute}, _Location, State) ->
-                 case length(Atribute) of
-                     3 ->
-                         [{_,_,"code",Cod}, {_,_,"name", Nume}, _ValidFrom] = Atribute,
-                         IcdNou = icd10:new(id, Cod, Nume),
-                         {ok, _} = IcdNou:save(),
-                         {State};
+         %({startElement, _, "ICD10", _Ceva, Atribute}, _Location, State) ->
+                 %case length(Atribute) of
+                     %3 ->
+                         %[{_,_,"code",Cod}, {_,_,"name", Nume}, _ValidFrom] = Atribute,
+                         %IcdNou = icd10:new(id, Cod, Nume),
+                         %{ok, _} = IcdNou:save(),
+                         %{State};
+                     %4 ->
+                         %[{_,_,"code", Cod}, {_,_,"name", Nume}, _ValidFrom,_categoriaBoala_sau_validTo] = Atribute,
+                         %IcdNou = icd10:new(id, Cod, Nume),
+                         %{ok, _} = IcdNou:save(),
+                         %{State};
+                     %5 -> 
+                         %[{_,_,"code", Cod}, {_,_,"name", Nume}, _categorieBoala, _validFrom, _valiTo] = Atribute,
+                         %IcdNou = icd10:new(id, Cod, Nume),
+                         %{ok, _} = IcdNou:save(),
+                         %{State}
+                 %end;
+         ({startElement, _,"ATC", _Ceva, Atribute}, _Location, State) ->
+                 case length(Atribute) of %să pare că ATC level 1 nu are
+                                          3 ->
+                         [{_,_,"code", Cod}, {_,_,"description", Descriere}, {_,_,"validFrom",_ValidFrom}] = Atribute,
+                         case length(Cod) of 
+                             1 ->
+                                 boss_db:execute("insert into atc1 values ($1, $2)", [Cod, Descriere]),
+                                 {State};
+                             _ ->
+                                 AtcAiurea = atc_aiurea:new(id, unicode:characters_to_binary(Cod), unicode:characters_to_binary(Descriere)),
+                                 {ok, _} = AtcAiurea:save(),
+                                 {State}
+                         end;
                      4 ->
-                         [{_,_,"code", Cod}, {_,_,"name", Nume}, _ValidFrom,_categoriaBoala_sau_validTo] = Atribute,
-                         IcdNou = icd10:new(id, Cod, Nume),
-                         {ok, _} = IcdNou:save(),
-                         {State};
-                     5 -> 
-                         [{_,_,"code", Cod}, {_,_,"name", Nume}, _categorieBoala, _validFrom, _valiTo] = Atribute,
-                         IcdNou = icd10:new(id, Cod, Nume),
-                         {ok, _} = IcdNou:save(),
-                         {State}
+                         [{_,_,"code", Cod}, {_,_,"description", Descriere}, {_,_,"validFrom", _ValidFrom}, {_,_, "parentATC", ParentATC}] = Atribute,
+                         case length(Cod) of
+                             2 ->
+                                 boss_db:execute("insert into atc2 values ($1, $2, $3)", [Cod, Descriere, ParentATC]);
+                             3 ->
+                                 boss_db:execute("insert into atc3 values ($1, $2, $3)", [Cod, Descriere, ParentATC]);
+                             4 ->
+                                 boss_db:execute("insert into atc4 values ($1, $2, $3)", [Cod, Descriere, ParentATC]);
+                             5 ->
+                                 Atc = atc5:new(id, Cod, Descriere, ParentATC),
+                                 {ok, _} = Atc:save();
+                             _ ->
+                                 io:fwrite("salut ~p", [Atribute])
+                         end;
+                     _ ->
+                         io:fwrite("salut ~p", [Atribute])
                  end;
+
+
+
+
+
+
 
          
          %({startElement, _, "Country",_Ceva, [{_,_,"code",Cod}, {_,_,"name", Nume}]}, _Location, {Coduri, {Tari, Judete,Orase, TipOras, TipStrada}}) ->
@@ -129,6 +173,5 @@ salveazaEntry([{Nivel2, Numele, Nivel1}|Restu]) ->
     {ok, _} = Entry:save(),
     salveazaEntry(Restu);
 salveazaEntry([]) -> ok.
-
 
 
