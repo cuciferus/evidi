@@ -30,10 +30,7 @@
                 <label><input type="checkbox"> Afişează modul calendar</label>
             </div><br />
     </div>
-    <div class="col-md-3">
-        <p><a href="/programares/adauga"> Adauga programare</a></p>
-    </div><br/>
-
+    
 
     <table class="table table-hover" id="programari-list">
         <thead>
@@ -58,12 +55,14 @@
         </tr>
         {% endfor %}
         </tbody>
-    </table>
     {% else %}
     <tr>
         <td> Nu ai programari in data cerută <td>
             </tr>
+            </tbody>
     {% endif %}
+        </table>
+    <button type="button" class="btn btn-default" > Adaugă Pacient</button>
 {% endblock %}
 </body>
 </html>
