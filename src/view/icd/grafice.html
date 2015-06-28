@@ -8,11 +8,19 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-        <p> Aici 2-3 widgeturi de introdus datele</p>
+                     <div class="form-group">
+                        <label for="ruda">Valoare:</label>
+                        <input type="text" class="form-control" name="valoare" autocomplete="off" id="valoare" autocomplete="off"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="boala">Dată:</label>
+                        <input name="data-analiza" id="data-analiza" class="form-control" type="text"  autocomplete="off"/>
+                    </div>
+                    <button type="button" class="btn btn-primary"  id="adauga-valoare"> Adaugă valoare în grafic</button>
+       <p> Poate vreau mai multe analize pă același grafic</p>
 </div>
         <div class="col-md-8" >
             <canvas id="grafic-medical" width="400" height="400"></canvas>
-            <p> aici harta</p>
         </div>
 
     </div>
