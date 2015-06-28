@@ -1,0 +1,22 @@
+{% include "schelet.html" %}
+
+
+<body>{% block body %}
+<script type="text/javascript" src="/static/app/js/icd/grafice.js"></script>
+<script type="text/javascript" src="/static/app/js/Chart.js"></script>
+{% include "pacient/jumbotron.html" %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+        <p> Aici 2-3 widgeturi de introdus datele</p>
+</div>
+        <div class="col-md-8" >
+            <canvas id="grafic-medical" width="400" height="400"></canvas>
+            <p> aici harta</p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+</body>
