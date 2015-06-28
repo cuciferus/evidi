@@ -109,23 +109,6 @@ parse() ->
                                  %[An, Luna, Zi] = string:tokens(ValidFrom, "-"),
                  %ValidFromFinala = integer_to_list(An) ++ "-" ++ integer_to_list(Luna) ++ "-" ++ integer_to_list(Zi),
                  
-         %({startElement, _, "Drug", _Ceva, [{_,_,"code", Cod}, {_,_,"name", Nume}, {_,_,"presentationMode", PresentationMode},
-                                            %{_,_,"isNarcotic", Narcotic}, {_,_,"isFractional", Fractional}, {_,_, "isSpecial", Special}, {_,_, "isBrand", Brand},
-                                            %{_,_,"hasBioEchiv", AreBioEquiv}, {_,_,"qtyPerPackage", CantitatePerPachet}, {_,_, "pricePerPackage", PretPerPachet},
-                                            %{_,_,"wholeSalePricePerPackage", PretCuRidicata}, {_,_,"prescriptionMode", ModDePrezentare},
-                                            %{_,_,"validFrom", _ValidFrom},  {_,_,"activeSubstance", CodSubstantaActiva},
-                                            %{_,_,"concentration", CodConcentratie}, {_,_,"pharmaceuticalForm", CodFormaFarmaceutica},
-                                            %{_,_, "company", CompaniaProducatoare}, {_,_,"country", CodTara}, {_,_,"atc", CodAtc}]}, _Location, 
-                            %{Cim, Adrese, {Forme, Concentratii, Substante}}) -> %acest semnal nu e tras!!
-                 %Tara = boss_db:find_first([],[{cod,'equals', CodTara}]),
-                 %Atc = boss_db:find_first([], [{cod, 'equals', CodAtc}]),
-                 %{SubstantaActivaId, CodSubstantaActiva} = lists:keyfind(CodSubstantaActiva, 2, Substante),
-                 %{ConcentratieId, CodConcentratie} = lists:keyfind(CodConcentratie, 2, Concentratii),
-                 %{FormaFarmaceuticaId, CodFormaFarmaceutica} = lists:keyfind(CodFormaFarmaceutica, 2, Forme),
-                 %Drug = drug:new(id, Cod, Nume, PresentationMode, Narcotic, Fractional, Special, Brand, AreBioEquiv, CantitatePerPachet, PretPerPachet,
-                                 %PretCuRidicata, ModDePrezentare,CompaniaProducatoare,SubstantaActivaId, ConcentratieId, FormaFarmaceuticaId,  Tara:id(), Atc:id()),
-                 %{ok, _} = Drug:save(),
-                 %{Cim, Adrese, {Forme, Concentratii, Substante}};
         ({startElement, _, "Cim10", _Ceva, [{_,_,"code", Cod_aiurea}, {_,_, "name", Numele}, 
                                             {_,_, "entityLevel", "1"}, _ParentCode]}, _Location, {{Cim10SubCapitole, Cim10Entry}, Adrese, Medicamente}) -> 
             [Parintele, Codu] = string:tokens(Cod_aiurea, "_"),
