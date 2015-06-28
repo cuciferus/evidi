@@ -1,0 +1,2 @@
+-module(atc_aiurea, [Id,Cod, Descriere]).
+-compile(export_all).
