@@ -10,25 +10,25 @@
                 <form method="post" class="form-inline" role="form">
                     <div class="form-group">
                         <label for="nume">Nume:</label>
-                        <input type="text" class="form-control" id="numelepacientului" name="nume" >
+                        <input type="text" class="form-control" id="numelepacientului" name="nume" autocomplete="off">
                         <label for="prenume">Prenume:</label>
-                        <input type="text" name="prenume" class="form-control">
+                        <input type="text" name="prenume" class="form-control" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="cnp"> CNP </label>
-                        <input type="text" name="cnp" class="form-control" id="cnp">
+                        <input type="text" name="cnp" class="form-control" id="cnp" autocomplete="off">
                         <label for="telefon"> Telefon:</label>
-                        <input type="text" name="telefon" id="telefon" class="form-control">
+                        <input type="text" name="telefon" id="telefon" class="form-control" autocomplete="off">
                     </div>
                     <div class="form-group" id="adresa">
                         <label > Adresă:</label><br />
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" id="strain"> Bifează dacă nu e român</label>
+                            <input type="checkbox" id="strain"> Bifează dacă nu e român</label>
                         </div>
                         <br />
                         <label for="tara"> Țară: </label>
-                        <select id="tara" class="form-control" disabled="disabled">
+                        <select id="tara" name="tara" class="form-control" disabled="disabled">
                             <option> România</option>
                         </select><br />
                         <div class="checkbox">
@@ -37,25 +37,28 @@
                         </div>
                         <br />
                         <label for="judete"> Județ</label>
-                        <select id="judete" class="form-control" disabled="disabled">
+                        <select id="judete" name="judete" class="form-control" disabled="disabled">
                             <option> București</option>
                         </select>
                         <label for="oras"> Oraș</label>
-                        <select id="oras" class="form-control" disabled="disabled">
+                        <select id="oras" name="oras" class="form-control" disabled="disabled">
                             <option> București </option>
                         </select><br/>
                         <label for="strada"> Strada</label>
-                        <input type="text" name="strada" id="strada" class="form-control">
+                        <input type="text" name="strada" id="strada" class="form-control" autocomplete="off">
                         
 
 
-                    </div>
+                    </div><br />
                     
+                <button value="submit" type="submit" class="btn btn-warning pull-right" id="arataProgramare"> Adaugă și programare</button>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunță </button>
+                <button value="submit" type="submit" class="btn btn-warning pull-left" id="adaugaConsult"> Adaugă pacient și consult</button>
+
                 <button value="submit" type="submit" class="btn btn-primary" id="adaugaPacient"> Adaugă pacient</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunță </button>
                 <input type="hidden" name="pacientid" id="pacientid">
                 </form>
             </div>

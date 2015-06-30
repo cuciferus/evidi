@@ -14,8 +14,7 @@ populeaza_orase('GET',[JudetId]) ->
     {json, [{orase, Orase}]}.
 
 cauta_strada('GET',[Oras, Strada]) ->
-    Orasu= boss_db:find_first(city, [{cod,'equals', Oras}]),
-    Strazi = boss_db:find(strada, [{city_id,'equals',Orasu:id()}, {nume,'matches', Strada}]),
+    Strazi = boss_db:find(strada, [{city_id,'equals',Oras}, {nume,'matches', Strada}]),
     {json, [{strazi, Strazi}]}.
 
 

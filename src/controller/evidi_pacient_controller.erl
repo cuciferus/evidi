@@ -32,10 +32,14 @@ adauga('POST',[]) ->
     Nume = unicode:characters_to_binary(Req:post_param("nume")),
     Prenume = unicode:characters_to_binary(Req:post_param("prenume")),
     CNP = Req:post_param("cnp"),
-    %Adresa = Req:post_param("adresa"), %pam pam adresa e belongs_to pacient
     Telefon = Req:post_param("telefon"),
     PacientNou = pacient:new(id, Nume, Prenume, CNP, Telefon),
-    {ok, SavedPacient} = PacientNou:save(),
+    {ok, SavedPacient} = PacientNou:save(), %adresa ar trebui sa fie optionala
+    Tara = Req:post_param("tara"),
+    Judet = Req:post_param("judete"),
+    Oras = Req:post_param("oras"),
+    Strada = Req:post_param("strada"),
+    Adresa = adresa:new(id, Tara, Judet, Oras, Strada, SavedPacient:id()),
     {redirect, [{action, "lista"}]}.
 
 editeazaPersonale('GET', [Id]) ->
