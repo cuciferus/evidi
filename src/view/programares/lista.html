@@ -4,67 +4,71 @@
 <body>
 {% block body %}
 <script type="text/javascript" src="/static/app/js/programare/lista.js"></script>
+{% include "programares/modale/adaugaProgramare.html" %}
 
 
 
 <div class="jumbotron">
     <h3> Programările din data de</h3>
+    <h5>programările să fie pă doctor sau pa clinică</h5>
 </div>
-<div class="col-md-3">
-    <input type="hidden" name="timestamp" id="timestamp" value="{{ timestamp}}">
-</div>
-<div class="col-md-6">
-            <div class="row">
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="ieri"> Ieri</button>
-                    </span>
-                    <input type="text" class="form-control" value="{{ value|date}}" id="programariPicker" data-date-format="DD/MM/YYYY">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="maine"> Maine</button>
-                    </span>
-                </div>
-            </div>
-                
-                <label><input type="checkbox"> Afişează doar programările fără consult</label>
-                <label><input type="checkbox"> Afişează modul calendar</label>
-            </div><br />
+<div class="container">
+        <div class="col-md-3">
+            <input type="hidden" name="timestamp" id="timestamp" value="{{ timestamp}}">
     </div>
+        <div class="col-md-6">
+          <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" id="ieri"> Ieri</button>
+                        </span>
+                        <input type="text" class="form-control" value="{{ value|date}}" id="programariPicker" data-date-format="DD/MM/YYYY">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" id="maine"> Maine</button>
+                        </span>
+                    </div>
+                    
+            <label><input type="checkbox"> Afişează doar programările fără consult</label>
+            <label><input type="checkbox"> Afișează doar programul de lucru </label>
+    </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+        </div><br /> <hr>
+    <div>
+        <div class-"container">
+            <div class="col-md-3">
+                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaPacientModal"> Adauga pacient</button>
+             </div>
+         </div>
+         <div class="col-md-6">
+         </div>
+         <div class="col-md-3">
+             <button type="button" class="btn btn-warning"> Vezi Ziua</button>
+             <button type="button" class="btn btn-info"> Vezi Toata Săptămâna</button>
+         </div>
+ </div>
+
+ <hr>
+
+
+   
+<table class="table table-hover" id="programari-list">
+    <thead>
+        <tr>
+            <td> Ora</td>
+            <td> Numele Pacientului</td>
+            <td> Programări existente doar</td>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+</table>
     
-
-    <table class="table table-hover" id="programari-list">
-        <thead>
-        <tr>
-            <th> Ora Inceput</th>
-            <th> Ora Final</th>
-            <th> Nume </th>
-            <th> Prenume </th>
-            <th> Consult</th>
-        </tr>
-        </thead>
-        <tbody>
-
-    {% if programari %}
-        {% for programare in programari %}
-        <tr>
-            <td> {{ore}} </td>
-            <td> {{ programare.durata }} </td>
-            <td>  {{ programare.pacient.nume}} </td>
-            <td> {{ programare.pacient.prenume }}</td>
-            <td> <a href="/consults/adauga/{{ programare.pacient.id }}/{{ programare.id}}" class="btn btn-primary"> Adauga consult</a></td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    {% else %}
-    <tr>
-        <td> Nu ai programari in data cerută <td>
-            </tr>
-            </tbody>
-    {% endif %}
-        </table>
-    <button type="button" class="btn btn-primary" > Adaugă Pacient</button>
-    <button type="button" class="btn btn-warning" > Adaugă Programare</button>
 {% endblock %}
 </body>
 </html>
+
 

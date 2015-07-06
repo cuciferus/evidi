@@ -31,22 +31,49 @@ function iaProgramarileDinZiua(zi){
         var programari = jd.programari;
         var pacienti = jd.pacienti;
         var ore = jd.ore;
-        $('#programari-list tbody').empty();
-        if (programari.length !=0){
-            for (var i=0; i<programari.length; i++) {
-                var oraConsult = programari[i].ora;//convertesteOra(programari[i].ora);
-                $('#programari-list tbody').append('<tr><td> '+ oraConsult +'</td><td> '+ programari[i].durata + '</td><td>'+ pacienti[i].nume+'</td><td>'+ pacienti[i].prenume +'</td><td><a href="/consults/adauga/'+pacienti[i].id+'/'+programari[i].id +'"/ class="btn btn-primary"> Adauga consult</a></td><td>ce plm</td></tr>');
-            }}
-            else {
-                $('#programari-list tbody').append('<tr><td>Azi</td><td>nu</td><td>ai</td><td>programări</td><tr>');
-            }
-    });
-}
+        return ore;
+        }); 
+        };
 
+function faTabelulDeProgramariSaptamanal(zi) {
+    $('#programari-list tbody').empty();
+    var ora_deschidere = moment();
+    ora_deschidere.hour(9); ora_deschidere.minute(0);//aici va fi ora deschiderii programului
+    var ora_inchidere = moment();
+    ora_inchidere.hour(14); ora_inchidere.minute(0);//ora inchiderii programului
+    var ora_momentului = ora_deschidere;
+    while (moment.min(ora_momentului, ora_inchidere) == ora_momentului) {
+        $('#programari-list tbody'). append('<tr><td>'+ ora_momentului.hour()+':'+ ora_momentului.minute()+
+                '<td> programare luni</td> <td></td><td> programare miercuri</td><td></td></td>programare vineri</td><td></td><td></td><td></td></tr>');
+        ora_momentului.add(15,'m'); //aici durata unui consult
+    };
+    $('#programari-list tbody').append('</tbody></table>');
+    iaProgramarileDinZiua(zi);
 
+};
+
+    
+
+function faTabeluDeProgramari(zi){
+    iaProgramarileDinZiua(zi);
+    $('#programari-list tbody').empty();
+    var ora_deschidere = moment();
+    ora_deschidere.hour(9); ora_deschidere.minute(0);//aici va fi ora deschiderii programului
+    var ora_inchidere = moment();
+    ora_inchidere.hour(14); ora_inchidere.minute(0);//ora inchiderii programului
+    var ora_momentului = ora_deschidere;
+    while (moment.min(ora_momentului, ora_inchidere) == ora_momentului) { //inainte de buton verifica daca ai programari la ora respectiva
+        $('#programari-list tbody').append('<tr><td> '+ ora_momentului.hour()+':'+ ora_momentului.minute()+
+                '</td><td> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#adaugaProgramareOra" data-ora="'
+                +ora_momentului.hour()+'" data-minut="'+ ora_momentului.minute() +'"> Adaugă programare</button></td><td>scopul/durata/cnp</td></tr>');
+        ora_momentului.add(15,'m');
+    }
+};
 
 $(document).ready(function () {
-    $('#programariPicker').val(moment().format('DD/MM/YYYY'));
+    var azi = moment().format('DD/MM/YYYY');
+    $('#programariPicker').val(azi);
+    faTabeluDeProgramari(azi);
     $('#programariPicker').datetimepicker({
         pickTime: false,
         language: "ro",
@@ -54,7 +81,7 @@ $(document).ready(function () {
         }).on('dp.change', function (ev) {
             $('#programari-list tbody').empty();
             var dataZi = $('#programariPicker').val();
-            iaProgramarileDinZiua(dataZi);
+            faTabeluDeProgramari(dataZi);
             $(this).datetimepicker('hide');
         });
     $('#ieri').on('click', function(e){
@@ -62,6 +89,13 @@ $(document).ready(function () {
         Zi.subtract(1, 'days');
         $('#programariPicker').val((Zi.format('DD/MM/YYYY')));
         iaProgramarileDinZiua(Zi.format('DD/MM/YYYY'));
+        });
+    $('#adaugaProgramareOra').on('shown.bs.modal', function(e) {
+        var ora = $(e.relatedTarget).data('ora');
+        var minut = $(e.relatedTarget).data('minut');
+        //$(e.currentTarget).find('input[name="ora"]').val(ora+":"+minut);
+        console.log($('#adaugaProgramareOraLabel').text());
+        $('#adaugaProgramareOraLabel').html('Adaugă o programare la ora '+ora+":"+minut);
         });
 
     $('#maine').on('click', function(e){ 
