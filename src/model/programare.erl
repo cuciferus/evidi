@@ -1,4 +1,4 @@
--module(programare, [Id, Data, Ora,Durata, PacientId]).
+-module(programare, [Id, Data, Ora,Durata, PacientId]). %și poate și un scop(consult sau procedura)
 -compile(export_all).
 -belongs_to(pacient).
 

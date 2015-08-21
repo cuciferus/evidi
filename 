@@ -1,0 +1,39 @@
+               List of relations
+ Schema |         Name         | Type  | Owner 
+--------+----------------------+-------+-------
+ public | adresa               | table | cuci
+ public | atc1                 | table | cuci
+ public | atc2                 | table | cuci
+ public | atc3                 | table | cuci
+ public | atc4                 | table | cuci
+ public | atc5                 | table | cuci
+ public | atc_aiureas          | table | cuci
+ public | cim_capitole         | table | cuci
+ public | cim_entry            | table | cuci
+ public | cim_subcapitole      | table | cuci
+ public | cimcapitole          | table | cuci
+ public | city                 | table | cuci
+ public | city_type            | table | cuci
+ public | clinica              | table | cuci
+ public | concentrations       | table | cuci
+ public | dci                  | table | cuci
+ public | doctor               | table | cuci
+ public | drugs                | table | cuci
+ public | grade_medicale       | table | cuci
+ public | heredocolaterales    | table | cuci
+ public | icd10s               | table | cuci
+ public | judete               | table | cuci
+ public | pacients             | table | cuci
+ public | pharmaceutical_forms | table | cuci
+ public | programares          | table | cuci
+ public | rude                 | table | cuci
+ public | schema_migrations    | table | cuci
+ public | specialitate         | table | cuci
+ public | specialitati         | table | cuci
+ public | strada               | table | cuci
+ public | stradatype           | table | cuci
+ public | streettype           | table | cuci
+ public | substanta_activa     | table | cuci
+ public | tari                 | table | cuci
+(34 rows)
+

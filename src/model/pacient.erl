@@ -1,4 +1,4 @@
--module(pacient, [Id, Nume, Prenume, Cnp,  Telefon]).
+-module(pacient, [Id, Nume, Prenume, Cnp]).
 -compile(export_all).
 -has({heredocolaterales, many}).
 -has({personales, many}).

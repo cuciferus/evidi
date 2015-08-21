@@ -1,4 +1,4 @@
--module(evidi_pacient_controller, [Req]). %trebuie sa rezolv cu formatul de data cumva, eu vreau european postgres nu
+-module(evidi_pacient_controller, [Req]). 
 -compile(export_all).
 
 lista('GET', []) ->

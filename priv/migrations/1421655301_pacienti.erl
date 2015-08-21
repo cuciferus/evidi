@@ -4,8 +4,7 @@ UpSQL = " CREATE TABLE pacients(
     nume text,
     prenume text,
     cnp text,
-    adresa text,
-    telefon text);
+    adresa text);
 ".
 DownSQL = "DROP TABLE pacients;".
     

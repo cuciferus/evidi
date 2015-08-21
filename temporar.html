@@ -1,0 +1,31 @@
+    <table class="table table-hover" id="programari-list">
+        <thead>
+        <tr>
+            <th> Ora Inceput</th>
+            <th> Ora Final</th>
+            <th> Nume </th>
+            <th> Prenume </th>
+            <th> Consult</th>
+        </tr>
+        </thead>
+        <tbody>
+
+    {% if programari %}
+        {% for programare in programari %}
+        <tr>
+            <td> {{ore}} </td>
+            <td> {{ programare.durata }} </td>
+            <td>  {{ programare.pacient.nume}} </td>
+            <td> {{ programare.pacient.prenume }}</td>
+            <td> <a href="/consults/adauga/{{ programare.pacient.id }}/{{ programare.id}}" class="btn btn-primary"> Adauga consult</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    {% else %}
+    <tr>
+        <td> Nu ai programari in data cerută <td>
+            </tr>
+            </tbody>
+    {% endif %}
+        </table>
+

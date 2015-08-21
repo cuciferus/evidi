@@ -8,10 +8,11 @@ lista('GET',[]) -> % imi trebuie update doar pentru o zi!
     {ok, [{programari, Programari}, {timestamp, TimeStamp}]}.
 
 listaZI('GET', [Zi, Luna, An]) ->
-    Programari = boss_db:find(programare, [{data, 'equals', string:join([An, Luna, Zi], "-")}]),
+    Programari = boss_db:find(programare, [{data, 'equals', string:join([An, Luna, Zi], "-")}], [{order_by, ora}]), 
+    %Orele = [ [Ora,Minut, Secunda, Durata] || {programare, _, _, {Ora,Minut,Secunda}, Durata, _} <-Programari],
     Pacienti = [ boss_db:find(PacientId) || {programare, _,_,_,_,PacientId} <-Programari],
-    OraProgramarii = [ binary_to_list(Ora) || { programare, _,_, {Ora}, _, _} <- Programari], %asta nu cred ca imi trebuie avand in vedere ca il prelucrez in js
-    {json, [{"programari", Programari}, {"pacienti", Pacienti}, {"ore",OraProgramarii }]}.
+    ProgramFinal = utile:programZi([Zi, Luna, An], 15, Pacienti),
+    {json, [{programari, ProgramFinal}, {pacienti, Pacienti}]}.
 
 send_test_message('GET',[]) ->
     TestMessage ="liber in sfarsit",
@@ -27,4 +28,6 @@ live('GET', []) ->
     TimeStamp = boss_mq:now("programari-noi"),
     {ok, [{programari, Programari}, {timestamp, TimeStamp}]}.
 
+%program('GET',[Zi, Luna, An]) ->
+    %Programari = listaZI([Zi, Luna, An]),
 

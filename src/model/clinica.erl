@@ -1,7 +1,7 @@
--module(clinica, [Id, Nume, JudetId, OrasId, StradaId]).
+-module(clinica, [Id, Nume]). %poza??
 -compile(export_all).
--belongs_to(judet).
--belongs_to(oras).
--belongs_to(strada).
+
 -has({doctors, many}).
+-has({sedii, many}).
+
 -table("clinica").
