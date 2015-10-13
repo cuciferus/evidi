@@ -2,7 +2,7 @@
 -compile(export_all).
 
 lista('GET', []) ->
-    Pacienti = boss_db:find(pacient, [], [{limit, 5}]), % aici de lucru
+    Pacienti = boss_db:find(pacient, [], [{limit, 5}]), % aici de lucru[{Pacient, pacient}]}.
     Timestamp = boss_mq:now("pacient-editat"),
     {ok, [{pacienti, Pacienti}, {timestamp, Timestamp}]}.
 

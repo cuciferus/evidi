@@ -26,39 +26,31 @@ truncheaza_ceva_tabele([Tabel|Restu]) ->
 truncheaza_ceva_tabele([]) -> ok.
 
 
+truncheaza_tabele(L) ->
+    lists:map(fun universal_parser:truncheaza_ceva_tabele/1, ["icd10s","cimcapitole", "cim_subcapitole", "cim_entry", "atc1", "atc2", "atc3", "atc4",
+                                                              "atc5", "atc_aiureas", "city", "city_type", "judete", "tari"]).
+
+
+
+
+
 
 parse() ->
     verifica_fisieru_xml(),
     %truncheaza_ceva_tabele
     %truncheaza_tabele(),
-    truncheaza_ceva_tabele(["cim_capitole","cim_subcapitole","cim_entry", "specialitati", "grade_medicale","tari", "judete",  "city_type", "city", "stradatype", "strada"]),
+    %truncheaza_ceva_tabele(["cim10"]),
 
     {ok, Greseli} = file:open("greseli.log",[append]),
     xmerl_sax_parser:file(?XML, [ 
         {event_fun,
          fun
-         %(startDocument, _Location,_State) ->
-                 %{ {[],[],[],[],[]}, {[],[],[]}};
+         (startDocument, _Location,_State) ->
+                 { {[],[],[],[],[]}, {[],[],[]}};
 
-        ({startElement, _, "Cim10", _Ceva, Atribute}, Location, State) ->
+        %({startElement, _, "Cim10", _Ceva, Atribute}, _Location, State) ->
              %<Cim10  code="1" name="Anumite boli infectioase si parazitare" entityLevel="0"/>
              %codurile sunt puse aiurea in xml: prima data entry apoi subcapitol apoi capitol yeeey
-                 {_,_,"code", Cod} = lists:keyfind("code", 3, Atribute),
-                 {_,_,"name", Nume} = lists:keyfind("name",3, Atribute),
-                 {_,_,"entityLevel", NivelEntitate} = lists:keyfind("entityLevel",3, Atribute),
-                 case NivelEntitate of
-                     "0" ->
-                         boss_db:execute("insert into cim_capitole (cod, nume) values ($1, $2)", [Cod, Nume]);
-                     "1" ->
-                         [CodCapitol, CodSubcapitol] = string:tokens(Cod, "_"),
-                         boss_db:execute("insert into cim_subcapitole (cod, nume, cod_capitol) values ($1, $2, $3)",
-                                         [CodSubcapitol, Nume, CodCapitol]);
-                     "2" ->
-                         [_CodCapitol, CodSubcapitol, CodEntry] = string:tokens(Cod, "_"),
-                         boss_db:execute("insert into cim_entry (cod, nume, cod_subcapitol) values ($1, $2, $3)",
-                                         [CodEntry, unicode:characters_to_binary(Nume), CodSubcapitol])
-                 end;
-
              %case length(Atribute) of
                  %3 ->
                      %[{__,_,"code", Codu}, {_,_,"name", Numele}, {_,_,"entityLevel","0"}] = Atribute,
@@ -67,13 +59,13 @@ parse() ->
                     %[{_,_,"code", Cod_aiurea}, {_,_, "name", Numele}, 
                                             %{_,_, "entityLevel", NivelEntitate}, _ParentCode] = Atribute,
                     %case NivelEntitate of
-                        %"1"->
+                        %1->
                             %[CodCapitol, CodSubcapitol] = string:tokens(Cod_aiurea, "_"),
                             %boss_db:execute("insert into cim_subcapitole (cod, nume, cod_capitol) values ($1, $2, $3)",
                                             %[CodSubcapitol, Numele, CodCapitol]);
-                        %"2" ->
+                        %2 ->
                             %[_CodCapitol, CodSubcapitol, CodEntry] = string:tokens(Cod_aiurea, "_"),
-                            %boss_db:execute("insert into cim_entry (cod, nume, cod_subcapitol) values ($1, $2, $3)",
+                            %boss_db:execute("insert into cim_entry (cod, nume, cod_subcapitole) values ($1, $2, $3)",
                                             %[CodEntry, Numele, CodSubcapitol])
                     %end
              %end;
@@ -81,6 +73,15 @@ parse() ->
                  %{ok, 1,_,[{Id}]} = boss_db:execute("insert into pharmaceutical_forms (cod) values ($1) returning id", [unicode:characters_to_binary(Cod)]),
                  %{Adrese, {[{Id, Cod}|Forma], Concentratie, Substanta}};
          ({startElement, _, "Speciality", _Ceva, [{_,_, "code", Cod}, {_,_,"name", Nume}, {_,_,"validFrom", _ValidFrom}]}, _Location, State) ->
+                  boss_db:execute("insert into specialitati (cod, nume) values ($1, $2)", [unicode:characters_to_binary(Cod), 
+                                            %[CodEntry, Numele, CodSubcapitol])
+                    %end
+             %end;
+         %({startElement, _, "PharmaceuticalForm", _Ceva, [{_,_,"code", Cod}, {_,_,"validFrom",_ValidFrom}]}, _Location, {Adrese,{Forma, Concentratie, Substanta}}) -> 
+                 %{ok, 1,_,[{Id}]} = boss_db:execute("insert into pharmaceutical_forms (cod) values ($1) returning id", [unicode:characters_to_binary(Cod)]),
+                 %{Adrese, {[{Id, Cod}|Forma], Concentratie, Substanta}};
+         ({startElement, _, "Speciality", _Ceva, [{_,_, "code", Cod}, {_,_,"name", Nume}, {_,_,"validFrom", _ValidFrom}]}, _Location, State) ->
+                 %file:write(Greseli, io_lib:format("incerc sa bag specialitatea ~s cu codul ~s ~n",[unicode:characters_to_binary(Nume), unicode:characters_to_binary(Cod)])
                   try 
                       boss_db:execute("insert into specialitati (cod, nume) values ($1, $2)", [unicode:characters_to_binary(Cod), 
                                                                                           unicode:characters_to_binary(Nume)])
@@ -177,22 +178,6 @@ parse() ->
                                           %3 ->
                          %[{_,_,"code", Cod}, {_,_,"description", Descriere}, {_,_,"validFrom",_ValidFrom}] = Atribute,
                          %case length(Cod) of 
-                             %1 ->
-                                 %boss_db:execute("insert into atc1 values ($1, $2)", [Cod, Descriere]),
-                                 %State;
-                             %_ ->
-                                 %AtcAiurea = atc_aiurea:new(id, unicode:characters_to_binary(Cod), unicode:characters_to_binary(Descriere)),
-                                 %{ok, _} = AtcAiurea:save(),
-                                 %State
-                         %end;
-                     %4 ->
-                         %[{_,_,"code", Cod}, {_,_,"description", Descriere}, {_,_,"validFrom", _ValidFrom}, {_,_, "parentATC", ParentATC}] = Atribute,
-                         %case length(Cod) of%șiiii trebie regândit NUUUUUU!!!!
-                             %%atc aiurea are cod = descriere...nici nu cred că îmi trebuie ha!
-                             %3 -> %atc2 are un numar din 2 cifre
-                                 %boss_db:execute("insert into atc2 values ($1, $2, $3)", [Cod, Descriere, ParentATC]);
-                             %4 -> %atc3 adaugă o literă
-                                 %boss_db:execute("insert into atc3 values ($1, $2, $3)", [Cod, Descriere, ParentATC]);
                              %5 ->
                                  %boss_db:execute("insert into atc4 values ($1, $2, $3)", [Cod, Descriere, ParentATC]);
                              %7 ->
@@ -213,30 +198,44 @@ parse() ->
 
 
          
-         ({startElement, _, "Country",_Ceva, [{_,_,"code",Cod}, {_,_,"name", Nume}]}, _Location, State) ->
-                 boss_db:execute("insert into tari (nume, cod) values ($1, $2) " ,[Nume, Cod]),
-                 State;
-         ({startElement, _, "District", _Ceva, [{_,_,"code", Cod}, {_,_,"name", Nume}, {_,_,"country",CodTara}]}, _Location, State) ->
-                 boss_db:execute("insert into judete (nume, cod, tari_id) values ($1, $2, $3) ", [Nume, Cod, CodTara]),
-                 State;
+         ({startElement, _, "Country",_Ceva, [{_,_,"code",Cod}, {_,_,"name", Nume}]}, _Location, {Coduri, {Tari, Judete,Orase, TipOras, TipStrada}, Medicamente}) ->
+                 Tara = tari:new(id, Cod, unicode:characters_to_binary(Nume)),
+                 {ok, TaraSalvata} = Tara:save(),
+                 {Coduri, {[TaraSalvata|Tari],Judete, Orase, TipOras, TipStrada}, Medicamente};
+         ({startElement, _, "District", _Ceva, [{_,_,"code", Cod}, {_,_,"name", Nume}, {_,_,"country",CodTara}]}, _Location, {Coduri, {Tari, Judete,Orase, TipOras, TipStrada}, Medicamente}) ->
+                 Tara = lists:keyfind(CodTara,3,Tari),
+                 Judet = judete:new(id, unicode:characters_to_binary(Nume), Cod, Tara:id()),
+                 {ok, JudetSalvat} = Judet:save(),
+                 {Coduri, {Tari, [JudetSalvat|Judete], Orase, TipOras, TipStrada}, Medicamente};
          ({startElement, _, "CityType", _Ceva, [{_,_,"code", Cod}, {_,_,"name", Nume},
-                                                {_,_,"urbanFlag", _NuImiTrebuie}]},_Location, State) ->
-                 boss_db:execute("insert into city_type (cod, nume) values ($1, $2) ", [Cod, unicode:characters_to_binary(Nume)]),
-                 State;
+                                      %          {_,_,"urbanFlag", _NuImiTrebuie}]},
+                                      %          rnhub
+          _Location, {Coduri, {Tari, Judete,Orase, TipuriOras, TipStrada}, Medicamente}) ->
+                 TipOrasNou = city_type:new(id, Cod, unicode:characters_to_binary(Nume)),
+                 {ok, TipOrasSalvat} = TipOrasNou:save(),
+                 {Coduri, {Tari, Judete, Orase, [TipOrasSalvat|TipuriOras], TipStrada}, Medicamente};
         ({startElement, _, "City", _Ceva, [{_,_,"code", Cod}, {_,_,"name", Nume}, 
-                                            {_,_,"district", CodJudet}, {_,_,"cityType", CodTipOras}]}, _Location, State) ->
-                 boss_db:execute("insert into city (cod, nume, judet_id, citytype_id) values ($1, $2, $3, $4) ", 
-                                 [Cod, unicode:characters_to_binary(Nume), CodJudet, CodTipOras]),
-                 State;
-         ({startElement, _, "Street_Type",_Ceva, [{_,_,"code", Cod}, {_,_,"name", Nume}]}, _Location, State) ->
-                 boss_db:execute("insert into stradatype (cod, nume) values ($1, $2)", [Cod, Nume]),
-                 State;
+                                            {_,_,"district", CodJudet}, {_,_,"cityType", CodTipOras}]}, _Location, {Coduri, {Tari, Judete,Orase, TipuriOras, TipStrada}, Medicamente}) ->
+                 Judet = lists:keyfind(CodJudet,4, Judete),
+                 TipOras = lists:keyfind(CodTipOras,3, TipuriOras),
+                 Oras = city:new(id, Cod, unicode:characters_to_binary(Nume), Judet:id(), TipOras:id()),
+                 {ok, OrasSalvat} = Oras:save(),
+                 {Coduri, {Tari, Judete, [OrasSalvat|Orase],TipuriOras, TipStrada}, Medicamente};
+                 ({startElement, _, "Street_Type",_Ceva, [{_,_,"code", Cod}, {_,_,"name", Nume}]},
+          _Location, {Coduri, {Tari, Judete,Orase, TipOras, TipStrada}, Medicamente}) ->
+                 TipStradaNou = strada_type:new(id, Cod, unicode:characters_to_binary(Nume)),
+                 {ok, TipStradaSalvata} = TipStradaNou:save(),
+                 {Coduri, {Tari, Judete, Orase, TipOras,[TipStradaSalvata|TipStrada]}, Medicamente};
          ({startElement, _, "Street", _Ceva, [{_,_,"code", Cod}, {_,_,"name",Nume},
-                                              {_,_,"city_code",CodOras}, {_,_,"streetType", CodTipStrada}]}, _Location,State)  ->
-                 boss_db:execute("insert into strada (nume, cod, city_id, stradatype_id) values ($1, $2, $3, $4)",
-                                 [unicode:characters_to_binary(Nume), Cod, CodOras, CodTipStrada]),
-                 
-                 State;
+                                              {_,_,"city_code",CodOras}, {_,_,"streetType", CodTipStrada}]}, _Location, {Coduri, {Tari, Judete,Orase, TipOras, TipStrada}, Medicamente}) ->
+                 %io:fwrite("caut orasu ~p în lista ~p~n", [CodOras, Orase]),
+                 %io:fwrite("caut tipu de strada ~p in lista ~p~n", [CodTipStrada, TipStrada]),
+                 Oras = lists:keyfind(CodOras, 3, Orase),
+                 TipStradaNou = lists:keyfind(CodTipStrada, 3, TipStrada),
+                 %io:fwrite("incerc sa inserez strada cu numele ~p, codu ~p, tipu de strada ~p si idu orasului ~p~n",[unicode:characters_to_binary(Nume), Cod, TipStrada:id(), Oras:id()]),
+                 StradaNoua = strada:new(id, unicode:characters_to_binary(Nume), Cod, TipStradaNou:id(), Oras:id()),
+                 {ok,_} = StradaNoua:save(),
+                 {Coduri, {Tari, Judete,Orase, TipOras,TipStrada}, Medicamente};
          %(endDocument, _Location, {{Cim10SubCapitole, Cim10Entry}, _Adrese}) -> %asta e triger de sfarsitul documentului
 
                  %salveazaSubCapitole(Cim10SubCapitole),

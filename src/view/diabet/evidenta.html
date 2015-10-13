@@ -1,0 +1,109 @@
+{% include "schelet.html" %}
+
+<title> {% block title %} Automonitorizare diabet {% endblock %} </title>
+<body>
+{% block body %}
+
+<script src="/static/app/js/Chart.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.0.2/jquery.simpleWeather.min.js"></script>
+<script type="text/javascript" src="/static/app/js/diabet/glicemii.js"></script>
+{% include "diabet/jumbotron.html" %}
+<h2> Salut {{ pacient.nume }} </h2><br/>
+<p> vom presupune că {{ pacient.nume }} are diabet și e vrea el să să monitorizeze, ceea ce urmează este o propunere de protocol, deocamdată unic</p>
+<hr/>
+ <ul class="nav nav-pills">
+  <li class="active"><a data-toggle="pill" href="#glicemii">monitorizarea glicemiilor</a></li>
+  <li><a data-toggle="pill" href="#medicatie">Medicație</a></li>
+  <li><a data-toggle="pill" href="#lifestyle">Stil de viață</a></li>
+  <li><a data-toggle="pill" href="#dieta">Dietă</a></li>
+  <li><a data-toggle="pill" href="#reminder">reminder pentru consulturi-analize</a></li>
+  <li><a data-toggle="pill" href="#prognostic">Scoruri de prognostic</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="glicemii" class="tab-pane fade in active">
+      <h3> Iată aici îți introduci glicemia/greutatea și vezi cum merge în timp</h3>
+      <p> o să poți să faci și direct adnotări pă grafic</p>
+    <canvas id="graficGlicemii" width="800" height="200"></canvas>
+  </div>
+  <div id="medicatie" class="tab-pane fade">
+        <h2> Tabel cu medicamentele</h2>
+        <p> dă click pe medicamentul care l-ai luat deja</p>
+        <p> sunt 10 zile de la ultima rețeță, mai ai medicamente pentru încă 20 de zile</p>
+        <table class="table">
+            <thead>
+                <tr>
+                <th> dimineață</th>
+                <th> prânz</th>
+                <th> seară</th>
+                <th> întrebări</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> Siofor</td>
+                    <td></td>
+                    <td> Siofor</td>
+                    <td> <button type="button" class="btn btn-primary"> de ce îl iau?</button>
+                        <button type="button" class="btn btn-primary"> ce pot păți de la el</button>
+                        <button type="button" class="btn btn-primary"> a luat o vecină și a murit eu ce fac?</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Diaprel</td>
+                    <td></td>
+                    <td></td>
+                    <td> <button type="button" class="btn btn-primary"> de ce îl iau?</button>
+                        <button type="button" class="btn btn-primary"> ce pot păți de la el</button>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Glucobay</td>
+                    <td>Glucobay</td>
+                    <td>Glucobay</td>
+                    <td> <button type="button" class="btn btn-primary"> de ce îl iau?</button>
+                        <button type="button" class="btn btn-primary"> ce pot păți de la el</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+  </div>
+  <div id="lifestyle" class="tab-pane fade">
+    <h2> sugestie de activitate fizica în funcție de boală și vreme și vârstă</h2>
+        <div class="container">
+            <button class="js-geolocation" style="display:none;"> Află vremea unde te afli ca să îți putem recomanda un sport</button><br />
+            <p> de adăugat și cât sport și eventual câte calori arde "în timp real"</p>
+            <div id="recomandare-sport"> Aici recomandarea de sport</div>
+                    <button type="button" class="btn btn-primary" id="geolocation"> Spune-mi unde te afli să aflu vremea să îți pot recomanda un sport</button>
+        <div class="container">
+            <div id="weather"></div>
+        </div>
+        </div>
+  </div>
+ <div id="dieta" class="tab-pane fade">
+    <h2> sugestie de rețetă în funcție de sezon</h2>
+        <div class="container">
+            <p> piept de rață la cuptor cu ciuperci și salată de ridichi că e toamnă care are 600kcal</p>
+            <p> de evitat toamna sunt mustul și dulceața de nuci</p>
+        </div>
+  </div>
+ <div id="reminder" class="tab-pane fade">
+ <h2> alertă de efectuare a unei analize(creatinină  anual, fund de ochi la 2 ani plm)</h2>
+        <ul>
+            <li> ultimul fund de ochi l-ai făcut acum 180 zile și îți mai trebuie unul peste înca 20 zile</li>
+            <li> ultimul consult cardiologic a fost acum 3 luni și conform indicațiilor îți mai trebuie unul peste 9 luni</li>
+        </ul>  
+  </div>
+<div id="prognostic" class="tab-pane fade">
+     <h2> scor de mortalitate, morbiditate care ia în considerare bolile asociate și vârsta</h2>
+        <ul>
+            <li> dacă ai diabet, colesterol, IM și AVC și mai și fumezi o mai duci doar 2-3 luni</li>
+        </ul> 
+  </div>
+
+</div>
+
+{% endblock %}
+</body></html>
