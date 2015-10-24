@@ -7,6 +7,8 @@
 -has({screenings, many}).
 -has({adresas, many}).
 
+-has({glicemies, many}).
+
 
 after_update() ->
     boss_mq:push("pacient-editat", THIS). %todo edit b0rkes

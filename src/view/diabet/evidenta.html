@@ -21,54 +21,10 @@
 </ul>
 
 <div class="tab-content">
-  <div id="glicemii" class="tab-pane fade in active">
-      <h3> Iată aici îți introduci glicemia/greutatea și vezi cum merge în timp</h3>
-      <p> o să poți să faci și direct adnotări pă grafic</p>
-    <canvas id="graficGlicemii" width="800" height="200"></canvas>
+    {% include "diabet/partiale/glicemii.html" %}
   </div>
   <div id="medicatie" class="tab-pane fade">
-        <h2> Tabel cu medicamentele</h2>
-        <p> dă click pe medicamentul care l-ai luat deja</p>
-        <p> sunt 10 zile de la ultima rețeță, mai ai medicamente pentru încă 20 de zile</p>
-        <table class="table">
-            <thead>
-                <tr>
-                <th> dimineață</th>
-                <th> prânz</th>
-                <th> seară</th>
-                <th> întrebări</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td> Siofor</td>
-                    <td></td>
-                    <td> Siofor</td>
-                    <td> <button type="button" class="btn btn-primary"> de ce îl iau?</button>
-                        <button type="button" class="btn btn-primary"> ce pot păți de la el</button>
-                        <button type="button" class="btn btn-primary"> a luat o vecină și a murit eu ce fac?</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td> Diaprel</td>
-                    <td></td>
-                    <td></td>
-                    <td> <button type="button" class="btn btn-primary"> de ce îl iau?</button>
-                        <button type="button" class="btn btn-primary"> ce pot păți de la el</button>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>Glucobay</td>
-                    <td>Glucobay</td>
-                    <td>Glucobay</td>
-                    <td> <button type="button" class="btn btn-primary"> de ce îl iau?</button>
-                        <button type="button" class="btn btn-primary"> ce pot păți de la el</button>
-                    </td>
-
-                </tr>
-            </tbody>
-        </table>
+      {% include "diabet/partiale/medicamente.html" %}
   </div>
   <div id="lifestyle" class="tab-pane fade">
     <h2> sugestie de activitate fizica în funcție de boală și vreme și vârstă</h2>

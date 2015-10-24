@@ -1,16 +1,7 @@
 var data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["01", "02", "03", "04", "05", "06", "07"],
     datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
-        },
+        
         {
             label: "My Second dataset",
             fillColor: "rgba(151,187,205,0.2)",
@@ -42,7 +33,6 @@ function loadWeather(location, woeid){
 }
 
 function gaseste_sport_pentru_tip_vreme(cod_vreme){
-    console.log("salut am primit codul"+cod_vreme);
     switch (parseInt(cod_vreme)) {
         case 0: //tornado
         case 1: //tropical storm
@@ -141,6 +131,30 @@ function gaseste_sport_pentru_tip_vreme(cod_vreme){
 
 
 $(document).ready(function() {
+    console.log($('#pacientid').val());
+    $("#adaugaGlicemie").on('click', function(e){
+        e.preventDefault();
+        var submitButton = $(this);
+        var pacientid=$('#pacientid').val();
+        var form = $('#adaugaGlicemiiForm');
+        var formData = form.serialize();
+        $.ajax({
+            url:"/diabet/adaugaGlicemie/"+pacientid ,
+            type: "POST",
+            data: $('#adaugaGlicemiiForm').serialize(),
+            error: function(eroare) {
+                console.info(data);
+            },
+            success: function(data){
+                console.log("gata cu data"+data);
+            }
+        });
+    });
+    moment().format();
+    $("#data-analiza").datetimepicker({
+        pickTime: false,
+        language:"ro",
+        useCurrent: true});
 
 
     loadWeather('Bucharest','');
