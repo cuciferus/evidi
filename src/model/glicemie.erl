@@ -1,4 +1,4 @@
--module(glicemie, [Id, Glicemie, TipGlicemie, Data, PacientId]).
+-module(glicemie, [Id, Glicemie, Glicemiepostprandiala, Data, PacientId]).
 -compile(export_all).
 
 -belongs_to(pacient).

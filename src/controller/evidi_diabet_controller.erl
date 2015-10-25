@@ -8,9 +8,11 @@ evidenta('GET',[Id]) ->
 
 adaugaGlicemie('POST', [Id]) ->
     Pacient = boss_db:find(Id),
-    Glicemie = Req:post_param("glicemie"),
-    TipGlicemie = Req:post_param("glicemie_postprandiala"), %meh de vazut cum vine ăsta
-    Data = Req:post_param("data"),
-    Glicemie = glicemie:new(id, Glicemie, TipGlicemie, Data, Pacient:id()),
-    {ok, GlicemieSalvata} = Glicemie:save().
+    ValoareGlicemie = Req:post_param("glicemie"),
+    Glicemiepostprandiala = Req:post_param("glicemie-postprandiala"), %meh de vazut cum vine ăsta
+    Data_completa = Req:post_param("data-glicemie"),
+    [Zi, Luna, An] = string:tokens(Req:post_param("data-glicemie"), "/"), %plm data trebe integer
+    {GlicemieInteger, _} = string:to_integer(ValoareGlicemie),
+    Glicemie = glicemie:new(id, GlicemieInteger, Glicemiepostprandiala, utile:transforma_data(Data_completa),  Pacient:id()),
+    {ok, _GlicemieSalvata} = Glicemie:save().% Glicemie = glicemie:new(id, 123, "true", {2015,08,09}, "pacient-1")
 

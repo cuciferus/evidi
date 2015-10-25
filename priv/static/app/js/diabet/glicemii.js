@@ -131,13 +131,20 @@ function gaseste_sport_pentru_tip_vreme(cod_vreme){
 
 
 $(document).ready(function() {
-    console.log($('#pacientid').val());
+    var azi = moment().format('DD/MM/YYYY');
+    $('#dataglicemie').val(azi);
+    $('#dataglicemie').datetimepicker({
+            pickTime: false,
+            language: "ro",
+            useCurrent: true,
+            });
     $("#adaugaGlicemie").on('click', function(e){
         e.preventDefault();
         var submitButton = $(this);
         var pacientid=$('#pacientid').val();
         var form = $('#adaugaGlicemiiForm');
         var formData = form.serialize();
+        console.log('datele trimise sunt '+formData);
         $.ajax({
             url:"/diabet/adaugaGlicemie/"+pacientid ,
             type: "POST",
