@@ -6,10 +6,10 @@ evidenta('GET',[Id]) ->
     {ok, [{pacient, Pacient}]}.
 
 
-adaugaGlicemie('POST', [Id]) ->
+adaugaGlicemie('POST', [Id]) -> %imi da 404 la sfârșit
     Pacient = boss_db:find(Id),
     ValoareGlicemie = Req:post_param("glicemie"),
-    Glicemiepostprandiala = Req:post_param("glicemie-postprandiala"), %meh de vazut cum vine ăsta
+    Glicemiepostprandiala = Req:post_param("tipglicemie"), 
     Data_completa = Req:post_param("data-glicemie"),
     [Zi, Luna, An] = string:tokens(Req:post_param("data-glicemie"), "/"), %plm data trebe integer
     {GlicemieInteger, _} = string:to_integer(ValoareGlicemie),
