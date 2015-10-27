@@ -144,16 +144,18 @@ $(document).ready(function() {
         var pacientid=$('#pacientid').val();
         var form = $('#adaugaGlicemiiForm');
         var formData = form.serialize();
-        console.log('datele trimise sunt '+formData);
         $.ajax({
             url:"/diabet/adaugaGlicemie/"+pacientid ,
             type: "POST",
             data: $('#adaugaGlicemiiForm').serialize(),
             error: function(eroare) {
-                console.info(data);
+                console.info(eroare);
+                //$('#adaugaGlicemiiForm').reset();
+                form[0].reset();
             },
             success: function(data){
-                console.log("gata cu data"+data);
+                //$('#adaugaGlicemiiForm').reset();
+                form[0].reset();
             }
         });
     });
