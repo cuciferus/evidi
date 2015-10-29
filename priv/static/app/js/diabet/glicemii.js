@@ -30,7 +30,26 @@ function loadWeather(location, woeid){
             $("weather").html('<p>'+error+'</p>');
         }
     }); 
-}
+};
+function calculeazaSexul(Cifra) {
+    switch(Cifra){
+        case "1":
+        case "3":
+        case "5":
+        case "7":
+            return "barbat";
+            break;
+        case "2":
+        case "4":
+        case "6":
+        case "8":
+            return "femeie";
+            break;
+        case "9":
+            return "străin";
+            break;
+    };
+};
 
 function gaseste_sport_pentru_tip_vreme(cod_vreme){
     switch (parseInt(cod_vreme)) {
@@ -126,7 +145,29 @@ function gaseste_sport_pentru_tip_vreme(cod_vreme){
     };
 };
 
+function iaVarstaSiSexulDinCnp(Cnp) {
+    var dataNastere = moment(Cnp.substr(1,6), "YYMMDD");
+    var azi = moment();
+    var varsta = azi.subtract({year: dataNastere.year(), month: dataNastere.month()}).years();
+    return varsta;
+}
 
+function calculeazaBMR(Sex, Greutate, Inaltime, Varsta) {
+    var GreutateInt = parseInt(Greutate);
+    var InaltimeInt = parseInt(Inaltime);
+    var VarstaInt = parseInt(Varsta);
+    if (Sex=="feminin") {
+        var BMRFemeie = 655+(9.6*Greutate)+(1.8*Inaltime)-(4.7*Varsta);
+        return BMRFemeie;
+    }
+    else if (Sex=="barbat"){
+        var BMRBarbat = 66+(13.7*GreutateInt)+(5*InaltimeInt)-(6.8*VarstaInt);
+        return BMRBarbat;
+    } else {
+        console.log("nu am sex")
+
+    }
+};
 
 
 
@@ -159,6 +200,20 @@ $(document).ready(function() {
             }
         });
     });
+    $("#calculeazacalorii").on('click', function(e){
+        e.preventDefault();
+        var submitButton = $(this);
+        var Cnp = $('#pacientcnp').val();
+        var Sex = calculeazaSexul(Cnp[0]);
+        var Inaltime = $('#inaltime').val();
+        var Varsta = iaVarstaSiSexulDinCnp(Cnp);
+        var Greutate = $('#greutate').val()
+        var BMR = calculeazaBMR(Sex, Greutate, Inaltime, Varsta);
+        console.log("bmr e "+BMR);
+        $('#necesar-caloric').replaceWith('<p id="necesar-caloric"> Necesarul caloric zilnic este '+BMR+'</p>');
+
+    }
+                              );
     moment().format();
     $("#data-analiza").datetimepicker({
         pickTime: false,

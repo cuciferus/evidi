@@ -21,30 +21,19 @@
 </ul>
 
     <div class="tab-content">
-    {% include "diabet/partiale/glicemii.html" %}
-  </div>
+        <div id="glicemii" class="tab-pane fade in active">
+            {% include "diabet/partiale/glicemii.html" %}
+        </div>
   <div id="medicatie" class="tab-pane fade">
       {% include "diabet/partiale/medicamente.html" %}
   </div>
   <div id="lifestyle" class="tab-pane fade">
-    <h2> sugestie de activitate fizica în funcție de boală și vreme și vârstă</h2>
-        <div class="container">
-            <button class="js-geolocation" style="display:none;"> Află vremea unde te afli ca să îți putem recomanda un sport</button><br />
-            <p> de adăugat și cât sport și eventual câte calori arde "în timp real"</p>
-            <div id="recomandare-sport"> Aici recomandarea de sport</div>
-                    <button type="button" class="btn btn-primary" id="geolocation"> Spune-mi unde te afli să aflu vremea să îți pot recomanda un sport</button>
-        <div class="container">
-            <div id="weather"></div>
-        </div>
-        </div>
+      {% include "diabet/partiale/sport.html" %}
+    
   </div>
  <div id="dieta" class="tab-pane fade">
-    <h2> sugestie de rețetă în funcție de sezon</h2>
-        <div class="container">
-            <p> piept de rață la cuptor cu ciuperci și salată de ridichi că e toamnă care are 600kcal</p>
-            <p> de evitat toamna sunt mustul și dulceața de nuci</p>
-        </div>
-  </div>
+     {% include "diabet/partiale/dieta.html" %}
+   </div>
  <div id="reminder" class="tab-pane fade">
  <h2> alertă de efectuare a unei analize(creatinină  anual, fund de ochi la 2 ani plm)</h2>
         <ul>
@@ -59,6 +48,7 @@
         </ul> 
   </div>
 
+  </div>
 
 {% endblock %}
 </body></html>
