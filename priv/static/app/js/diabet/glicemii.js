@@ -1,18 +1,6 @@
 
 var glicemii = [];
 var data = [];
-function picteazaGlicemiile(glicemii){
-    var glicemiiJson = JSON.parse(glicemii);
-    var labels = glicemiiJson.data;
-    var valoriGlicemie = glicemiiJson.glicemie;
-    console.log(labels);
-    console.log(valoriGlicemie);
-    //var labels = glicemii.glicemii["data"];
-    //var data = glicemii.glicemii["glicemie"];
-
-    //console.log(glicemii.glicemii[0].data);
-}
-
 
 function loadWeather(location, woeid){
     $.simpleWeather({
@@ -196,7 +184,7 @@ function iaGlicemiile() {
         success: function(rezultat){
             for (var i=0;i<rezultat.glicemii.length;i++) {
                 glicemii.push(rezultat.glicemii[i].glicemie);
-                data.push(rezultat.glicemii[i].data);
+                data.push(rezultat.glicemii[i].data.split("T")[0]);
             };
             deseneazaGrafic(glicemii,data);
         }
