@@ -5,6 +5,10 @@ evidenta('GET',[Id]) ->
     Pacient = boss_db:find(Id),
     {ok, [{pacient, Pacient}]}.
 
+listaGlicemiilor('GET', [Id]) ->
+    Pacient = boss_db:find(Id),
+    Glicemii = boss_db:find(glicemie, [{pacient_id, 'equals', Id}]),
+    {json, [{glicemii, Glicemii}]}.
 
 adaugaGlicemie('POST', [Id]) -> %imi da 404 la sfârșit
     Pacient = boss_db:find(Id),

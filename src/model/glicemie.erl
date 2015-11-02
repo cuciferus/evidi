@@ -1,4 +1,4 @@
--module(glicemie, [Id, Glicemie, Glicemiepostprandiala, Data, PacientId]).
+-module(glicemie, [Id, Glicemie, Glicemiepostprandiala, Data, PacientId]). %am uitat unitatea de măsuraaaaa
 -compile(export_all).
 
 -belongs_to(pacient).

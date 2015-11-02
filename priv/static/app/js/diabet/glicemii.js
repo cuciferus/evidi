@@ -1,19 +1,17 @@
-var data = {
-    labels: ["01", "02", "03", "04", "05", "06", "07"],
-    datasets: [
-        
-        {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86, 27, 90]
-        }
-    ]
-};
+
+var glicemii = [];
+var data = [];
+function picteazaGlicemiile(glicemii){
+    var glicemiiJson = JSON.parse(glicemii);
+    var labels = glicemiiJson.data;
+    var valoriGlicemie = glicemiiJson.glicemie;
+    console.log(labels);
+    console.log(valoriGlicemie);
+    //var labels = glicemii.glicemii["data"];
+    //var data = glicemii.glicemii["glicemie"];
+
+    //console.log(glicemii.glicemii[0].data);
+}
 
 
 function loadWeather(location, woeid){
@@ -47,6 +45,26 @@ function calculeazaSexul(Cifra) {
             break;
         case "9":
             return "străin";
+            break;
+    };
+};
+
+function calculeazaNecesarulCaloric(BMR) {
+    switch ($('#activitate-fizica').val()){
+        case "1":
+            return BMR*1.2;
+            break;
+        case "2":
+            return BMR*1.375;
+            break
+        case "3":
+            return BMR*1.55;
+            break;
+        case "4":
+            return BMR*1.725;
+            break;
+        case "5":
+            return BMR*1.9;
             break;
     };
 };
@@ -170,8 +188,44 @@ function calculeazaBMR(Sex, Greutate, Inaltime, Varsta) {
 };
 
 
+function iaGlicemiile() {
 
-$(document).ready(function() {
+    $.ajax({
+        dataType:"json",
+        url: "/diabet/listaGlicemiilor/"+$('#pacientid').val(),
+        success: function(rezultat){
+            for (var i=0;i<rezultat.glicemii.length;i++) {
+                glicemii.push(rezultat.glicemii[i].glicemie);
+                data.push(rezultat.glicemii[i].data);
+            };
+            deseneazaGrafic(glicemii,data);
+        }
+    });
+};
+
+function deseneazaGrafic(glicemii, dati){
+    var data = {
+        labels:dati,
+        datasets: [
+            {
+                label: "Glicemii in diverse zile",
+                fillColor: "rgba(220,220, 220,0.2)",
+                strokeColor: "rgba(151,187, 205, 1)",
+                pointColor: "rgba(151,187, 205,1)",
+                pointStrokeColor: "#fff",
+                poingHighlightFill:"#fff",
+                pointHighStroke:"rgba(151,187,205,1)",
+                data: glicemii
+            }
+        ]
+    };
+     var ctx = document.getElementById("graficGlicemii").getContext("2d");
+    var graficGlicemii = new Chart(ctx).Line(data, {});
+};
+
+
+    $(document).ready(function() {
+        iaGlicemiile();
     var azi = moment().format('DD/MM/YYYY');
     $('#dataglicemie').val(azi);
     $('#dataglicemie').datetimepicker({
@@ -179,27 +233,35 @@ $(document).ready(function() {
             language: "ro",
             useCurrent: true,
             });
+
     $("#adaugaGlicemie").on('click', function(e){
         e.preventDefault();
         var submitButton = $(this);
         var pacientid=$('#pacientid').val();
         var form = $('#adaugaGlicemiiForm');
         var formData = form.serialize();
+        console.log(formData.split("&")[0]);
         $.ajax({
             url:"/diabet/adaugaGlicemie/"+pacientid ,
             type: "POST",
             data: $('#adaugaGlicemiiForm').serialize(),
-            error: function(eroare) {
+            error: function(eroare) { //dintrun motiv sau altul primesc 404 dupa
                 console.info(eroare);
-                //$('#adaugaGlicemiiForm').reset();
                 form[0].reset();
+                glicemii.push($('#glicemie').val());
+                data.push($('#dataglicemie').val());
+                deseneazaGrafic(glicemii,data);
             },
             success: function(data){
-                //$('#adaugaGlicemiiForm').reset();
                 form[0].reset();
+                glicemii.push($('#glicemie').val());
+                data.push($('#dataglicemie').val());
+                deseneazaGrafic(glicemii,data);
+
             }
         });
     });
+
     $("#calculeazacalorii").on('click', function(e){
         e.preventDefault();
         var submitButton = $(this);
@@ -209,12 +271,11 @@ $(document).ready(function() {
         var Varsta = iaVarstaSiSexulDinCnp(Cnp);
         var Greutate = $('#greutate').val()
         var BMR = calculeazaBMR(Sex, Greutate, Inaltime, Varsta);
-        console.log("bmr e "+BMR);
-        $('#necesar-caloric').replaceWith('<p id="necesar-caloric"> Necesarul caloric zilnic este '+BMR+'</p>');
+        var necesarCaloric = calculeazaNecesarulCaloric(BMR);
+        $('#necesar-caloric').replaceWith('<p id="necesar-caloric"> Necesarul caloric zilnic este '+necesarCaloric+' calorii. <br/> Eventual sfaturi despre slabit </p>');
 
     }
                               );
-    moment().format();
     $("#data-analiza").datetimepicker({
         pickTime: false,
         language:"ro",
@@ -240,9 +301,6 @@ $(document).ready(function() {
         $("#protocol").replaceWith("<div> protocol zilnic</div>");
         console.log("salut baiete");
     });
-
-    var ctx = document.getElementById("graficGlicemii").getContext("2d");
-    var graficGlicemii = new Chart(ctx).Line(data, {});
 
 
     

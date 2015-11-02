@@ -8,11 +8,11 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.0.2/jquery.simpleWeather.min.js"></script>
 <script type="text/javascript" src="/static/app/js/diabet/glicemii.js"></script>
 {% include "diabet/jumbotron.html" %}
-<h2> Salut {{ pacient.nume }} </h2><br/>
-<p> vom presupune că {{ pacient.nume }} are diabet și e vrea el să să monitorizeze, ceea ce urmează este o propunere de protocol, deocamdată unic</p>
+<h2> Salut {{ pacient.nume|capfirst }} </h2><br/>
+<p> vom presupune că {{ pacient.nume|capfirst }} are diabet și e vrea el să să monitorizeze, ceea ce urmează este o propunere de protocol, deocamdată unic</p>
 <hr/>
  <ul class="nav nav-pills">
-  <li class="active"><a data-toggle="pill" href="#glicemii">monitorizarea glicemiilor</a></li>
+  <li class="active"><a data-toggle="pill" href="#glicemii">Monitorizarea glicemiilor</a></li>
   <li><a data-toggle="pill" href="#medicatie">Medicație</a></li>
   <li><a data-toggle="pill" href="#lifestyle">Stil de viață</a></li>
   <li><a data-toggle="pill" href="#dieta">Dietă</a></li>

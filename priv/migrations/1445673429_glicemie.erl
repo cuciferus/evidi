@@ -1,10 +1,10 @@
 %% Migration: glicemie
 UpSQL = "create table glicemie(
     id serial unique,
-    glicemie integer,
+    glicemie real,
     glicemiepostprandiala boolean,
     data date,
-    pacient_id text);".
+    pacient_id integer);".
 
 DownSQL = "DROP TABLE glicemie;".
 

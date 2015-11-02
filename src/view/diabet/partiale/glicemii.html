@@ -1,30 +1,35 @@
+<h3> Iată aici îți introduci glicemia/greutatea și vezi cum merge în timp</h3>
+<p> o să poți să faci și direct adnotări pă grafic</p>
 
 
-          <h3> Iată aici îți introduci glicemia/greutatea și vezi cum merge în timp</h3>
-          <p> o să poți să faci și direct adnotări pă grafic</p>
+<input type="hidden" value="{{ pacient.id }}" id="pacientid">
+<form method="post" role="form" id="adaugaGlicemiiForm" class="form-inline">
+<div class="form-group">
+    <label for="glicemie">Valoarea Glicemiei</label>
+    <input type="text" class="form-control" id="glicemie" name="glicemie" autocomplete="off">
+</div>
+<div class="form-group">
+        <label for="unitate-masura">Unitatea de măsură:</label>
+        <select class="form-control" id="unitate-masura">
+            <option>mg/dL</option>
+            <option>mmol/l</option>
+        </select>
+</div>
 
 
-        <input type="hidden" value="{{ pacient.id }}" id="pacientid">
-        <form method="post" role="form" id="adaugaGlicemiiForm" class="form-inline">
-            <div class="form-group">
-                <label for="glicemie">Valoarea Glicemiei</label>
-                <input type="text" class="form-control" id="glicemie" name="glicemie" autocomplete="off">
-            </div>
+    <div class="radio">
+        <label><input type="radio" name="tipglicemie" value="true">Glicemie preprandială</label>
+    </div>
+    <div class="radio">
+        <label><input type="radio" name="tipglicemie" value="false">Glicemie postprandială</label>
+    </div>
+    
+<div class="form-group">
+    <label for="data"> Data acesteia</label>
+    <input type="text" class="form-control" id="dataglicemie" name="data-glicemie" autocomplete="off" data-date-format="DD/MM/YYYY">
+</div>
 
-                <div class="radio">
-                    <label><input type="radio" name="tipglicemie" value="true">Glicemie preprandială</label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" name="tipglicemie" value="false">Glicemie postprandială</label>
-                </div>
- 
-            
-            <div class="form-group">
-                <label for="data"> Data acesteia</label>
-                <input type="text" class="form-control" id="dataglicemie" name="data-glicemie" autocomplete="off" data-date-format="DD/MM/YYYY">
-            </div>
-            
-            <br/>
-        <button id="adaugaGlicemie" type="submit" class="btn btn-default"> Adaugă în evidență și în grafic</button>
-        </form>
-            <canvas id="graficGlicemii" width="900" height="200"></canvas>
+<br/>
+<button id="adaugaGlicemie" type="submit" class="btn btn-default"> Adaugă în evidență și în grafic</button>
+</form>
+<canvas id="graficGlicemii" width="900" height="200"></canvas>
