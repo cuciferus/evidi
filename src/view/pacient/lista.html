@@ -51,7 +51,7 @@
     <tr><td> {{ pacient.nume}} </td> <td>{{ pacient.prenume }} </td><td>{{ pacient.cnp }} </td>
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adaugaProgramare" data-pacientid="{{ pacient.id }}"> Adauga programare</a></td> 
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editeazaPersonale" data-pacientid="{{ pacient.id }}"> Editeaza date personale</button></td>
-        <td><a href="/consult/adauga/{{ pacient.id}}/{{ programare.id }}"> Adauga consult</a> </td></tr>
+        <td><a href="/consults/adauga/{{ pacient.id}}"> Adauga consult</a> </td></tr>
     {% endfor %}
     </tbody>
     </table>

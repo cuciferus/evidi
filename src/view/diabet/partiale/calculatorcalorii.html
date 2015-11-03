@@ -1,4 +1,4 @@
-<p>calculează-ti necesarul de calorii</p>
+<form class="form-inline" role="form">
 <div class="form-group">
     <label for="activitate-fizica"> Nivelul de activitate fizică zilnică</label>
     <select class="form-control" id="activitate-fizica">
@@ -8,14 +8,13 @@
         <option value="4"> foarte activ(exerciții fizice intense zilnice)</option>
         <option value="5"> ultra activ (exerciții fizice f intense și un job care implică muncă fizică)</option>
     </select>
-    <p> se va selecta sexul și vârsta automat din cnp</p>
     <div class="form-group">
         <label for="inaltime">Înălțimea(în cm)</label>
-        <input type="text" class="form-control" id="inaltime">
+        <input type="text" class="form-control" id="inaltime" autocomplete="off">
     </div>
     <div class="form-group">
         <label for="greutate"> Greutate(în kg)</label>
-        <input type="text" class="form-control" id="greutate">
+        <input type="text" class="form-control" id="greutate" autocomplete="off">
     </div>
     <div class="checkbox">
         <label><input type="checkbox" value="" id="boalacronica">Bifează dacă ai o boală cronica</label>
@@ -26,3 +25,4 @@
 
     
 </div>
+</form>

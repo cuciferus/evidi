@@ -260,10 +260,8 @@ function deseneazaGrafic(glicemii, dati){
         var necesarCaloric = calculeazaNecesarulCaloric(BMR);
         if ($('#boalacronica').is(':checked')){
         $('#necesar-caloric').replaceWith('<p id="necesar-caloric"> Necesarul caloric zilnic este '+necesarCaloric*1.3+' calorii. <br/> Eventual sfaturi despre slabit </p>');
-        console.log('salut ai boala cronica');
         } else {
         $('#necesar-caloric').replaceWith('<p id="necesar-caloric"> Necesarul caloric zilnic este '+necesarCaloric+' calorii. <br/> Eventual sfaturi despre slabit </p>');
-        console.log('salut nu ai boala cronică');
         }
 
     }
