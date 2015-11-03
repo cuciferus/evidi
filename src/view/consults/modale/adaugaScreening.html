@@ -1,0 +1,37 @@
+<div class="modal fade" name="adaugaScreening" id="adaugaScreening" tabindex="-1" role="dialog" aria-labelledby="adaugaProgramareLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"> Close</span></button>
+                <h4 class="modal-title" id="editeazaPersonaleLabel"> Aici adaugi heredocolaterala pentru {{ pacient.nume }}</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" class="form-inline" role="form">
+                    <div class="form-group">
+                        <label for="specialitate-medicala">Specialitatea Medicală</label>
+                        <input type="text" class="form-control" id="specialitate-medicala">
+                    </div>
+                    <div class="form-group">
+                        <label for="diagnostic-screening">Rezultatul Screeningului(diagnostic icd)</label>
+                        <input type="text" class="form-control" id="diagnostic-screening">
+                    </div>
+                    <div class="form-group">
+                        <label for="data-screening"> Data efecutării</label>
+                        <input type="text" class="form-control" id="data-screening">
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="" id="screening-bun">Bifează dacă nu a fost nimic patologic la screening</label>
+                    </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Renunţă </button>
+                <button value="submit" type="submit" class="btn btn-primary" id="salveazaProgramarea"> Adauga Screening</button>
+                <input type="hidden" name="pacientid" id="{{ pacient.id}}">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
