@@ -228,13 +228,11 @@ function deseneazaGrafic(glicemii, dati){
         var pacientid=$('#pacientid').val();
         var form = $('#adaugaGlicemiiForm');
         var formData = form.serialize();
-        console.log(formData.split("&")[0]);
         $.ajax({
             url:"/diabet/adaugaGlicemie/"+pacientid ,
             type: "POST",
             data: $('#adaugaGlicemiiForm').serialize(),
             error: function(eroare) { //dintrun motiv sau altul primesc 404 dupa
-                console.info(eroare);
                 form[0].reset();
                 glicemii.push($('#glicemie').val());
                 data.push($('#dataglicemie').val());
@@ -260,7 +258,13 @@ function deseneazaGrafic(glicemii, dati){
         var Greutate = $('#greutate').val()
         var BMR = calculeazaBMR(Sex, Greutate, Inaltime, Varsta);
         var necesarCaloric = calculeazaNecesarulCaloric(BMR);
+        if ($('#boalacronica').is(':checked')){
+        $('#necesar-caloric').replaceWith('<p id="necesar-caloric"> Necesarul caloric zilnic este '+necesarCaloric*1.3+' calorii. <br/> Eventual sfaturi despre slabit </p>');
+        console.log('salut ai boala cronica');
+        } else {
         $('#necesar-caloric').replaceWith('<p id="necesar-caloric"> Necesarul caloric zilnic este '+necesarCaloric+' calorii. <br/> Eventual sfaturi despre slabit </p>');
+        console.log('salut nu ai boala cronică');
+        }
 
     }
                               );
