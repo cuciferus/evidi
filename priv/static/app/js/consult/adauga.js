@@ -17,6 +17,20 @@ $(document).ready(function () {
                             items:3,
                             delay: 2,
                             autoselect: true});
+            $('#specialitate-medicala').typeahead({
+                source: function(request, process){
+                    $.ajax({
+                        url:"/cauta/cauta_specialitate/"+request,
+                        datatype:'json',
+                        success: function(data){
+                            return process(data);}
+                    })},
+                    items:3,
+                    delay:2,
+                    autoSelect: true,
+                    minLength:3
+                });
+
             var cautator = new Function("camp",
                    " $(camp).typeahead({\
                         source: function(request, process) {\
