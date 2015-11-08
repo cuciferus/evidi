@@ -19,17 +19,6 @@ jsonifica(Rezultat) ->
     NumeColoane = [X || {_, X, _,_,_,_} <- Coloane],
     jsonifica_doi(NumeColoane, Valori).
 
-jsonifica_unu(Coloane,Valori) -> 
-    jsonifica_unu(Coloane, Valori,[]).
-
-jsonifica_unu(Coloane, [H|T], [Jsonificate]) ->
-    %io:fwrite("lungimea numelor e ~p iar a valorilor e ~p~n", [length(Coloane), length(tuple_to_list(H))]),
-    %io:fwrite("valorea de jsonificat e ~p~n", [H]),
-    Jsony = lists:zip(Coloane, tuple_to_list(H)),
-    jsonifica_unu(Coloane, T, [Jsonificate|Jsony]);%am o singura lista??
-jsonifica_unu(_Coloane, [], Jsonificate) -> 
-    Jsonificate.
-
 jsonifica_doi(Coloane,Valori) ->
     jsonifica_doi(Coloane, Valori, []).
 
@@ -94,3 +83,15 @@ combinaOreleCuProgramarile2([Ora|Ore], ProgramariTotal= [Programare|Programari],
 
 combinaOreleCuProgramarile2([],[], ProgramFinal) -> ProgramFinal;
 combinaOreleCuProgramarile2([], Programari, ProgramFinal) -> ProgramFinal.%??
+jsonifica_unu(Coloane,Valori) -> 
+    jsonifica_unu(Coloane, Valori,[]).
+
+jsonifica_unu(Coloane, [H|T], [Jsonificate]) ->
+    %io:fwrite("lungimea numelor e ~p iar a valorilor e ~p~n", [length(Coloane), length(tuple_to_list(H))]),
+    %io:fwrite("valorea de jsonificat e ~p~n", [H]),
+    Jsony = lists:zip(Coloane, tuple_to_list(H)),
+    jsonifica_unu(Coloane, T, [Jsonificate|Jsony]);%am o singura lista??
+jsonifica_unu(_Coloane, [], Jsonificate) -> 
+    Jsonificate.
+
+

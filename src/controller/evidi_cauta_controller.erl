@@ -2,8 +2,9 @@
 -compile(export_all).
 
 cauta_specialitate('GET', [Camp]) -> %asta e necesar pentru ca postgres nu vrea parametrized queriez
-    Q = io_lib:format("select * from specialitate where nume like '%~s%'", [Camp]),
-    Specialitati = boss_db:execute(Q),
+    Q = io_lib:format("select * from specialitati where nume like '%~s%'", [Camp]),
+    Rezultate = boss_db:execute(Q),
+    Specialitati = utile:jsonifica(Rezultate),
     {json, [{specialitati, Specialitati}]}.
 
 cauta('GET',[Nomenclator, Camp, Termen]) -> %Q e pentru ca postgresql nu poate parametrized queriez

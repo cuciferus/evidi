@@ -3,6 +3,10 @@ $(document).ready(function () {
                 pickTime: false,
                 language: "ro"
                 });
+            $('#data-screening').datetimepicker({
+                pickTime: false,
+                language: "ro"
+            });
             $('#ruda').typeahead({
                 source: function(request, process) {
                     $.ajax({
@@ -17,14 +21,28 @@ $(document).ready(function () {
                             items:3,
                             delay: 2,
                             autoselect: true});
+            $('#screening-bun').change(function(event){
+                var checkbox = event.target;
+                if (checkbox.checked) {
+                    $('#diagnostic-screening').val('NORMAL');
+                    $('#diagnostic-screening').prop('disabled', true);
+
+                } else { 
+                    $('#diagnostic-screening').prop('disabled', false);
+                    $('#diagnostic-screening').val('');
+                }
+            });
             $('#specialitate-medicala').typeahead({
                 source: function(request, process){
                     $.ajax({
                         url:"/cauta/cauta_specialitate/"+request,
                         datatype:'json',
                         success: function(data){
-                            return process(data);}
+                            console.log(data);
+                            return process(data.specialitati);}
                     })},
+                    displayText: function(item) {
+                        return item.nume},
                     items:3,
                     delay:2,
                     autoSelect: true,
@@ -50,6 +68,7 @@ $(document).ready(function () {
                                 });");
             cautator("#search-icd");
             cautator("#boala");
+            cautator("#diagnostic-screening");
             
 
 
